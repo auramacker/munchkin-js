@@ -3,5 +3,5 @@ function getRandomInt(min, max) {
 }
 
 function getDiceNumber(){
-    return Math.floor(Math.random() * 6) + 1;
+    return getRandomInt(1, 6)
 }
