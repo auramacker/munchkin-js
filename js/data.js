@@ -1,3 +1,7 @@
+_MINLEVEL = 1;
+_MAXLEVEL = 10;
+_CARDSSIZE = 5;
+
 function Monster(obj, dice){ // {id, img, name, description, numTreasures, monsterLevel, looseLevel, gender, race, class}
   this.id = obj.id,
   this.img = obj.img,
@@ -11,7 +15,6 @@ function Monster(obj, dice){ // {id, img, name, description, numTreasures, monst
     if (this.gender == "male") {
       this.monsterLevel += 1;
     }
-
   },
   this.race = obj.race,
   this.getRaceBonus = function(){
