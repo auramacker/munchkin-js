@@ -1,12 +1,15 @@
 _MINLEVEL = 1;
 _MAXLEVEL = 10;
 _CARDSSIZE = 5;
+_IMGPATH = "imgs/";
+_EFFECTSPLITTER = "##";
 // ********* Doors cards constructors *********
-function MonsterCard(objMonster, dice){ // {id, img, name, description, numTreasures, monsterLevel, looseLevel, gender, race, class}
+function MonsterCard(objMonster){ // {id, img, name, description, numTreasures, monsterLevel, looseLevel, gender, race, class}
   this.id = objMonster.id,
   this.img = objMonster.img,
   this.name = objMonster.name,
   this.description = objMonster.description,
+  this.effect = objMonster.effect,
   this.numTreasures = objMonster.numTreasures,
   this.monsterLevel = objMonster.monsterLevel,
   this.looseLevel = objMonster.looseLevel,
@@ -20,14 +23,14 @@ function MonsterCard(objMonster, dice){ // {id, img, name, description, numTreas
 function CurseCard(objCurse){
   this.id = objCurse.id,
   this.name = objCurse.name,
-  this.image = objCurse.image,
+  this.img = objCurse.img,
   this.description = objCurse.description,
   this.cardEffect = objCurse.cardEffect
 }
 function ClassCard(objClassCard){
   this.id = objClassCard.id,
   this.name = objClassCard.name,
-  this.image = objClassCard.image,
+  this.img = objClassCard.img,
   this.description = objClassCard.description,
   this.cardEffect = objClassCard.cardEffect
 
@@ -36,7 +39,7 @@ function ClassCard(objClassCard){
 function RaceCard(objRaceCard){
   this.id = objRaceCard.id,
   this.name = objRaceCard.name,
-  this.image = objRaceCard.image,
+  this.img = objRaceCard.img,
   this.description = objRaceCard.description,
   this.cardEffect = objRaceCard.cardEffect
 }
@@ -48,7 +51,7 @@ function RaceCard(objRaceCard){
 function StuffCard(obj) {
   this.id = obj.id,
   this.name = obj.name,
-  this.image = obj.image,
+  this.img = obj.img,
   this.description = obj.description,
   this.slotType = obj.slotType,
   this.power = obj.power,
@@ -59,14 +62,14 @@ function StuffCard(obj) {
 function PoisionCard(obj) {
   this.id = obj.id,
   this.name = obj.name,
-  this.image = obj.image,
+  this.img = obj.img,
   this.description = obj.description,
   this.effect = obj.effect
 }
 function BonusCard(objBonusCard) {
   this.id = objBonusCard.id,
   this.name = objBonusCard.name,
-  this.image = objBonusCard.image,
+  this.img = objBonusCard.img,
   this.description = objBonusCard.description,
   this.cardEffect = objBonusCard.cardEffect
   this.isReusable = objBonusCard.cardIsReusable
