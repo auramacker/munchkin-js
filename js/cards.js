@@ -1,4 +1,8 @@
-  var player, objPlayer,
+  var player, objPlayer = {
+      id: 0,
+      name: "Test",
+      gender: "Female"
+  },
       cpu1, objCpu1,
       cpu2, objCpu2,
       cpu3, objCpu3,

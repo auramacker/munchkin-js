@@ -35,7 +35,6 @@ function ClassCard(objClassCard){
   this.cardEffect = objClassCard.cardEffect
 
   }
-}
 function RaceCard(objRaceCard){
   this.id = objRaceCard.id,
   this.name = objRaceCard.name,
