@@ -68,11 +68,19 @@
 // -----------------------------------
 // ******** poision cards variables ********
       coldBlast, objColdBlast = {
-        id: 03,
+        id: 012,
         img: _IMGPATH + "cards-sprite.png",
-        name: "Баклер бахвала",
-        description: null,
+        name: "Зелье холодильного взрыва",
+        description: "Играй в любой бой. +3 любой стороне. Разовая шмотка.",
+        effect: "anySidePlus+3"
       },
 // -----------------------------------
 // ******** bonus cards variables ********
-      gold1000, objGold1000;
+      gold1000, objGold1000= {
+        id: 02,
+        img: _IMGPATH + "cards-sprite.png",
+        name: "1000 голдов",
+        description: "Получи уровень",
+        cardEffect: "levelUp1",
+        isReusable: false
+      };
