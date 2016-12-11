@@ -1,17 +1,40 @@
+  var pack = [], buferPack = [];
   var player, objPlayer = {
-      id: 0,
+      id: 000,
       name: "Test",
       gender: "Female"
-  },
-      cpu1, objCpu1,
-      cpu2, objCpu2,
-      cpu3, objCpu3,
-      cpu4, objCpu4,
-      cpu5, objCpu5,
+  };
+  var cpuArr = [], cpuObjArr = [];
+  cpuObjArr[0] = {
+      id: 001,
+      name: "testCpu1",
+      gender: "Male"
+    } ;
+  cpuObjArr[1] = {
+      id: 002,
+      name: "testCpu2",
+      gender: "Female"
+    } ;
+  cpuObjArr[2] = {
+      id: 003,
+      name: "testCpu3",
+      gender: "Male"
+    } ;
+  cpuObjArr[3] = {
+      id: 004,
+      name: "testCpu4",
+      gender: "Female"
+    } ;
+  cpuObjArr[4] = {
+      id: 005,
+      name: "testCpu4",
+      gender: "Female"
+    } ;
 // ******** players variables ********
 // -----------------------------------
 // ******** monster cards variables ********
-      orcs, objOrcs = {
+  var monstersObjArr = [], createdMonstersArr = [];
+  monstersObjArr[0] = {
         id: 2,
         img: _IMGPATH + "cards-sprite.png",
         name: "3872 орка",
@@ -26,39 +49,43 @@
         raceBonus: +6,
         class: null,
         classBonus: null
-      },
+      };
 // -----------------------------------
 // ******** curse cards variables ********
-      duckOfDoom, objDuckOfDoom = {
+  var cursesObjArr = [], createdCursesArr = [];
+  cursesObjArr[0] = {
         id: 21,
         img: _IMGPATH + "cards-sprite.png",
         name: "Утка обречённости",
         description: "Потеряй 2 уровня, чтобы неповадно было впредь подбирать птиц в подземельях.",
         cardEffect: "looseLevels2"
-      },
+      };
 // -----------------------------------
 // ******** player class variables ********
-      warrior, objWarrior = {
+  var classesObjArr = [], createdClassesArr = [];
+  classesObjArr[0] = {
         id: 11,
         img: _IMGPATH + "cards-sprite.png",
         name: "Воин",
         description: "Буйство: можешь сбросить до трёх карт в бою. Каждая даст тебе бонус +1. Ты побеждаешь при равенстве сил в бою.",
         cardEffect: "cardDropping+"
-      },
+      };
 // -----------------------------------
 // ******** race cards variables ********
-      dwarf, objDwarf = {
+  var racesObjArr = [], createdRacesArr = [];
+  racesObjArr[0] = {
         id: 20,
         img: _IMGPATH + "cards-sprite.png",
         name: "Дварф",
         description: "У тебя в игре может быть любое количество больших шмоток. В конце хода можешь оставлять на руке 6 карт.",
         cardEffect: "bigStuff" + _EFFECTSPLITTER + "manyCardsInHand"
-      },
+      };
 // -----------------------------------
 // ******** Treasures part ********
 // -----------------------------------
 // ******** stuff cards variables ********
-      bucklerOfSwashing, objbucklerOfSwashing = {
+  var stuffObjArr = [], createdStuffArr = [];
+  stuffObjArr[0] = {
         id: 03,
         img: _IMGPATH + "cards-sprite.png",
         name: "Баклер бахвала",
@@ -68,19 +95,21 @@
         cost: 400,
         effect: null,
         isBig: false
-      },
+      };
 // -----------------------------------
 // ******** poision cards variables ********
-      coldBlast, objColdBlast = {
+  var poisionsObjArr = [], createdPoisionsArr = [];
+  poisionsObjArr[0] = {
         id: 012,
         img: _IMGPATH + "cards-sprite.png",
         name: "Зелье холодильного взрыва",
         description: "Играй в любой бой. +3 любой стороне. Разовая шмотка.",
         effect: "anySidePlus+3"
-      },
+      };
 // -----------------------------------
 // ******** bonus cards variables ********
-      gold1000, objGold1000= {
+  var bonusesObjArr = [], createdBonusesArr = [];
+  bonusesObjArr[0] = {
         id: 02,
         img: _IMGPATH + "cards-sprite.png",
         name: "1000 голдов",

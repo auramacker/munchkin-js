@@ -1,10 +1,12 @@
+
 _MINLEVEL = 1;
 _MAXLEVEL = 10;
 _CARDSSIZE = 5;
-_IMGPATH = "imgs/";
+_IMGPATH = "images/";
 _EFFECTSPLITTER = "##";
 // ********* Doors cards constructors *********
 function MonsterCard(objMonster){ // {id, img, name, description, numTreasures, monsterLevel, looseLevel, gender, race, class}
+this.deck = "doors",
   this.id = objMonster.id,
   this.img = objMonster.img,
   this.name = objMonster.name,
@@ -21,6 +23,7 @@ function MonsterCard(objMonster){ // {id, img, name, description, numTreasures, 
   this.classBonus = objMonster.classBonus
 }
 function CurseCard(objCurse){
+  this.deck = "doors",
   this.id = objCurse.id,
   this.name = objCurse.name,
   this.img = objCurse.img,
@@ -28,6 +31,7 @@ function CurseCard(objCurse){
   this.cardEffect = objCurse.cardEffect
 }
 function ClassCard(objClassCard){
+  this.deck = "doors",
   this.id = objClassCard.id,
   this.name = objClassCard.name,
   this.img = objClassCard.img,
@@ -36,6 +40,7 @@ function ClassCard(objClassCard){
 
   }
 function RaceCard(objRaceCard){
+  this.deck = "doors",
   this.id = objRaceCard.id,
   this.name = objRaceCard.name,
   this.img = objRaceCard.img,
@@ -48,6 +53,7 @@ function RaceCard(objRaceCard){
 // ********* Treasures cards constructors *********
 
 function StuffCard(obj) {
+  this.deck = "treasures",
   this.id = obj.id,
   this.name = obj.name,
   this.img = obj.img,
@@ -59,6 +65,7 @@ function StuffCard(obj) {
   this.isBig = obj.isBig
 }
 function PoisionCard(obj) {
+  this.deck = "treasures",
   this.id = obj.id,
   this.name = obj.name,
   this.img = obj.img,
@@ -66,6 +73,7 @@ function PoisionCard(obj) {
   this.effect = obj.effect
 }
 function BonusCard(objBonusCard) {
+  this.deck = "treasures",
   this.id = objBonusCard.id,
   this.name = objBonusCard.name,
   this.img = objBonusCard.img,
