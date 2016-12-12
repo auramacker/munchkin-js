@@ -29,13 +29,21 @@ var ui = {
       zIndexDoors--;
       if( i <= 10 ) offsetDoors+=2;
     }
-
-
-   
-
   },
   showInitNotification: function() {
-
-
+    $(".init-notification").show();
+    $(".init-notification .gender a").click(function(){
+      $(".gender a").removeClass("checked");
+      $(this).addClass("checked");
+    });
+  },
+  getInitNotifyResult: function(){
+    var playerObj = {};
+    playerObj.name = $(".init-notification .player-name").val();
+    playerObj.gender = $(".gender .checked").text();
+    // playerObj.cpu = $(".cpu-number").val();
+    playerObj.id = "0001";
+    playerObj.isUser = true;
+    return playerObj
   }
 }

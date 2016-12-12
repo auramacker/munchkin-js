@@ -1,10 +1,5 @@
   var pack = [], doorsCards = [], treasuresCards = [];
-  var player, objPlayer = {
-      id: 000,
-      isUser: true,
-      name: "Test",
-      gender: "Female"
-  };
+  var player;
   var cpuArr = [], cpuObjArr = [];
   cpuObjArr[0] = {
       id: 001,

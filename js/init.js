@@ -1,6 +1,9 @@
 function initData(){
-  createPlayers(5);
-  console.log(player);
+  ui.showInitNotification();
+  $(".init-notification .start").click(function(){
+    createPlayers(5, ui.getInitNotifyResult());
+    console.log(player);
+  })
   console.log(cpuArr);
   createCards("doors");
   createCards("treasures");
@@ -75,7 +78,7 @@ function createCards(value){ // all | doors, treasures | ??? monsters, curses, c
     break;
   }
 }
-function createPlayers(cpuNumber) {
+function createPlayers(cpuNumber, objPlayer) {
   var i = 0, length = cpuNumber; // crating players
   player = new Player(objPlayer);
   for (; i < length; i++) {
