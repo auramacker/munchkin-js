@@ -32,10 +32,8 @@ var ui = {
     $('.card').on('click', function(){
   $(this).toggleClass('flipped');
 });
-  }
+  },
   showInitNotification: function() {
 
   }
 }
-
-
