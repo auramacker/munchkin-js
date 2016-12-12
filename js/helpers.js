@@ -10,12 +10,12 @@ function svgPlayerLevel(element, level){
 	var circle = element.find('.svg-level--bar'),
 		r = circle.attr('r'),
 		c = Math.PI * ( r * 2 );
- 
+
   	if ( level <= _MINLEVEL ) level = _MINLEVEL;
   	if ( level >= _MAXLEVEL ) level = _MAXLEVEL;
-  
+
   	var strokeDashoffset = ( (_MAXLEVEL - level ) / _MAXLEVEL ) * c;
-  
+
   	circle.css({ strokeDashoffset: strokeDashoffset });
 
 }
