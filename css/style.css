@@ -9,13 +9,7 @@ img {
 }
 .mn-full-game {
   height: 100vh;
-  background-color: #f2f2f2;
-}
-.mn-main-table {
-  position: relative;
-  padding: 60px;
-  height: 70vh;
-  background-color: #f00;
+  background-color: #fff;
 }
 .mn-players li {
   position: absolute;

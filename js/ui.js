@@ -3,7 +3,7 @@ var ui = {
 
     for(var i = 0; i < treasuresCards.length; i++){
 
-      var treasuresImg = _IMGPATH + 'treasures-backface.png';
+      var treasuresImg = _IMGPATH + 'cards/treasures-backface.png';
 
       $('.pack.pack--treasures').append('<div class="card flipped"> \
           <figure class="front"><img src="'+treasuresCards[i].img+'" alt=""></figure> \
@@ -14,9 +14,9 @@ var ui = {
 
     for(var i = 0; i < treasuresCards.length; i++){
 
-      var doorsImg = _IMGPATH + 'doors-backface.png';
+      var doorsImg = _IMGPATH + 'cards/doors-backface.png';
 
-      $('.pack.pack--doors').append('<div class="card"> \
+      $('.pack.pack--doors').append('<div class="card flipped"> \
           <figure class="front"><img src="'+doorsCards[i].img+'" alt=""></figure> \
           <figure class="back"><img src="'+doorsImg+'" alt=""></figure> \
         </div>');
