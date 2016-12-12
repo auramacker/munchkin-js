@@ -86,21 +86,17 @@ $card-t = 400ms
 	padding 0
 	width $card-w
 	height $card-h
-	img
-		border-radius(25px)
-		border-style solid
-		border-width 1px
 
 .card .flipper
 	transition(all $card-t ease-in-out)
 	transform-style preserve-3d
-	position relative
-	clearfix()
 
 .card
 	.front, 
 	.back
 		backface-visibility(hidden)
+		border-radius(25px)
+		overflow hidden
 		position absolute
 		top 0
 		left 0
@@ -112,14 +108,16 @@ $card-t = 400ms
 	.back
 		transform(rotateY(180deg))
 
-.card.card--treasures figure img
-	border-color #ffb932
+.card.card--treasures .front,
+.card.card--treasures .back
+	box-shadow(1px 1px 1px #ffb932)
 	
-.card.card--doors figure img
-	border-color #75482d
+.card.card--doors .front,
+.card.card--doors .back
+	box-shadow(1px 1px 1px #75482d)
 
 .card:not(.flipped)
-	animation(flip_card $card-t ease-in-out forwards)
+	animation(flip_card $card-t + 150 ease-in-out forwards)
 
 @keyframes flip_card
 	from, to
