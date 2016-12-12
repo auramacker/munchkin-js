@@ -1,4 +1,4 @@
-  var pack = [], buferPack = [];
+  var pack = [];
   var player, objPlayer = {
       id: 000,
       name: "Test",

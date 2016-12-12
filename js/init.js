@@ -8,66 +8,66 @@ function createCards(value){ // all | doors, treasures | ??? monsters, curses, c
       for (var i = 0; i < monstersObjArr.length; i++) {
         createdMonstersArr[i] = new MonsterCard(monstersObjArr[i]);
       }
-      buferPack.push.apply(buferPack, createdMonstersArr);
+      pack.push.apply(pack, createdMonstersArr);
       for (var i = 0; i < cursesObjArr.length; i++) {
         createdCursesArr[i] = new CurseCard(cursesObjArr[i]);
       }
-      buferPack.push.apply(buferPack, createdCursesArr);
+      pack.push.apply(pack, createdCursesArr);
       for (var i = 0; i < classesObjArr.length; i++) {
         createdClassesArr[i] = new ClassCard(classesObjArr[i]);
       }
-      buferPack.push.apply(buferPack, createdClassesArr);
+      pack.push.apply(pack, createdClassesArr);
       for (var i = 0; i < racesObjArr.length; i++) {
         createdRacesArr[i] = new RaceCard(racesObjArr[i]);
       }
-      buferPack.push.apply(buferPack, createdRacesArr);
+      pack.push.apply(pack, createdRacesArr);
       for (var i = 0; i < stuffObjArr.length; i++) {
         createdStuffArr[i] = new StuffCard(stuffObjArr[i]);
       }
-      buferPack.push.apply(buferPack, createdStuffArr);
+      pack.push.apply(pack, createdStuffArr);
       for (var i = 0; i < poisionsObjArr.length; i++) {
         createdPoisionsArr[i] = new PoisionCard(poisionsObjArr[i]);
       }
-      buferPack.push.apply(buferPack, createdPoisionsArr);
+      pack.push.apply(pack, createdPoisionsArr);
       for (var i = 0; i < bonusesObjArr.length; i++) {
         createdBonusesArr[i] = new BonusCard(bonusesObjArr[i]);
       }
-      buferPack.push.apply(buferPack, createdBonusesArr);
-      console.log(buferPack);
+      pack.push.apply(pack, createdBonusesArr);
+      console.log(pack);
     break;
     case "doors":
       for (var i = 0; i < monstersObjArr.length; i++) {
         createdMonstersArr[i] = new MonsterCard(monstersObjArr[i]);
       }
-      buferPack.push.apply(buferPack, createdMonstersArr);
+      pack.push.apply(pack, createdMonstersArr);
       for (var i = 0; i < cursesObjArr.length; i++) {
         createdCursesArr[i] = new CurseCard(cursesObjArr[i]);
       }
-      buferPack.push.apply(buferPack, createdCursesArr);
+      pack.push.apply(pack, createdCursesArr);
       for (var i = 0; i < classesObjArr.length; i++) {
         createdClassesArr[i] = new ClassCard(classesObjArr[i]);
       }
-      buferPack.push.apply(buferPack, createdClassesArr);
+      pack.push.apply(pack, createdClassesArr);
       for (var i = 0; i < racesObjArr.length; i++) {
         createdRacesArr[i] = new RaceCard(racesObjArr[i]);
       }
-      buferPack.push.apply(buferPack, createdRacesArr);
-      console.log(buferPack);
+      pack.push.apply(pack, createdRacesArr);
+      console.log(pack);
     break;
     case "treasures":
       for (var i = 0; i < stuffObjArr.length; i++) {
         createdStuffArr[i] = new StuffCard(stuffObjArr[i]);
       }
-      buferPack.push.apply(buferPack, createdStuffArr);
+      pack.push.apply(pack, createdStuffArr);
       for (var i = 0; i < poisionsObjArr.length; i++) {
         createdPoisionsArr[i] = new PoisionCard(poisionsObjArr[i]);
       }
-      buferPack.push.apply(buferPack, createdPoisionsArr);
+      pack.push.apply(pack, createdPoisionsArr);
       for (var i = 0; i < bonusesObjArr.length; i++) {
         createdBonusesArr[i] = new BonusCard(bonusesObjArr[i]);
       }
-      buferPack.push.apply(buferPack, createdBonusesArr);
-      console.log(buferPack);
+      pack.push.apply(pack, createdBonusesArr);
+      console.log(pack);
     break;
   }
 }
