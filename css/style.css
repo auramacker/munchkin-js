@@ -22,22 +22,24 @@ img {
   top: 0;
   left: 0;
 }
-body .card {
+.card {
   position: relative;
   display: inline-block;
   z-index: 6;
   transform-style: preserve-3d;
   transition: transform 450ms;
 }
-body .card figure {
+.card figure {
   position: relative;
-  width: 150px;
-  height: 233px;
+  width: 180px;
+  height: 280px;
   margin: 0;
+  border-radius: 20px;
+  overflow: hidden;
   display: block;
   -webkit-backface-visibility: hidden;
 }
-body .card figure.back {
+.card figure.back {
   position: absolute;
   top: 0;
   left: 0;
@@ -45,6 +47,6 @@ body .card figure.back {
   height: 100%;
   transform: rotateY(-180deg);
 }
-body .card.flipped {
+.card.flipped {
   transform: rotateY(180deg);
 }

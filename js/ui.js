@@ -1,20 +1,30 @@
 var ui = {
   showPack: function(){
+
     for(var i = 0; i < treasuresCards.length; i++){
 
-      var treasuresImg = _IMGPATH + 'card-back.png';
+      var treasuresImg = _IMGPATH + 'treasures-backface.png';
 
       $('.pack.pack--treasures').append('<div class="card flipped"> \
           <figure class="front"><img src="'+treasuresCards[i].img+'" alt=""></figure> \
           <figure class="back"><img src="'+treasuresImg+'" alt=""></figure> \
         </div>');
 
+    }
 
+    for(var i = 0; i < treasuresCards.length; i++){
 
+      var doorsImg = _IMGPATH + 'doors-backface.png';
 
-
+      $('.pack.pack--doors').append('<div class="card"> \
+          <figure class="front"><img src="'+doorsCards[i].img+'" alt=""></figure> \
+          <figure class="back"><img src="'+doorsImg+'" alt=""></figure> \
+        </div>');
 
     }
+
+
+
   }
 }
 
