@@ -1,58 +1,94 @@
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
 img {
   width: 100%;
   height: auto;
 }
-.mn-full-game {
-  height: 100vh;
-  background-color: #fff;
-}
-.mn-players li {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
 .card {
-  position: relative;
-  display: inline-block;
-  z-index: 6;
-  transform-style: preserve-3d;
-  transition: transform 450ms;
+  perspective: 1000px;
 }
-.card figure {
-  position: relative;
+.card.flipped .flipper {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+.card,
+.card .front,
+.card .back,
+.card .flipper {
+  margin: 0;
+  padding: 0;
   width: 180px;
   height: 280px;
-  margin: 0;
+}
+.card img,
+.card .front img,
+.card .back img,
+.card .flipper img {
+  -webkit-border-radius: 25px;
   border-radius: 25px;
   border-style: solid;
   border-width: 1px;
-  overflow: hidden;
-  display: block;
-  -webkit-backface-visibility: hidden;
 }
-.card figure.back {
+.card .flipper {
+  -webkit-transition: all 400ms ease-in-out;
+  -moz-transition: all 400ms ease-in-out;
+  -ms-transition: all 400ms ease-in-out;
+  -o-transition: all 400ms ease-in-out;
+  transition: all 400ms ease-in-out;
+  transform-style: preserve-3d;
+  position: relative;
+}
+.card .flipper:before,
+.card .flipper:after {
+  content: '';
+  display: table;
+}
+.card .flipper:after {
+  clear: both;
+}
+.card .front,
+.card .back {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  transform: rotateY(-180deg);
 }
-.card.flipped {
+.card .front {
+  z-index: 2;
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  -o-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+.card .back {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
-.card.card--treasures figure {
+.card.card--treasures figure img {
   border-color: #ffb932;
 }
-.card.card--doors figure {
+.card.card--doors figure img {
   border-color: #75482d;
 }
+.card:not(.flipped) {
+  -webkit-animation: flip_card 400ms ease-in-out forwards;
+  -moz-animation: flip_card 400ms ease-in-out forwards;
+  -ms-animation: flip_card 400ms ease-in-out forwards;
+  -o-animation: flip_card 400ms ease-in-out forwards;
+  animation: flip_card 400ms ease-in-out forwards;
+}
 .pack {
+  display: inline-block;
   position: relative;
 }
 .pack.pack--treasures .card:not(:first-child),
@@ -60,4 +96,71 @@ img {
   position: absolute;
   top: 0;
   left: 0;
+}
+.pack + .pack {
+  margin-left: 20px;
+}
+@-moz-keyframes flip_card {
+  from, to {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.25);
+    -moz-transform: scale(1.25);
+    -ms-transform: scale(1.25);
+    -o-transform: scale(1.25);
+    transform: scale(1.25);
+  }
+}
+@-webkit-keyframes flip_card {
+  from, to {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.25);
+    -moz-transform: scale(1.25);
+    -ms-transform: scale(1.25);
+    -o-transform: scale(1.25);
+    transform: scale(1.25);
+  }
+}
+@-o-keyframes flip_card {
+  from, to {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.25);
+    -moz-transform: scale(1.25);
+    -ms-transform: scale(1.25);
+    -o-transform: scale(1.25);
+    transform: scale(1.25);
+  }
+}
+@keyframes flip_card {
+  from, to {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.25);
+    -moz-transform: scale(1.25);
+    -ms-transform: scale(1.25);
+    -o-transform: scale(1.25);
+    transform: scale(1.25);
+  }
 }

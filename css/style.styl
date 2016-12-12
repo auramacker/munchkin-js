@@ -1,64 +1,139 @@
+clearfix()
+	&:before,
+	&:after
+		content ''
+		display table
+	&:after
+		clear both
+		
+border-radius()
+	-webkit-border-radius arguments
+	border-radius arguments
+
+box-shadow()
+	-webkit-box-shadow arguments
+	box-shadow arguments
+
+transform()
+	-webkit-transform arguments
+	-moz-transform arguments
+	-ms-transform arguments
+	-o-transform arguments
+	transform arguments
+
+transition()
+	-webkit-transition arguments
+	-moz-transition arguments
+	-ms-transition arguments
+	-o-transition arguments
+	transition arguments
+
+animation()
+	-webkit-animation arguments
+	-moz-animation arguments
+	-ms-animation arguments
+	-o-animation arguments
+	animation arguments
+
+animation-delay()
+	-webkit-animation-delay arguments
+	animation-delay arguments
+
+box-sizing()
+	-webkit-box-sizing arguments
+	-moz-box-sizing arguments
+	box-sizing arguments
+
+user-select()
+	-webkit-user-select arguments
+	-moz-user-select arguments
+	-ms-user-select arguments
+	user-select arguments
+
+backface-visibility()
+	-webkit-backface-visibility arguments
+	backface-visibility arguments
+
+// General
+
 body
 	margin 0
 	padding 0
-	overflow hidden
 
 img
 	width 100%
 	height auto
 
-.mn-full-game
-	height 100vh
-	background-color #fff
 
 
-// .mn-main-table
-// 	position relative
-// 	padding 60px
-// 	height 70vh
-// 	background-color red
+// Card
 
-
-.mn-players li
-	position absolute
-	top 0
-	left 0
-
+$card-h = 280px
+$card-w = 180px
+$card-t = 400ms
 
 .card
-	position relative
-	display inline-block
-	z-index 6
-	transform-style preserve-3d
-	transition transform 450ms
-	figure
-		position relative
-		width 180px
-		height 280px
-		margin 0
-		border-radius 25px
+	perspective 1000px
+
+.card.flipped .flipper
+	transform(rotateY(180deg))
+
+.card, 
+.card .front, 
+.card .back, 
+.card .flipper
+	margin 0
+	padding 0
+	width $card-w
+	height $card-h
+	img
+		border-radius(25px)
 		border-style solid
 		border-width 1px
-		overflow hidden
-		display block
-		-webkit-backface-visibility hidden
-		&.back
-			position absolute
-			top 0
-			left 0
-			width 100%
-			height 100%
-			transform rotateY(-180deg)
-	&.flipped
-		transform rotateY(180deg)
 
-.card.card--treasures figure
+.card .flipper
+	transition(all $card-t ease-in-out)
+	transform-style preserve-3d
+	position relative
+	clearfix()
+
+.card
+	.front, 
+	.back
+		backface-visibility(hidden)
+		position absolute
+		top 0
+		left 0
+
+	.front
+		z-index 2
+		transform(rotateY(0deg))
+
+	.back
+		transform(rotateY(180deg))
+
+.card.card--treasures figure img
 	border-color #ffb932
 	
-.card.card--doors figure
+.card.card--doors figure img
 	border-color #75482d
-	
+
+.card:not(.flipped)
+	animation(flip_card $card-t ease-in-out forwards)
+
+@keyframes flip_card
+	from, to
+		transform(scale(1))
+	50%
+		transform(scale(1.25))
+		
+
+
+
+// Pack
+
 .pack
+	display inline-block
 	position relative
 	&.pack--treasures,
 	&.pack--doors
@@ -66,3 +141,6 @@ img
 			position absolute
 			top 0
 			left 0
+
+.pack + .pack
+	margin-left 20px
