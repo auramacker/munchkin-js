@@ -1,6 +1,7 @@
 function initCards(){
   createPlayers(5);
-  createCards("all");
+  createCards("doors");
+  createCards("treasures");
 };
 function createCards(value){ // all | doors, treasures | ??? monsters, curses, classes, races, stuff, poisions, bonuses
   switch(value) {
@@ -39,35 +40,35 @@ function createCards(value){ // all | doors, treasures | ??? monsters, curses, c
       for (var i = 0; i < monstersObjArr.length; i++) {
         createdMonstersArr[i] = new MonsterCard(monstersObjArr[i]);
       }
-      pack.push.apply(pack, createdMonstersArr);
+      doorsCards.push.apply(doorsCards, createdMonstersArr);
       for (var i = 0; i < cursesObjArr.length; i++) {
         createdCursesArr[i] = new CurseCard(cursesObjArr[i]);
       }
-      pack.push.apply(pack, createdCursesArr);
+      doorsCards.push.apply(doorsCards, createdCursesArr);
       for (var i = 0; i < classesObjArr.length; i++) {
         createdClassesArr[i] = new ClassCard(classesObjArr[i]);
       }
-      pack.push.apply(pack, createdClassesArr);
+      doorsCards.push.apply(doorsCards, createdClassesArr);
       for (var i = 0; i < racesObjArr.length; i++) {
         createdRacesArr[i] = new RaceCard(racesObjArr[i]);
       }
-      pack.push.apply(pack, createdRacesArr);
-      console.log(pack);
+      doorsCards.push.apply(doorsCards, createdRacesArr);
+      console.log(doorsCards);
     break;
     case "treasures":
       for (var i = 0; i < stuffObjArr.length; i++) {
         createdStuffArr[i] = new StuffCard(stuffObjArr[i]);
       }
-      pack.push.apply(pack, createdStuffArr);
+      treasuresCards.push.apply(treasuresCards, createdStuffArr);
       for (var i = 0; i < poisionsObjArr.length; i++) {
         createdPoisionsArr[i] = new PoisionCard(poisionsObjArr[i]);
       }
-      pack.push.apply(pack, createdPoisionsArr);
+      treasuresCards.push.apply(treasuresCards, createdPoisionsArr);
       for (var i = 0; i < bonusesObjArr.length; i++) {
         createdBonusesArr[i] = new BonusCard(bonusesObjArr[i]);
       }
-      pack.push.apply(pack, createdBonusesArr);
-      console.log(pack);
+      treasuresCards.push.apply(treasuresCards, createdBonusesArr);
+      console.log(treasuresCards);
     break;
   }
 }

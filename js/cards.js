@@ -1,4 +1,4 @@
-  var pack = [];
+  var pack = [], doorsCards = [], treasuresCards = [];
   var player, objPlayer = {
       id: 000,
       name: "Test",
