@@ -69,6 +69,7 @@ function PoisionCard(obj) {
   this.id = obj.id,
   this.name = obj.name,
   this.img = obj.img,
+  this.cost = obj.cost,
   this.description = obj.description,
   this.effect = obj.effect
 }

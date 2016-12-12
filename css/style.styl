@@ -36,7 +36,9 @@ img
 		width 180px
 		height 280px
 		margin 0
-		border-radius 20px
+		border-radius 25px
+		border-style solid
+		border-width 1px
 		overflow hidden
 		display block
 		-webkit-backface-visibility hidden
@@ -49,3 +51,18 @@ img
 			transform rotateY(-180deg)
 	&.flipped
 		transform rotateY(180deg)
+
+.card.card--treasures figure
+	border-color #ffb932
+	
+.card.card--doors figure
+	border-color #75482d
+	
+.pack
+	position relative
+	&.pack--treasures,
+	&.pack--doors
+		.card:not(:first-child)
+			position absolute
+			top 0
+			left 0
