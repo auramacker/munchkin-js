@@ -35,10 +35,7 @@
 // ******** monster cards variables ********
   var monstersObjArr = [], createdMonstersArr = [];
   monstersObjArr[0] = {
-<<<<<<< HEAD
-=======
         id: "021",
->>>>>>> c86d32b27dcfa015ce8f7c70661797cbadd60bd2
         img: _IMGPATH + "cards/" + "021" + ".png",
         name: "3872 орка",
         description: "+6 против Дварфов (из-за старых обид).",
@@ -57,11 +54,8 @@
 // ******** curse cards variables ********
   var cursesObjArr = [], createdCursesArr = [];
   cursesObjArr[0] = {
-<<<<<<< HEAD
-=======
         id: "166",
         img: _IMGPATH + "cards/" + "166" + ".png",
->>>>>>> c86d32b27dcfa015ce8f7c70661797cbadd60bd2
         name: "Утка обречённости",
         description: "Будешь знать, как всяких уток в подземелье подбирать. Теряешь 2 Уровня.",
         cardEffect: "looseLevels2"
