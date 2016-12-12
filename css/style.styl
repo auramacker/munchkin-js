@@ -68,13 +68,14 @@ img
 
 // Card
 
-$card-h = 280px
-$card-w = 180px
+$card-h = 311px
+$card-w = 200px
 $card-t = 400ms
 
 .card
 	perspective 1000px
 	user-select(none)
+	cursor pointer
 
 .card.flipped .flipper
 	transform(rotateY(180deg))
@@ -147,16 +148,25 @@ $card-t = 400ms
 
 // Player Small
 
-$circle-h = 70px
+$circle-h = 80px
 
 // Circle
-
+.player-avatar
+	position relative
+	img
+		height $circle-h
+		width $circle-h
+		border-radius(50%)
+	svg
+		position absolute
+		top 0
+		left 0
 .svg-level
 	user-select(none)
 	circle
 		stroke-dashoffset 0
 		transition 1 300ms ease-in-out
 		stroke #4c1a11
-		stroke-width 3px
+		stroke-width 6px
 		&.svg-level--bar
 			stroke #ffcf4f

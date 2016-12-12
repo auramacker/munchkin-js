@@ -12,6 +12,7 @@ img {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  cursor: pointer;
 }
 .card.flipped .flipper {
   -webkit-transform: rotateY(180deg);
@@ -26,8 +27,8 @@ img {
 .card .flipper {
   margin: 0;
   padding: 0;
-  width: 180px;
-  height: 280px;
+  width: 200px;
+  height: 311px;
 }
 .card .flipper {
   -webkit-transition: all 400ms ease-in-out;
@@ -93,6 +94,20 @@ img {
 .pack + .pack {
   margin-left: 20px;
 }
+.player-avatar {
+  position: relative;
+}
+.player-avatar img {
+  height: 80px;
+  width: 80px;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+.player-avatar svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .svg-level {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -107,7 +122,7 @@ img {
   -o-transition: 1 300ms ease-in-out;
   transition: 1 300ms ease-in-out;
   stroke: #4c1a11;
-  stroke-width: 3px;
+  stroke-width: 6px;
 }
 .svg-level circle.svg-level--bar {
   stroke: #ffcf4f;
