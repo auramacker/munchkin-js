@@ -1,5 +1,7 @@
-function initCards(){
+function initData(){
   createPlayers(5);
+  console.log(player);
+  console.log(cpuArr);
   createCards("doors");
   createCards("treasures");
   ui.showPack();

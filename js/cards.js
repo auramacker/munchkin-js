@@ -1,32 +1,38 @@
   var pack = [], doorsCards = [], treasuresCards = [];
   var player, objPlayer = {
       id: 000,
+      isUser: true,
       name: "Test",
       gender: "Female"
   };
   var cpuArr = [], cpuObjArr = [];
   cpuObjArr[0] = {
       id: 001,
+      isUser: false,
       name: "testCpu1",
       gender: "Male"
     } ;
   cpuObjArr[1] = {
       id: 002,
+      isUser: false,
       name: "testCpu2",
       gender: "Female"
     } ;
   cpuObjArr[2] = {
       id: 003,
+      isUser: false,
       name: "testCpu3",
       gender: "Male"
     } ;
   cpuObjArr[3] = {
       id: 004,
+      isUser: false,
       name: "testCpu4",
       gender: "Female"
     } ;
   cpuObjArr[4] = {
       id: 005,
+      isUser: false,
       name: "testCpu4",
       gender: "Female"
     } ;

@@ -1,3 +1,9 @@
 (function(){
-  initCards(5);
+  initData();
+  function gameLoop(){
+
+  }
+  // var mainLoopInterval = setInterval(function(){
+  //   gameLoop();
+  // }, 30);
 })();

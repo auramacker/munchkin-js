@@ -1,4 +1,5 @@
 function Player(objPlayer){
+  this.isUser = objPlayer.isUser,
   this.id = objPlayer.id,
   this.name = objPlayer.name,
   this.gender = objPlayer.gender,
