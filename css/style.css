@@ -95,11 +95,13 @@ img {
   margin-left: 20px;
 }
 .player-avatar {
+  display: inline-block;
   position: relative;
+  margin: 60px;
 }
 .player-avatar img {
-  height: 80px;
-  width: 80px;
+  height: 70px;
+  width: 70px;
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
@@ -107,6 +109,9 @@ img {
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
+  margin: -5px;
 }
 .svg-level {
   -webkit-user-select: none;
@@ -116,13 +121,13 @@ img {
 }
 .svg-level circle {
   stroke-dashoffset: 0;
-  -webkit-transition: 1 300ms ease-in-out;
-  -moz-transition: 1 300ms ease-in-out;
-  -ms-transition: 1 300ms ease-in-out;
-  -o-transition: 1 300ms ease-in-out;
-  transition: 1 300ms ease-in-out;
+  -webkit-transition: all 300ms ease-in-out;
+  -moz-transition: all 300ms ease-in-out;
+  -ms-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
   stroke: #4c1a11;
-  stroke-width: 6px;
+  stroke-width: 5px;
 }
 .svg-level circle.svg-level--bar {
   stroke: #ffcf4f;

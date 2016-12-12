@@ -149,24 +149,30 @@ $card-t = 400ms
 // Player Small
 
 $circle-h = 80px
+$stroke-w = 5px
 
 // Circle
 .player-avatar
+	display inline-block
 	position relative
+	margin 60px
 	img
-		height $circle-h
-		width $circle-h
+		height $circle-h - ($stroke-w * 2)
+		width $circle-h - ($stroke-w * 2)
 		border-radius(50%)
 	svg
 		position absolute
 		top 0
 		left 0
+		right 0
+		bottom 0
+		margin - $stroke-w
 .svg-level
 	user-select(none)
 	circle
 		stroke-dashoffset 0
-		transition 1 300ms ease-in-out
+		transition all 300ms ease-in-out
 		stroke #4c1a11
-		stroke-width 6px
+		stroke-width $stroke-w
 		&.svg-level--bar
 			stroke #ffcf4f
