@@ -74,6 +74,7 @@ $card-t = 400ms
 
 .card
 	perspective 1000px
+	user-select(none)
 
 .card.flipped .flipper
 	transform(rotateY(180deg))
@@ -142,3 +143,20 @@ $card-t = 400ms
 
 .pack + .pack
 	margin-left 20px
+
+
+// Player Small
+
+$circle-h = 70px
+
+// Circle
+
+.svg-level
+	user-select(none)
+	circle
+		stroke-dashoffset 0
+		transition 1 300ms ease-in-out
+		stroke #4c1a11
+		stroke-width 3px
+		&.svg-level--bar
+			stroke #ffcf4f

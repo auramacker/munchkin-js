@@ -29,6 +29,16 @@ var ui = {
       zIndexDoors--;
       if( i <= 10 ) offsetDoors+=2;
     }
+
+    // Debug
+    $('.pack').each(function(){
+      $(this).find('.card').eq(1).on('click', function(){
+        $(this).toggleClass('flipped');
+      });
+    });
+
+
+
   },
   showInitNotification: function() {
     $(".init-notification").show();

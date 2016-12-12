@@ -8,6 +8,10 @@ img {
 }
 .card {
   perspective: 1000px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .card.flipped .flipper {
   -webkit-transform: rotateY(180deg);
@@ -88,6 +92,25 @@ img {
 }
 .pack + .pack {
   margin-left: 20px;
+}
+.svg-level {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.svg-level circle {
+  stroke-dashoffset: 0;
+  -webkit-transition: 1 300ms ease-in-out;
+  -moz-transition: 1 300ms ease-in-out;
+  -ms-transition: 1 300ms ease-in-out;
+  -o-transition: 1 300ms ease-in-out;
+  transition: 1 300ms ease-in-out;
+  stroke: #4c1a11;
+  stroke-width: 3px;
+}
+.svg-level circle.svg-level--bar {
+  stroke: #ffcf4f;
 }
 @-moz-keyframes flip_card {
   from, to {
