@@ -3,23 +3,27 @@ var ui = {
 
     for(var i = 0; i < treasuresCards.length; i++){
 
-      var treasuresImg = _IMGPATH + 'cards/treasures-backface.png';
+      var treasuresBackfaceCards = _IMGPATH + 'cards/treasures-backface.png';
 
-      $('.pack.pack--treasures').append('<div class="card flipped"> \
-          <figure class="front"><img src="'+treasuresCards[i].img+'" alt=""></figure> \
-          <figure class="back"><img src="'+treasuresImg+'" alt=""></figure> \
-        </div>');
+      $('.pack.pack--treasures').append('\
+        <div class="card flipped"> \
+          <figure class="front"><img src="'+treasuresCards[i].img+'" alt="'+treasuresCards[i].name+'"></figure> \
+          <figure class="back"><img src="'+treasuresBackfaceCards+'" alt="'+treasuresCards[i].name+'"></figure> \
+        </div>\
+      ');
 
     }
 
-    for(var i = 0; i < treasuresCards.length; i++){
+    for(var i = 0; i < doorsCards.length; i++){
 
-      var doorsImg = _IMGPATH + 'cards/doors-backface.png';
+      var doorsBackfaceImg = _IMGPATH + 'cards/doors-backface.png';
 
-      $('.pack.pack--doors').append('<div class="card flipped"> \
-          <figure class="front"><img src="'+doorsCards[i].img+'" alt=""></figure> \
-          <figure class="back"><img src="'+doorsImg+'" alt=""></figure> \
-        </div>');
+      $('.pack.pack--doors').append('\
+        <div class="card flipped"> \
+          <figure class="front"><img src="'+doorsCards[i].img+'" alt="'+doorsCards[i].name+'"></figure> \
+          <figure class="back"><img src="'+doorsBackfaceImg+'" alt="'+doorsCards[i].name+'"></figure> \
+        </div>\
+      ');
 
     }
 
