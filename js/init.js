@@ -2,6 +2,7 @@ function initCards(){
   createPlayers(5);
   createCards("doors");
   createCards("treasures");
+  ui.showPack();
 };
 function createCards(value){ // all | doors, treasures | ??? monsters, curses, classes, races, stuff, poisions, bonuses
   switch(value) {
