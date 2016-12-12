@@ -36,7 +36,7 @@
   var monstersObjArr = [], createdMonstersArr = [];
   monstersObjArr[0] = {
         id: 021,
-        img: _IMGPATH + "/cards/" + this.id + ".png",
+        img: _IMGPATH + "cards/" + "021" + ".png",
         name: "3872 орка",
         description: "+6 против дварфов (там старые счёты).",
         effect: "Брось кубик. На 2 и меньше ты затоптан до смерти, иначе потеряй столько уровней, сколько выпало.",
@@ -55,7 +55,7 @@
   var cursesObjArr = [], createdCursesArr = [];
   cursesObjArr[0] = {
         id: 21,
-        img: _IMGPATH + this.id + ".png",
+        img: _IMGPATH + "cards/" + this.id + ".png",
         name: "Утка обречённости",
         description: "Потеряй 2 уровня, чтобы неповадно было впредь подбирать птиц в подземельях.",
         cardEffect: "looseLevels2"
