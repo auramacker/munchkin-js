@@ -26,4 +26,7 @@ var ui = {
       offsetDoors+=2;
     }
   }
+  showInitNotification: function() {
+
+  }
 }
