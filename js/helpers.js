@@ -8,6 +8,7 @@ function getDiceNumber(){
 function svgPlayerLevel(element, level){
 
 	var circle = element.find('.svg-level--bar'),
+		label = element.find('.player-label-level'),
 		r = circle.attr('r'),
 		c = Math.PI * ( r * 2 );
 
@@ -17,6 +18,7 @@ function svgPlayerLevel(element, level){
   	var strokeDashoffset = ( (_MAXLEVEL - level ) / _MAXLEVEL ) * c;
 
   	circle.css({ strokeDashoffset: strokeDashoffset });
+  	label.text(level);
 
 }
 
@@ -24,6 +26,6 @@ function svgPlayerLevel(element, level){
 
 $('.cl').click(function(){
 	var gr = getRandomInt(1, 10);
-	$(this).text('Change level ' + gr);
-	svgPlayerLevel($('.svg-level'), gr);
+	$('.player-label-level').text('Change level ' + gr);
+	svgPlayerLevel($('.player-avatar'), gr);
 });
