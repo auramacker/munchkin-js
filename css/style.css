@@ -85,8 +85,8 @@ img {
   display: inline-block;
   position: relative;
 }
-.pack.pack--treasures .card:not(:first-child),
-.pack.pack--doors .card:not(:first-child) {
+.pack.pack--treasures .card:not(:last-child),
+.pack.pack--doors .card:not(:last-child) {
   position: absolute;
   top: 0;
   left: 0;
