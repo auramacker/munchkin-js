@@ -255,6 +255,25 @@ img {
   -o-transform: translate3d(40px, -50%, 0);
   transform: translate3d(40px, -50%, 0);
 }
+.is-2cpu .player--cpu:nth-child(1) {
+  left: 0;
+  top: 50%;
+  -webkit-transform: translate3d(-40px, -50%, 0);
+  -moz-transform: translate3d(-40px, -50%, 0);
+  -ms-transform: translate3d(-40px, -50%, 0);
+  -o-transform: translate3d(-40px, -50%, 0);
+  transform: translate3d(-40px, -50%, 0);
+}
+.is-2cpu .player--cpu:nth-child(2) {
+  right: 0;
+  left: auto;
+  top: 50%;
+  -webkit-transform: translate3d(40px, -50%, 0);
+  -moz-transform: translate3d(40px, -50%, 0);
+  -ms-transform: translate3d(40px, -50%, 0);
+  -o-transform: translate3d(40px, -50%, 0);
+  transform: translate3d(40px, -50%, 0);
+}
 .is-3cpu .player--cpu:nth-child(1) {
   left: 0;
   top: 50%;
