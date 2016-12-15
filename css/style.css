@@ -1,6 +1,10 @@
 body {
   margin: 0;
   padding: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 img {
   width: 100%;
@@ -27,8 +31,8 @@ img {
 .card .flipper {
   margin: 0;
   padding: 0;
-  width: 200px;
-  height: 311px;
+  width: 160px;
+  height: 248px;
 }
 .card .flipper {
   -webkit-transition: all 400ms ease-in-out;
@@ -94,18 +98,38 @@ img {
 .pack + .pack {
   margin-left: 20px;
 }
-.player-avatar {
+.pack-left,
+.pack-right {
+  position: absolute;
+  left: 100px;
+  top: 50%;
+  -webkit-transform: translate3d(0, -50%, 0);
+  -moz-transform: translate3d(0, -50%, 0);
+  -ms-transform: translate3d(0, -50%, 0);
+  -o-transform: translate3d(0, -50%, 0);
+  transform: translate3d(0, -50%, 0);
+}
+.pack-right {
+  left: auto;
+  right: 100px;
+}
+.player {
   display: inline-block;
   position: relative;
-  margin: 60px;
+  text-align: center;
 }
-.player-avatar img {
+.player--avatar {
+  display: inline-block;
+  position: relative;
+  margin: 0 0 10px 0;
+}
+.player--avatar img {
   height: 70px;
   width: 70px;
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
-.player-avatar .player-label-level {
+.player--avatar .player--label-level {
   position: absolute;
   top: 0;
   left: -5px;
@@ -120,21 +144,19 @@ img {
   border-radius: 50%;
   background-color: #ffcf4f;
 }
-.player-avatar svg {
+.player--avatar .player--svg-level {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   margin: -5px;
-}
-.svg-level {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
-.svg-level circle {
+.player--avatar .player--svg-level circle {
   stroke-dashoffset: 0;
   -webkit-transition: all 300ms ease-in-out;
   -moz-transition: all 300ms ease-in-out;
@@ -144,8 +166,161 @@ img {
   stroke: #4c1a11;
   stroke-width: 5px;
 }
-.svg-level circle.svg-level--bar {
+.player--avatar .player--svg-level circle.player--svg-level-bar {
   stroke: #ffcf4f;
+}
+.player--info {
+  position: relative;
+  background-color: #eee;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  padding: 3px 8px;
+  border: 2px solid #ffcf4f;
+}
+.player--info-name {
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+.player--info-card-length {
+  display: inline-block;
+  width: 40%;
+}
+.player--info-equipment {
+  display: inline-block;
+  width: 40%;
+}
+.desk {
+  position: relative;
+  text-align: center;
+  height: 80vh;
+  margin: 80px;
+  -webkit-border-radius: 30px;
+  border-radius: 30px;
+  background-image: url("http://3dfox.ru/wp-content/uploads/catablog/originals/Wood_08.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+.player--cpu {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.is-5cpu .player--cpu:nth-child(1) {
+  left: 0;
+  top: 50%;
+  -webkit-transform: translate3d(-40px, -50%, 0);
+  -moz-transform: translate3d(-40px, -50%, 0);
+  -ms-transform: translate3d(-40px, -50%, 0);
+  -o-transform: translate3d(-40px, -50%, 0);
+  transform: translate3d(-40px, -50%, 0);
+}
+.is-5cpu .player--cpu:nth-child(2) {
+  top: 0;
+  right: auto;
+  left: 25%;
+  -webkit-transform: translate3d(-50%, -40px, 0);
+  -moz-transform: translate3d(-50%, -40px, 0);
+  -ms-transform: translate3d(-50%, -40px, 0);
+  -o-transform: translate3d(-50%, -40px, 0);
+  transform: translate3d(-50%, -40px, 0);
+}
+.is-5cpu .player--cpu:nth-child(3) {
+  top: 0;
+  right: auto;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -40px, 0);
+  -moz-transform: translate3d(-50%, -40px, 0);
+  -ms-transform: translate3d(-50%, -40px, 0);
+  -o-transform: translate3d(-50%, -40px, 0);
+  transform: translate3d(-50%, -40px, 0);
+}
+.is-5cpu .player--cpu:nth-child(4) {
+  top: 0;
+  right: 25%;
+  left: auto;
+  -webkit-transform: translate3d(50%, -40px, 0);
+  -moz-transform: translate3d(50%, -40px, 0);
+  -ms-transform: translate3d(50%, -40px, 0);
+  -o-transform: translate3d(50%, -40px, 0);
+  transform: translate3d(50%, -40px, 0);
+}
+.is-5cpu .player--cpu:nth-child(5) {
+  right: 0;
+  left: auto;
+  top: 50%;
+  -webkit-transform: translate3d(40px, -50%, 0);
+  -moz-transform: translate3d(40px, -50%, 0);
+  -ms-transform: translate3d(40px, -50%, 0);
+  -o-transform: translate3d(40px, -50%, 0);
+  transform: translate3d(40px, -50%, 0);
+}
+.is-3cpu .player--cpu:nth-child(1) {
+  left: 0;
+  top: 50%;
+  -webkit-transform: translate3d(-40px, -50%, 0);
+  -moz-transform: translate3d(-40px, -50%, 0);
+  -ms-transform: translate3d(-40px, -50%, 0);
+  -o-transform: translate3d(-40px, -50%, 0);
+  transform: translate3d(-40px, -50%, 0);
+}
+.is-3cpu .player--cpu:nth-child(2) {
+  top: 0;
+  right: auto;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -40px, 0);
+  -moz-transform: translate3d(-50%, -40px, 0);
+  -ms-transform: translate3d(-50%, -40px, 0);
+  -o-transform: translate3d(-50%, -40px, 0);
+  transform: translate3d(-50%, -40px, 0);
+}
+.is-3cpu .player--cpu:nth-child(3) {
+  right: 0;
+  left: auto;
+  top: 50%;
+  -webkit-transform: translate3d(40px, -50%, 0);
+  -moz-transform: translate3d(40px, -50%, 0);
+  -ms-transform: translate3d(40px, -50%, 0);
+  -o-transform: translate3d(40px, -50%, 0);
+  transform: translate3d(40px, -50%, 0);
+}
+.is-4cpu .player--cpu:nth-child(1) {
+  left: 0;
+  top: 50%;
+  -webkit-transform: translate3d(-40px, -50%, 0);
+  -moz-transform: translate3d(-40px, -50%, 0);
+  -ms-transform: translate3d(-40px, -50%, 0);
+  -o-transform: translate3d(-40px, -50%, 0);
+  transform: translate3d(-40px, -50%, 0);
+}
+.is-4cpu .player--cpu:nth-child(2) {
+  top: 0;
+  right: auto;
+  left: 25%;
+  -webkit-transform: translate3d(-50%, -40px, 0);
+  -moz-transform: translate3d(-50%, -40px, 0);
+  -ms-transform: translate3d(-50%, -40px, 0);
+  -o-transform: translate3d(-50%, -40px, 0);
+  transform: translate3d(-50%, -40px, 0);
+}
+.is-4cpu .player--cpu:nth-child(3) {
+  left: auto;
+  right: 25%;
+  -webkit-transform: translate3d(-50%, -40px, 0);
+  -moz-transform: translate3d(-50%, -40px, 0);
+  -ms-transform: translate3d(-50%, -40px, 0);
+  -o-transform: translate3d(-50%, -40px, 0);
+  transform: translate3d(-50%, -40px, 0);
+}
+.is-4cpu .player--cpu:nth-child(4) {
+  right: 0;
+  left: auto;
+  top: 50%;
+  -webkit-transform: translate3d(40px, -50%, 0);
+  -moz-transform: translate3d(40px, -50%, 0);
+  -ms-transform: translate3d(40px, -50%, 0);
+  -o-transform: translate3d(40px, -50%, 0);
+  transform: translate3d(40px, -50%, 0);
 }
 @-moz-keyframes flip_card {
   from, to {
