@@ -32,7 +32,8 @@ var ui = {
 
     // Debug
     $('.pack').each(function(){
-      $(this).find('.card').eq(1).on('click', function(){
+      var p = $(this);
+      p.find('.card').eq(0).on('click', function(){
         $(this).toggleClass('flipped');
       });
     });

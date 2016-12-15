@@ -59,6 +59,7 @@ backface-visibility()
 body
 	margin 0
 	padding 0
+	user-select(none)
 
 img
 	width 100%
@@ -68,8 +69,8 @@ img
 
 // Card
 
-$card-h = 311px
-$card-w = 200px
+$card-h = 248px
+$card-w = 160px
 $card-t = 400ms
 
 .card
@@ -137,7 +138,7 @@ $card-t = 400ms
 	position relative
 	&.pack--treasures,
 	&.pack--doors
-		.card:not(:first-child)
+		.card:not(:last-child)
 			position absolute
 			top 0
 			left 0
@@ -145,22 +146,41 @@ $card-t = 400ms
 .pack + .pack
 	margin-left 20px
 
+.pack-left,
+.pack-right
+	position absolute
+	left 100px
+	top 50%
+	transform(translate3d(0, -50%, 0))
+	
+.pack-right
+	left auto
+	right 100px
+
 
 // Player Small
 
 $circle-h = 80px
 $stroke-w = 5px
 
-// Circle
-.player-avatar
+
+
+.player
 	display inline-block
 	position relative
-	margin 60px
+	text-align center
+
+
+// Circle
+.player--avatar
+	display inline-block
+	position relative
+	margin 0 0 10px 0
 	img
 		height $circle-h - ($stroke-w * 2)
 		width $circle-h - ($stroke-w * 2)
 		border-radius(50%)
-	.player-label-level
+	.player--label-level
 		position absolute
 		top 0
 		left - $stroke-w
@@ -173,19 +193,145 @@ $stroke-w = 5px
 		text-align center
 		border-radius 50%
 		background-color #ffcf4f
-	svg
+	.player--svg-level
 		position absolute
 		top 0
 		left 0
 		right 0
 		bottom 0
 		margin - $stroke-w
-.svg-level
-	user-select(none)
-	circle
-		stroke-dashoffset 0
-		transition all 300ms ease-in-out
-		stroke #4c1a11
-		stroke-width $stroke-w
-		&.svg-level--bar
-			stroke #ffcf4f
+		user-select(none)
+		circle
+			stroke-dashoffset 0
+			transition all 300ms ease-in-out
+			stroke #4c1a11
+			stroke-width $stroke-w
+			&.player--svg-level-bar
+				stroke #ffcf4f
+
+
+.player--info
+	position relative
+	background-color #eee
+	border-radius 10px
+	padding 3px 8px
+	border 2px solid #ffcf4f
+
+.player--info-name
+	display block
+	font-size 10px
+	text-transform uppercase
+
+.player--info-card-length
+	display inline-block
+	width 40%
+
+.player--info-equipment
+	display inline-block
+	width 40%
+	
+
+
+.desk
+	position relative
+	text-align center
+	height 80vh
+	margin 80px
+	border-radius 30px
+	background-image url(http://3dfox.ru/wp-content/uploads/catablog/originals/Wood_08.jpg)
+	background-size cover
+	background-position center center
+
+
+.player--cpu
+	position absolute
+	top 0
+	left 0
+
+
+// .player--cpu:nth-child(3)
+// 	top 0
+// 	left 25%
+// 	right auto
+// 	transform(translate3d(-50%, -40px, 0))
+	
+// .player--cpu:nth-child(4)
+// 	top 0
+// 	left auto
+// 	right 25%
+// 	transform(translate3d(50%, -40px, 0))
+	
+// .player--cpu:nth-child(2)
+
+// 	top 0
+// 	left 50%
+// 	right auto
+// 	transform(translate3d(-50%, -40px, 0))
+
+
+.is-5cpu
+	.player--cpu:nth-child(1)
+		left 0
+		top 50%
+		transform(translate3d(-40px, -50%, 0))
+	.player--cpu:nth-child(2)
+		top 0
+		right auto
+		left 25%
+		transform(translate3d(-50%, -40px, 0))
+	.player--cpu:nth-child(3)
+		top 0
+		right auto
+		left 50%
+		transform(translate3d(-50%, -40px, 0))		
+	.player--cpu:nth-child(4)
+		top 0
+		right 25%
+		left auto
+		transform(translate3d(50%, -40px, 0))
+
+
+	.player--cpu:nth-child(5)
+		right 0
+		left auto
+		top 50%
+		transform(translate3d(40px, -50%, 0))
+
+
+
+.is-3cpu
+	.player--cpu:nth-child(1)
+		left 0
+		top 50%
+		transform(translate3d(-40px, -50%, 0))
+	.player--cpu:nth-child(2)
+		top 0
+		right auto
+		left 50%
+		transform(translate3d(-50%, -40px, 0))
+	.player--cpu:nth-child(3)
+		right 0
+		left auto
+		top 50%
+		transform(translate3d(40px, -50%, 0))
+
+
+.is-4cpu
+	.player--cpu:nth-child(1)
+		left 0
+		top 50%
+		transform(translate3d(-40px, -50%, 0))
+	.player--cpu:nth-child(2)
+		top 0
+		right auto
+		left 25%
+		transform(translate3d(-50%, -40px, 0))
+	.player--cpu:nth-child(3)
+		left auto
+		right 25%
+		transform(translate3d(-50%, -40px, 0))
+	.player--cpu:nth-child(4)
+		right 0
+		left auto
+		top 50%
+		transform(translate3d(40px, -50%, 0))
