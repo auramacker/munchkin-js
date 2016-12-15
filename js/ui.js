@@ -61,5 +61,14 @@ var ui = {
     var number;
     number = $(".cpu-number").val();
     return number
+  },
+  showCpuPlayers: function(cpuArr){
+    var i = 0, length = cpuArr.length, cpuPlayers = [];
+    $(".desk ul .player--cpu").hide();
+    $(".desk").addClass("is-" + length + "cpu");
+    for (; i < length; i++) {
+      $(".desk ul").find(".player--cpu").eq(i).show().attr("id", cpuArr[i].id);
+    }
+
   }
 }

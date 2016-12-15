@@ -8,6 +8,7 @@ function initData(){
     createPlayers(playersNumber, playerInfo);
     console.log(player);
     console.log(cpuArr);
+    ui.showCpuPlayers(cpuArr);
   })
   createCards("doors");
   doorsCards = shuffle(buferDoors);
