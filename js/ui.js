@@ -1,4 +1,7 @@
 var ui = {
+  playersIcons: [{gender: "female", src: "cpu-1f.png", used: false}, {gender: "female", src: "cpu-2f.png", used: false}, {gender: "female", src: "cpu-3f.png", used: false}, {gender: "female", src: "cpu-4f.png", used: false},
+   {gender: "female", src: "cpu-5f.png", used: false}, {gender: "female", src: "cpu-6f.png", used: false}, {gender: "male", src: "cpu-1m.png", used: false}, {gender: "male", src: "cpu-2m.png", used: false}, {gender: "male", src: "cpu-3m.png", used: false},
+    {gender: "male", src: "cpu-4m.png", used: false},{gender: "male", src: "cpu-5m.png", used: false}, {gender: "male", src: "cpu-6m.png", used: false}],
   showPack: function(){
     var zIndexTreasures = zIndexDoors = 1000;
     var offsetTreasures = 0;
@@ -63,11 +66,20 @@ var ui = {
     return number
   },
   showCpuPlayers: function(cpuArr){
-    var i = 0, length = cpuArr.length, cpuPlayers = [];
+    var i = 0, j = 0, length = cpuArr.length, cpuPlayers = [], icons = ui.playersIcons, iLength = ui.playersIcons.length;
     $(".desk ul .player--cpu").hide();
     $(".desk").addClass("is-" + length + "cpu");
+    console.log(icons);
     for (; i < length; i++) {
       $(".desk ul").find(".player--cpu").eq(i).show().attr("id", cpuArr[i].id);
+      j = 0;
+      for (; j < iLength; j++) {
+        if ((cpuArr[i].gender == icons[j].gender) && !icons[j].used) {
+          $(".desk ul .player--cpu").eq(i).find("img").attr("src", _IMGPATH + "players/" + icons[j].src);
+          icons[j].used = true;
+          break
+        }
+      }
     }
 
   }

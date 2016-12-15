@@ -5,31 +5,31 @@
       id: 001,
       isUser: false,
       name: "testCpu1",
-      gender: "Male"
+      gender: "male"
     } ;
   cpuObjArr[1] = {
       id: 002,
       isUser: false,
       name: "testCpu2",
-      gender: "Female"
+      gender: "female"
     } ;
   cpuObjArr[2] = {
       id: 003,
       isUser: false,
       name: "testCpu3",
-      gender: "Male"
+      gender: "male"
     } ;
   cpuObjArr[3] = {
       id: 004,
       isUser: false,
       name: "testCpu4",
-      gender: "Female"
+      gender: "female"
     } ;
   cpuObjArr[4] = {
       id: 005,
       isUser: false,
       name: "testCpu4",
-      gender: "Female"
+      gender: "female"
     } ;
 // ******** players variables ********
 // -----------------------------------
