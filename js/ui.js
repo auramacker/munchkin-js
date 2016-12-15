@@ -36,9 +36,6 @@ var ui = {
         $(this).toggleClass('flipped');
       });
     });
-
-
-
   },
   showInitNotification: function() {
     $(".init-notification").show();
@@ -46,6 +43,9 @@ var ui = {
       $(".gender a").removeClass("checked");
       $(this).addClass("checked");
     });
+  },
+  initPlayersNumber: function(){
+    $(".cpu-number").show();
   },
   getInitNotifyResult: function(){
     var playerObj = {};
@@ -55,5 +55,10 @@ var ui = {
     playerObj.id = "0001";
     playerObj.isUser = true;
     return playerObj
+  },
+  getPlayersNumber: function(){
+    var number;
+    number = $(".cpu-number").val();
+    return number
   }
 }

@@ -1,4 +1,4 @@
-  var pack = [], doorsCards = [], treasuresCards = [];
+  var pack = [], buferPack = [], doorsCards = [], buferDoors = [], treasuresCards = [], buferTreasures = [];
   var player;
   var cpuArr = [], cpuObjArr = [];
   cpuObjArr[0] = {
