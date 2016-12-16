@@ -15,7 +15,7 @@ function initData(){
     createCards("treasures");
     treasuresCards = shuffle(buferTreasures);
     ui.showPack(); // show pack
-    ui.getCardsFromPack(treasuresCards, player, 3);
+    ui.getCardsFromPack(treasuresCards, player, 2);
   })
 };
 function createCards(value){ // all | doors, treasures | ??? monsters, curses, classes, races, stuff, poisions, bonuses

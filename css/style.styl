@@ -149,13 +149,26 @@ $card-t = 400ms
 		transform(scale(1.25))
 		
 
+.card.removed
+	animation(card-o 600ms ease-in-out forwards)
 
+@keyframes card-o
+	from
+		opacity 1
+		visibility visible
+		transform(translate3d(0, 0, 0))
+	to
+		opacity 0
+		visibility hidden
+		transform(translate3d(300%, 200%, 0))
 
 // Pack
 
 .pack
 	display inline-block
 	position relative
+	width $card-w
+	height $card-h
 	&.pack--treasures,
 	&.pack--doors
 		.card:not(:last-child)
@@ -492,8 +505,18 @@ a.start
 	overflow-x scroll
 	overflow-y hidden
 	.card
+		visibility hidden
 		display inline-block
+		animation(anim-c 500ms ease-in-out forwards)
 
 
-
+@keyframes anim-c
+	from
+		visibility hidden
+		opacity 0
+		transform(translateY(100%))
+	to
+		visibility visible
+		opacity 1
+		transform(translateY(0))
 
