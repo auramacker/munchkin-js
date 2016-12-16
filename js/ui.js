@@ -65,6 +65,19 @@ var ui = {
     number = $(".cpu-number").val();
     return number
   },
+  showPopUp(close) { // empty - open; "close" - close
+    var popup = $(".popup");
+    if (close == "close") {
+      popup.removeClass("is-visible");
+    }
+    else {
+      popup.find(".popup--close").click(function(){
+        popup.removeClass("is-visible");
+      })
+    //  popup.text(text);
+      popup.addClass("is-visible");
+    }
+  },
   showCpuPlayers: function(cpuArr){
     var i = 0, j = 0, length = cpuArr.length, cpuPlayers = [], icons = ui.playersIcons, iLength = ui.playersIcons.length;
     $(".desk ul .player--cpu").hide();

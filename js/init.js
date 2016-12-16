@@ -1,5 +1,6 @@
 function initData(){
   var playersNumber, playerInfo;
+  ui.showPopUp();
   ui.showInitNotification();
   ui.initPlayersNumber();
   $(".init-notification .start").click(function(){
@@ -7,6 +8,7 @@ function initData(){
     playerInfo = ui.getInitNotifyResult();
     createPlayers(playersNumber, playerInfo);
     ui.showCpuPlayers(cpuArr);
+    ui.showPopUp("close");
   })
   createCards("doors");
   doorsCards = shuffle(buferDoors);
