@@ -21,11 +21,9 @@ function svgPlayerLevel(element, level){
   	label.text(level);
 
 }
-$('.cl').click(function(){
-	var gr = getRandomInt(1, 10);
-	$('.player-label-level').text('Change level ' + gr);
-	svgPlayerLevel($('.player-avatar'), gr);
-});
+function setStartCpuLevel(level){
+	svgPlayerLevel($('.player-avatar'), level);
+};
 
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;

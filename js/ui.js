@@ -69,9 +69,12 @@ var ui = {
     var i = 0, j = 0, length = cpuArr.length, cpuPlayers = [], icons = ui.playersIcons, iLength = ui.playersIcons.length;
     $(".desk ul .player--cpu").hide();
     $(".desk").addClass("is-" + length + "cpu");
-    console.log(icons);
+    setTimeout(function() {
+      setStartCpuLevel(1)
+    }, 200);
     for (; i < length; i++) {
       $(".desk ul").find(".player--cpu").eq(i).show().attr("id", cpuArr[i].id);
+
       j = 0;
       for (; j < iLength; j++) {
         if ((cpuArr[i].gender == icons[j].gender) && !icons[j].used) {
