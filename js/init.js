@@ -7,14 +7,16 @@ function initData(){
     playersNumber = ui.getPlayersNumber();
     playerInfo = ui.getInitNotifyResult();
     createPlayers(playersNumber, playerInfo);
+    console.log(player);
     ui.showCpuPlayers(cpuArr);
     ui.showPopUp("close");
+    createCards("doors");
+    doorsCards = shuffle(buferDoors);
+    createCards("treasures");
+    treasuresCards = shuffle(buferTreasures);
+    ui.showPack(); // show pack
+    ui.getCardsFromPack(treasuresCards, player, 2);
   })
-  createCards("doors");
-  doorsCards = shuffle(buferDoors);
-  createCards("treasures");
-  treasuresCards = shuffle(buferTreasures);
-  ui.showPack(); // show pack
 };
 function createCards(value){ // all | doors, treasures | ??? monsters, curses, classes, races, stuff, poisions, bonuses
   switch(value) {
