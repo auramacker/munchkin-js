@@ -366,7 +366,13 @@ $stroke-w = 5px
 		top 50%
 		transform(translate3d(40px, -50%, 0))
 
+.w25
+	width 25%
+	float left
 
+.w50
+	width 50%
+	float left
 
 .popup
 	position fixed
@@ -389,33 +395,82 @@ $stroke-w = 5px
 	position absolute
 	right 20px
 	top 20px
-	color #fff
-	font-size 20px
-	cursor pointer
 
 .init-notification
 	position absolute
+	background-color rgba(#000, 85%)
+	padding 30px
+	border-radius 20px
+	min-width 220px
 	top 50%
 	left 50%
 	color #fff
 	text-align center
+	box-shadow 0 10px 20px rgba(#000, 40%)
 	transform(translate3d(-50%, -50%, 0))
+	.logo
+		display inline-block
+		max-height 50px
+		width auto
+		margin-bottom 20px
+	.gender
+		margin 0 0 15px
+		.male,
+		.female
+			cursor pointer
+			display inline-block
+			margin 0 6px
+			height 20px
+			width 20px
+			&:not(.checked)
+				filter grayscale(100%)
 
-.logo
-	display inline-block
-	max-height 80px
-	width auto
 
 input,
 select
-	display inline-block
-	height 40px
-	background-color #fccd9c
-	border 2px solid #552217
-	padding 5px 15px
+	line-height normal
+	box-sizing border-box
+	display block
 	width 100%
-	max-width 220px
-	color #000
+	height 34px
+	background-color #f1daa7
+	border 1px solid #f0e0be
+	font-size 13px
+	outline none
+	border-radius 4px
+	padding 5px 10px
+	color #404040
+	margin-bottom 30px
+	box-shadow none
+
+input::-webkit-input-placeholder
+	color #b49e6e
+
+
+input:-moz-placeholder
+	color #b49e6e
+
+input::-moz-placeholder 
+	color #b49e6e
+
+.btn
+	display inline-block
+	margin 0
+	border-radius 4px
+	text-align center
+	text-decoration none
+	cursor pointer
+	color #404040
+	font-size 14px
+	padding 5px 20px
+	line-height 1.5
+	background-color darken(#f1daa7, 30%)
+	box-shadow 0 2px 0 darken(#f0e0be, 50%)
+	transition(all 250ms ease-in-out)
+	&:hover
+		background-color darken(#f1daa7, 35%)
+
+
 
 a.start
 	display block
@@ -426,6 +481,7 @@ a.start
 	bottom 0
 	left 0
 	width 100%
+	height $card-h
 	text-align center
 
 .player-user--cards
@@ -437,4 +493,7 @@ a.start
 	overflow-y hidden
 	.card
 		display inline-block
-	
+
+
+
+

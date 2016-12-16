@@ -1,184 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Munchkin</title>
-		<link rel="stylesheet" href="css/style.css">
-	</head>
-	<body>
+<head>
+	<meta charset="UTF-8">
+	<title>Munchkin</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
 	<div class="popup">
-		<div class="popup--close">XYI</div>
 
 		<div class="init-notification">
 			<img src="images/logo.png" alt="" class="logo">
-			<input type="text" class="player-name" placeholder="Put your name">
+			<div class="init-settings">
 			<div class="gender">
-				<a class="male checked">male</a>
-				<a class="female">female</a>
+				<a class="male checked"><img src="images/male.png" alt=""></a>
+				<a class="female"><img src="images/female.png" alt=""></a>
 			</div>
+			<input type="text" class="player-name" placeholder="Put your name">
 			<select class='cpu-number'>
 				<option value="2">2</option>
 				<option value="3">3</option>
 				<option value="4">4</option>
 				<option value="5">5</option>
 			</select>
-			<a class='start'>start!</a>
+			<a class="btn start">Start Game!</a>
+		</div>
 		</div>
 
 	</div>
 
 
-		<div class="desk">
-			<div class="pack-left">
-				<div class="pack pack--treasures"></div>
-				<div class="pack pack--doors"></div>
-			</div>
-			<div class="pack-right">
-				<div class="pack pack--rebound"></div>
-			</div>
-			<ul>
-				<li class="player player--cpu">
-					<div class="player--avatar">
-						<img src="#" alt="">
-						<span class="player--label-level"></span>
-						<svg class="player--svg-level" viewPort="0 0 100 100" version="1.1" width="80" height="80" xmlns="http://www.w3.org/200/svg">
-							<circle class="player--svg-level-bar" r="37" cx="40" cy="40" fill="transparent" stroke-dasharray="233" stroke-dashoffset="233" transform="rotate(220 40 40)"></circle>
-						</svg>
-					</div>
-					<div class="player--info">
-						<span class="player--info-name"></span>
-						<span class="player--info-card-length"></span>
-						<span class="player--info-equipment"></span>
-					</div>
-				</li>
-				<li class="player player--cpu">
-					<div class="player--avatar">
-						<img src="#" alt="">
-						<span class="player--label-level"></span>
-						<svg class="player--svg-level" viewPort="0 0 100 100" version="1.1" width="80" height="80" xmlns="http://www.w3.org/200/svg">
-							<circle class="player--svg-level-bar" r="37" cx="40" cy="40" fill="transparent" stroke-dasharray="233" stroke-dashoffset="233" transform="rotate(220 40 40)"></circle>
-						</svg>
-					</div>
-					<div class="player--info">
-						<span class="player--info-name"></span>
-						<span class="player--info-card-length"></span>
-						<span class="player--info-equipment"></span>
-					</div>
-				</li>
-				<li class="player player--cpu">
-					<div class="player--avatar">
-						<img src="#" alt="">
-						<span class="player--label-level"></span>
-						<svg class="player--svg-level" viewPort="0 0 100 100" version="1.1" width="80" height="80" xmlns="http://www.w3.org/200/svg">
-							<circle class="player--svg-level-bar" r="37" cx="40" cy="40" fill="transparent" stroke-dasharray="233" stroke-dashoffset="233" transform="rotate(220 40 40)"></circle>
-						</svg>
-					</div>
-					<div class="player--info">
-						<span class="player--info-name"></span>
-						<span class="player--info-card-length"></span>
-						<span class="player--info-equipment"></span>
-					</div>
-				</li>
-				<li class="player player--cpu">
-					<div class="player--avatar">
-						<img src="#" alt="">
-						<span class="player--label-level"></span>
-						<svg class="player--svg-level" viewPort="0 0 100 100" version="1.1" width="80" height="80" xmlns="http://www.w3.org/200/svg">
-							<circle class="player--svg-level-bar" r="37" cx="40" cy="40" fill="transparent" stroke-dasharray="233" stroke-dashoffset="233" transform="rotate(220 40 40)"></circle>
-						</svg>
-					</div>
-					<div class="player--info">
-						<span class="player--info-name"></span>
-						<span class="player--info-card-length"></span>
-						<span class="player--info-equipment"></span>
-					</div>
-				</li>
-				<li class="player player--cpu">
-					<div class="player--avatar">
-						<img src="#" alt="">
-						<span class="player--label-level"></span>
-						<svg class="player--svg-level" viewPort="0 0 100 100" version="1.1" width="80" height="80" xmlns="http://www.w3.org/200/svg">
-							<circle class="player--svg-level-bar" r="37" cx="40" cy="40" fill="transparent" stroke-dasharray="233" stroke-dashoffset="233" transform="rotate(220 40 40)"></circle>
-						</svg>
-					</div>
-					<div class="player--info">
-						<span class="player--info-name"></span>
-						<span class="player--info-card-length"></span>
-						<span class="player--info-equipment"></span>
-					</div>
-				</li>
-			</ul>
+	<div class="desk">
+		<div class="pack-left">
+			<div class="pack pack--treasures"></div>
+			<div class="pack pack--doors"></div>
 		</div>
-
-		<div class="player-user dt">
-			
-
-			<div class="dtc">
-<div class="player">
-					<div class="player--avatar">
-						<img src="images/players/cpu-1f.png" alt="">
-						<span class="player--label-level"></span>
-						<svg class="player--svg-level" viewPort="0 0 100 100" version="1.1" width="80" height="80" xmlns="http://www.w3.org/200/svg">
-							<circle class="player--svg-level-bar" r="37" cx="40" cy="40" fill="transparent" stroke-dasharray="233" stroke-dashoffset="233" transform="rotate(220 40 40)"></circle>
-						</svg>
-					</div>
-					<div class="player--info">
-						<span class="player--info-name">Name</span>
-						<span class="player--info-card-length">1</span>
-						<span class="player--info-equipment">1</span>
-					</div>
+		<div class="pack-right">
+			<div class="pack pack--rebound"></div>
+		</div>
+		<ul>
+			<li class="player player--cpu">
+				<div class="player--avatar">
+					<img src="#" alt="">
+					<span class="player--label-level"></span>
+					<svg class="player--svg-level" viewPort="0 0 100 100" version="1.1" width="80" height="80" xmlns="http://www.w3.org/200/svg">
+						<circle class="player--svg-level-bar" r="37" cx="40" cy="40" fill="transparent" stroke-dasharray="233" stroke-dashoffset="233" transform="rotate(220 40 40)"></circle>
+					</svg>
 				</div>
-</div>
-<div class="dtc">
-			<div class="player-user--cards">
+				<div class="player--info">
+					<span class="player--info-name"></span>
+					<span class="player--info-card-length"></span>
+					<span class="player--info-equipment"></span>
+				</div>
+			</li>
+			<li class="player player--cpu">
+				<div class="player--avatar">
+					<img src="#" alt="">
+					<span class="player--label-level"></span>
+					<svg class="player--svg-level" viewPort="0 0 100 100" version="1.1" width="80" height="80" xmlns="http://www.w3.org/200/svg">
+						<circle class="player--svg-level-bar" r="37" cx="40" cy="40" fill="transparent" stroke-dasharray="233" stroke-dashoffset="233" transform="rotate(220 40 40)"></circle>
+					</svg>
+				</div>
+				<div class="player--info">
+					<span class="player--info-name"></span>
+					<span class="player--info-card-length"></span>
+					<span class="player--info-equipment"></span>
+				</div>
+			</li>
+			<li class="player player--cpu">
+				<div class="player--avatar">
+					<img src="#" alt="">
+					<span class="player--label-level"></span>
+					<svg class="player--svg-level" viewPort="0 0 100 100" version="1.1" width="80" height="80" xmlns="http://www.w3.org/200/svg">
+						<circle class="player--svg-level-bar" r="37" cx="40" cy="40" fill="transparent" stroke-dasharray="233" stroke-dashoffset="233" transform="rotate(220 40 40)"></circle>
+					</svg>
+				</div>
+				<div class="player--info">
+					<span class="player--info-name"></span>
+					<span class="player--info-card-length"></span>
+					<span class="player--info-equipment"></span>
+				</div>
+			</li>
+			<li class="player player--cpu">
+				<div class="player--avatar">
+					<img src="#" alt="">
+					<span class="player--label-level"></span>
+					<svg class="player--svg-level" viewPort="0 0 100 100" version="1.1" width="80" height="80" xmlns="http://www.w3.org/200/svg">
+						<circle class="player--svg-level-bar" r="37" cx="40" cy="40" fill="transparent" stroke-dasharray="233" stroke-dashoffset="233" transform="rotate(220 40 40)"></circle>
+					</svg>
+				</div>
+				<div class="player--info">
+					<span class="player--info-name"></span>
+					<span class="player--info-card-length"></span>
+					<span class="player--info-equipment"></span>
+				</div>
+			</li>
+			<li class="player player--cpu">
+				<div class="player--avatar">
+					<img src="#" alt="">
+					<span class="player--label-level"></span>
+					<svg class="player--svg-level" viewPort="0 0 100 100" version="1.1" width="80" height="80" xmlns="http://www.w3.org/200/svg">
+						<circle class="player--svg-level-bar" r="37" cx="40" cy="40" fill="transparent" stroke-dasharray="233" stroke-dashoffset="233" transform="rotate(220 40 40)"></circle>
+					</svg>
+				</div>
+				<div class="player--info">
+					<span class="player--info-name"></span>
+					<span class="player--info-card-length"></span>
+					<span class="player--info-equipment"></span>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	<div class="player-user">
 
 
 
-				<div class="card card--treasures flipped">
-          <div class="flipper">
-            <figure class="front"><img src="images/cards/001.png"></figure>
-            <figure class="back"><img src="images/cards/001.png"></figure>
-          </div>
-        </div>
+			<div class="player player-human">
+				<div class="player--avatar">
+					<img src="images/players/cpu-1f.png" alt="">
+					<span class="player--label-level"></span>
+					<svg class="player--svg-level" viewPort="0 0 100 100" version="1.1" width="80" height="80" xmlns="http://www.w3.org/200/svg">
+						<circle class="player--svg-level-bar" r="37" cx="40" cy="40" fill="transparent" stroke-dasharray="233" stroke-dashoffset="233" transform="rotate(220 40 40)"></circle>
+					</svg>
+				</div>
+				<div class="player--info">
+					<span class="player--info-name">Name</span>
+					<span class="player--info-card-length">1</span>
+					<span class="player--info-equipment">1</span>
+				</div>
+			</div>
+		
+
+		<div class="player-user--cards">
+
+
+
 			<div class="card card--treasures flipped">
-          <div class="flipper">
-            <figure class="front"><img src="images/cards/001.png"></figure>
-            <figure class="back"><img src="images/cards/001.png"></figure>
-          </div>
-        </div>
-        			<div class="card card--treasures flipped">
-          <div class="flipper">
-            <figure class="front"><img src="images/cards/001.png"></figure>
-            <figure class="back"><img src="images/cards/001.png"></figure>
-          </div>
-        </div>
-        			<div class="card card--treasures flipped">
-          <div class="flipper">
-            <figure class="front"><img src="images/cards/001.png"></figure>
-            <figure class="back"><img src="images/cards/001.png"></figure>
-          </div>
-        </div>
-        			<div class="card card--treasures flipped">
-          <div class="flipper">
-            <figure class="front"><img src="images/cards/001.png"></figure>
-            <figure class="back"><img src="images/cards/001.png"></figure>
-          </div>
-        </div>
-
-
-</div>
-
+				<div class="flipper">
+					<figure class="front"><img src="images/cards/001.png"></figure>
+					<figure class="back"><img src="images/cards/001.png"></figure>
+				</div>
+			</div>
+			<div class="card card--treasures flipped">
+				<div class="flipper">
+					<figure class="front"><img src="images/cards/001.png"></figure>
+					<figure class="back"><img src="images/cards/001.png"></figure>
+				</div>
+			</div>
+			<div class="card card--treasures flipped">
+				<div class="flipper">
+					<figure class="front"><img src="images/cards/001.png"></figure>
+					<figure class="back"><img src="images/cards/001.png"></figure>
+				</div>
+			</div>
+			<div class="card card--treasures flipped">
+				<div class="flipper">
+					<figure class="front"><img src="images/cards/001.png"></figure>
+					<figure class="back"><img src="images/cards/001.png"></figure>
+				</div>
+			</div>
+			<div class="card card--treasures flipped">
+				<div class="flipper">
+					<figure class="front"><img src="images/cards/001.png"></figure>
+					<figure class="back"><img src="images/cards/001.png"></figure>
+				</div>
 			</div>
 
+
+
 		</div>
-	</body>
-	<script src='assets/jquery-2.2.1.min.js'></script>
-	<script src='js/players.js'></script>
-	<script src='js/data.js'></script>
-	<script src='js/helpers.js'></script>
-	<script src='js/cards.js'></script>
-	<script src='js/init.js'></script>
-	<script src='js/ui.js'></script>
-	<script src='js/game.js'></script>
+
+
+		
+			<div class="player-equipment">
+				EQ
+			</div>
+		
+	</div>
+</body>
+<script src='assets/jquery-2.2.1.min.js'></script>
+<script src='js/players.js'></script>
+<script src='js/data.js'></script>
+<script src='js/helpers.js'></script>
+<script src='js/cards.js'></script>
+<script src='js/init.js'></script>
+<script src='js/ui.js'></script>
+<script src='js/game.js'></script>
 </html>
