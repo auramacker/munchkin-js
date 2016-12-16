@@ -94,32 +94,32 @@ var ui = {
   getCardsFromPack: function(pack, player, number){
     var i = 0, showHandTimer, animDelay = 100;
     model.getCard(pack, player, number);
-    for (; i < number; i++) {
-      $(".card[data-card-id='" + player.cards[i].id + "']").css("animation-delay", animDelay + "ms");
-      $(".card[data-card-id='" + player.cards[i].id + "']").addClass("removed");
-      animDelay += 200;
+    for (; i < player.cards.length; i++) {
+      //$(".card[data-card-id='" + player.cards[i].id + "']").css("animation-delay", animDelay + "ms");
+      //$(".card[data-card-id='" + player.cards[i].id + "']").addClass("removed");
+      $(".card[data-card-id='" + player.cards[i].id + "']").hide();
+      //animDelay += 200;
     }
     showHandTimer = animDelay + 100;
-    setTimeout(function(){
-
-      $(".card.removed").remove();
-    }, showHandTimer);
+    // setTimeout(function(){
+    //
+    //   $(".card.removed").remove();
+    // }, showHandTimer);
 
     // Debug
-    $('.pack').each(function(){
+    // $('.pack').each(function(){
+    //
+    //   var p = $(this);
+    //
+    //   p.find('.card:not(.removed)').eq(0).on('click', function(){
+    //     $(this).toggleClass('flipped');
+    //   });
 
-      var p = $(this);
-
-      p.find('.card:not(.removed)').eq(0).on('click', function(){
-        $(this).toggleClass('flipped');
-      });
-
-    });
-
-
+    //});
     ui.showCardsInHand(showHandTimer);
   },
   showCardsInHand: function(timer){
+    $(".player-user--cards").empty();
     for (var i = 0; i < player.cards.length; i++) {
       if (player.cards[i].deck == "treasures") {
         var backface = _IMGPATH + 'cards/treasures-backface.png';
@@ -137,8 +137,3 @@ var ui = {
     }
   }
 }
-
-
-
-
-
