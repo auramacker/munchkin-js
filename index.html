@@ -1,216 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Munchkin</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <div class="init-notification">
-    <input type="text" class="player-name">
-    <div class="gender">
-      <a class="male checked">male</a>
-      <a class="female">female</a>
-    </div>
-   <select class='cpu-number'>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select>
-    <a class='start'>start!</a>
-  </div>
-
-
-
-<div class="desk">
-
-  <div class="pack-left">
-
-  <div class="pack pack--treasures"></div>
-  <div class="pack pack--doors"></div>
-  </div>
-
-  <div class="pack-right">
-    <div class="pack pack--rebound"></div>
-  </div>
-
-
-
-  <ul>
-
-  <li class="player player--cpu">
-
-    <div class="player--avatar">
-
-      <img src="https://pp.vk.me/c630830/v630830284/40e61/jMxMJoxgrVU.jpg" alt="">
-
-      <span class="player--label-level">1</span>
-
-      <svg class="player--svg-level" viewPort="0 0 100 100" version="1.1" width="80" height="80" xmlns="http://www.w3.org/200/svg">
-
-        <circle class="player--svg-level-bar" r="37" cx="40" cy="40" fill="transparent" stroke-dasharray="233" stroke-dashoffset="233" transform="rotate(220 40 40)"></circle>
-      </svg>
-
-
-    </div>
-
-    <div class="player--info">
-      <span class="player--info-name">
-        Ivan Mazepa
-      </span>
-      <span class="player--info-card-length">
-        6
-      </span>
-      <span class="player--info-equipment">
-        2
-      </span>
-    </div>
-
-
-  </li>
-
-
-  <li class="player player--cpu">
-
-    <div class="player--avatar">
-
-      <img src="https://pp.vk.me/c630830/v630830284/40e61/jMxMJoxgrVU.jpg" alt="">
-
-      <span class="player--label-level">1</span>
-
-      <svg class="player--svg-level" viewPort="0 0 100 100" version="1.1" width="80" height="80" xmlns="http://www.w3.org/200/svg">
-
-        <circle class="player--svg-level-bar" r="37" cx="40" cy="40" fill="transparent" stroke-dasharray="233" stroke-dashoffset="233" transform="rotate(220 40 40)"></circle>
-      </svg>
-
-
-    </div>
-
-    <div class="player--info">
-      <span class="player--info-name">
-        Ivan Mazepa
-      </span>
-      <span class="player--info-card-length">
-        6
-      </span>
-      <span class="player--info-equipment">
-        2
-      </span>
-    </div>
-
-
-  </li>
-  <li class="player player--cpu">
-
-    <div class="player--avatar">
-
-      <img src="https://pp.vk.me/c630830/v630830284/40e61/jMxMJoxgrVU.jpg" alt="">
-
-      <span class="player--label-level">1</span>
-
-      <svg class="player--svg-level" viewPort="0 0 100 100" version="1.1" width="80" height="80" xmlns="http://www.w3.org/200/svg">
-
-        <circle class="player--svg-level-bar" r="37" cx="40" cy="40" fill="transparent" stroke-dasharray="233" stroke-dashoffset="233" transform="rotate(220 40 40)"></circle>
-      </svg>
-
-
-    </div>
-
-    <div class="player--info">
-      <span class="player--info-name">
-        Ivan Mazepa
-      </span>
-      <span class="player--info-card-length">
-        6
-      </span>
-      <span class="player--info-equipment">
-        2
-      </span>
-    </div>
-
-
-  </li>
-
-
-
-  <li class="player player--cpu">
-
-    <div class="player--avatar">
-
-      <img src="https://pp.vk.me/c630830/v630830284/40e61/jMxMJoxgrVU.jpg" alt="">
-
-      <span class="player--label-level">1</span>
-
-      <svg class="player--svg-level" viewPort="0 0 100 100" version="1.1" width="80" height="80" xmlns="http://www.w3.org/200/svg">
-
-        <circle class="player--svg-level-bar" r="37" cx="40" cy="40" fill="transparent" stroke-dasharray="233" stroke-dashoffset="233" transform="rotate(220 40 40)"></circle>
-      </svg>
-
-
-    </div>
-
-    <div class="player--info">
-      <span class="player--info-name">
-        Ivan Mazepa
-      </span>
-      <span class="player--info-card-length">
-        6
-      </span>
-      <span class="player--info-equipment">
-        2
-      </span>
-    </div>
-
-
-  </li>
-
-  <li class="player player--cpu">
-
-    <div class="player--avatar">
-
-      <img src="https://pp.vk.me/c630830/v630830284/40e61/jMxMJoxgrVU.jpg" alt="">
-
-      <span class="player--label-level">1</span>
-
-      <svg class="player--svg-level" viewPort="0 0 100 100" version="1.1" width="80" height="80" xmlns="http://www.w3.org/200/svg">
-
-        <circle class="player--svg-level-bar" r="37" cx="40" cy="40" fill="transparent" stroke-dasharray="233" stroke-dashoffset="233" transform="rotate(220 40 40)"></circle>
-      </svg>
-
-
-    </div>
-
-    <div class="player--info">
-      <span class="player--info-name">
-        Ivan Mazepa
-      </span>
-      <span class="player--info-card-length">
-        6
-      </span>
-      <span class="player--info-equipment">
-        2
-      </span>
-    </div>
-
-
-  </li>
-
-</ul>
-</div>
-
-
-
-
-
-
-</body>
-<script src='assets/jquery-2.2.1.min.js'></script>
-<script src='js/players.js'></script>
-<script src='js/data.js'></script>
-<script src='js/helpers.js'></script>
-<script src='js/cards.js'></script>
-<script src='js/init.js'></script>
-<script src='js/ui.js'></script>
-<script src='js/game.js'></script>
+	<head>
+		<meta charset="UTF-8">
+		<title>Munchkin</title>
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<div class="init-notification">
+			<input type="text" class="player-name">
+			<div class="gender">
+				<a class="male checked">male</a>
+				<a class="female">female</a>
+			</div>
+			<select class='cpu-number'>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>
+			<a class='start'>start!</a>
+		</div>
+		<div class="desk">
+			<div class="pack-left">
+				<div class="pack pack--treasures"></div>
+				<div class="pack pack--doors"></div>
+			</div>
+			<div class="pack-right">
+				<div class="pack pack--rebound"></div>
+			</div>
+			<ul>
+				<li class="player player--cpu">
+					<div class="player--avatar">
+						<img src="#" alt="">
+						<span class="player--label-level"></span>
+						<svg class="player--svg-level" viewPort="0 0 100 100" version="1.1" width="80" height="80" xmlns="http://www.w3.org/200/svg">
+							<circle class="player--svg-level-bar" r="37" cx="40" cy="40" fill="transparent" stroke-dasharray="233" stroke-dashoffset="233" transform="rotate(220 40 40)"></circle>
+						</svg>
+					</div>
+					<div class="player--info">
+						<span class="player--info-name"></span>
+						<span class="player--info-card-length"></span>
+						<span class="player--info-equipment"></span>
+					</div>
+				</li>
+				<li class="player player--cpu">
+					<div class="player--avatar">
+						<img src="#" alt="">
+						<span class="player--label-level"></span>
+						<svg class="player--svg-level" viewPort="0 0 100 100" version="1.1" width="80" height="80" xmlns="http://www.w3.org/200/svg">
+							<circle class="player--svg-level-bar" r="37" cx="40" cy="40" fill="transparent" stroke-dasharray="233" stroke-dashoffset="233" transform="rotate(220 40 40)"></circle>
+						</svg>
+					</div>
+					<div class="player--info">
+						<span class="player--info-name"></span>
+						<span class="player--info-card-length"></span>
+						<span class="player--info-equipment"></span>
+					</div>
+				</li>
+				<li class="player player--cpu">
+					<div class="player--avatar">
+						<img src="#" alt="">
+						<span class="player--label-level"></span>
+						<svg class="player--svg-level" viewPort="0 0 100 100" version="1.1" width="80" height="80" xmlns="http://www.w3.org/200/svg">
+							<circle class="player--svg-level-bar" r="37" cx="40" cy="40" fill="transparent" stroke-dasharray="233" stroke-dashoffset="233" transform="rotate(220 40 40)"></circle>
+						</svg>
+					</div>
+					<div class="player--info">
+						<span class="player--info-name"></span>
+						<span class="player--info-card-length"></span>
+						<span class="player--info-equipment"></span>
+					</div>
+				</li>
+				<li class="player player--cpu">
+					<div class="player--avatar">
+						<img src="#" alt="">
+						<span class="player--label-level"></span>
+						<svg class="player--svg-level" viewPort="0 0 100 100" version="1.1" width="80" height="80" xmlns="http://www.w3.org/200/svg">
+							<circle class="player--svg-level-bar" r="37" cx="40" cy="40" fill="transparent" stroke-dasharray="233" stroke-dashoffset="233" transform="rotate(220 40 40)"></circle>
+						</svg>
+					</div>
+					<div class="player--info">
+						<span class="player--info-name"></span>
+						<span class="player--info-card-length"></span>
+						<span class="player--info-equipment"></span>
+					</div>
+				</li>
+				<li class="player player--cpu">
+					<div class="player--avatar">
+						<img src="#" alt="">
+						<span class="player--label-level"></span>
+						<svg class="player--svg-level" viewPort="0 0 100 100" version="1.1" width="80" height="80" xmlns="http://www.w3.org/200/svg">
+							<circle class="player--svg-level-bar" r="37" cx="40" cy="40" fill="transparent" stroke-dasharray="233" stroke-dashoffset="233" transform="rotate(220 40 40)"></circle>
+						</svg>
+					</div>
+					<div class="player--info">
+						<span class="player--info-name"></span>
+						<span class="player--info-card-length"></span>
+						<span class="player--info-equipment"></span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script src='assets/jquery-2.2.1.min.js'></script>
+	<script src='js/players.js'></script>
+	<script src='js/data.js'></script>
+	<script src='js/helpers.js'></script>
+	<script src='js/cards.js'></script>
+	<script src='js/init.js'></script>
+	<script src='js/ui.js'></script>
+	<script src='js/game.js'></script>
 </html>
