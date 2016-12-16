@@ -348,3 +348,29 @@ $stroke-w = 5px
 		left auto
 		top 50%
 		transform(translate3d(40px, -50%, 0))
+
+
+
+.popup
+	position fixed
+	top 0
+	left 0
+	width 100%
+	height 100%
+	z-index 999
+	visibility hidden
+	opacity 0
+	transition(all 300ms ease-in-out)
+	background-color rgba(#000, 90%)
+
+.popup.is-visible
+	opacity 1
+	visibility visible
+
+.popup--close
+	position absolute
+	right 20px
+	top 20px
+	color #fff
+	font-size 20px
+	cursor pointer
