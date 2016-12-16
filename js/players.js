@@ -20,6 +20,7 @@ function Player(objPlayer){
   this.isHasBigItem = false,
   this.cards = [],
   this.curse = [], // проклятие
+  this.equipment = [],
   this.cardsSize = _CARDSSIZE,
   this.tryEquip = function(slotType){
     if (!this.slotType) {

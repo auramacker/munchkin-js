@@ -6,8 +6,6 @@ function initData(){
     playersNumber = ui.getPlayersNumber();
     playerInfo = ui.getInitNotifyResult();
     createPlayers(playersNumber, playerInfo);
-    console.log(player);
-    console.log(cpuArr);
     ui.showCpuPlayers(cpuArr);
   })
   createCards("doors");
