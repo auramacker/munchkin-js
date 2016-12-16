@@ -99,33 +99,31 @@ var ui = {
     }
   },
   getCardsFromPack: function(pack, player, number){
-    var i = 0, length = number, deleteInterval, stopInterval;
-    stopInterval = number * 1000;
+    var i = 0, showHandTimer, animDelay = 0;
     model.getCard(pack, player, number);
-    deleteInterval = setInterval(function(){
+    for (; i < number; i++) {
       $(".card[data-card-id='" + player.cards[i].id + "']").addClass("removed");
-      console.log(player.cards[i].id);
-      i++
-    }, 999);
-    setTimeout(function(){
-      clearInterval(deleteInterval);
-      ui.showCardsInHand();
-    }, stopInterval)
+      $(".card[data-card-id='" + player.cards[i].id + "']").css("animation-delay", animDelay + "ms");
+      animDelay += 100;
+    }
+    showHandTimer = animDelay + 100;
+    ui.showCardsInHand(showHandTimer);
   },
-  showCardsInHand: function(number){
+  showCardsInHand: function(timer){
     for (var i = 0; i < player.cards.length; i++) {
       if (player.cards[i].deck == "treasures") {
         var backface = _IMGPATH + 'cards/treasures-backface.png';
       }
       else var backface = _IMGPATH + 'cards/doors-backface.png';
       $('.player-user--cards').append('\
-        <div class="card card--treasures" data-card-id="'+player.cards[i].id+'"> \
+        <div class="card card--treasures" data-card-id="'+player.cards[i].id+ '"style="animation-delay:' + timer + 'ms;"> \
           <div class="flipper">\
             <figure class="front"><img src="'+player.cards[i].img+'"></figure> \
             <figure class="back"><img src="'+backface+'"></figure> \
           </div>\
         </div>\
       ');
+      timer += 100;
     }
   }
 }
