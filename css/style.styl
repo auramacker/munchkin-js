@@ -54,12 +54,22 @@ backface-visibility()
 	-webkit-backface-visibility arguments
 	backface-visibility arguments
 
+bgsz()
+	background-size cover
+	background-position center center
+	background-repeat no-repeat
 // General
 
 body
 	margin 0
 	padding 0
 	user-select(none)
+	bgsz()
+	overflow hidden
+	font-size 15px
+	line-height 1.7
+	height 100vh
+	background-image url(../images/body.png)
 
 img
 	width 100%
@@ -70,6 +80,13 @@ ul, ol
 	padding 0
 	list-style-type none
 
+.dt
+	display table
+	width 100%
+
+.dtc
+	display table-cell
+	vertical-align middle
 // Card
 
 $card-h = 248px
@@ -238,8 +255,8 @@ $stroke-w = 5px
 .desk
 	position relative
 	text-align center
-	height 80vh
-	margin 80px
+	height 75vh
+	margin 60px 60px 0
 	border-radius 30px
 	background-image url(http://3dfox.ru/wp-content/uploads/catablog/originals/Wood_08.jpg)
 	background-size cover
@@ -361,7 +378,8 @@ $stroke-w = 5px
 	visibility hidden
 	opacity 0
 	transition(all 300ms ease-in-out)
-	background-color rgba(#000, 90%)
+	bgsz()
+	background-image url(../images/popup.png)
 
 .popup.is-visible
 	opacity 1
@@ -374,3 +392,49 @@ $stroke-w = 5px
 	color #fff
 	font-size 20px
 	cursor pointer
+
+.init-notification
+	position absolute
+	top 50%
+	left 50%
+	color #fff
+	text-align center
+	transform(translate3d(-50%, -50%, 0))
+
+.logo
+	display inline-block
+	max-height 80px
+	width auto
+
+input,
+select
+	display inline-block
+	height 40px
+	background-color #fccd9c
+	border 2px solid #552217
+	padding 5px 15px
+	width 100%
+	max-width 220px
+	color #000
+
+a.start
+	display block
+	margin-top 20px
+
+.player-user
+	position fixed
+	bottom 0
+	left 0
+	width 100%
+	text-align center
+
+.player-user--cards
+	display inline-block
+	max-width 50%
+	height 248px
+	white-space nowrap
+	overflow-x scroll
+	overflow-y hidden
+	.card
+		display inline-block
+	
