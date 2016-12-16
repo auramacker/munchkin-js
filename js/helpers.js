@@ -7,8 +7,8 @@ function getDiceNumber(){
 
 function svgPlayerLevel(element, level){
 
-	var circle = element.find('.svg-level--bar'),
-		label = element.find('.player-label-level'),
+	var circle = element.find('.player--svg-level-bar'),
+		label = element.find('.player--label-level'),
 		r = circle.attr('r'),
 		c = Math.PI * ( r * 2 );
 
@@ -21,9 +21,10 @@ function svgPlayerLevel(element, level){
   	label.text(level);
 
 }
+
 function setStartCpuLevel(level){
-	svgPlayerLevel($('.player-avatar'), level);
-};
+	svgPlayerLevel($('.player .player--avatar'), level);
+}
 
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
