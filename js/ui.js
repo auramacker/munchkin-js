@@ -97,7 +97,7 @@ var ui = {
     for (; i < player.cards.length; i++) {
       //$(".card[data-card-id='" + player.cards[i].id + "']").css("animation-delay", animDelay + "ms");
       //$(".card[data-card-id='" + player.cards[i].id + "']").addClass("removed");
-      $(".card[data-card-id='" + player.cards[i].id + "']").hide();
+      $(".card[data-card-id='" + player.cards[i].id + "']").remove();
       //animDelay += 200;
     }
     showHandTimer = animDelay + 100;
@@ -114,19 +114,28 @@ var ui = {
     //   p.find('.card:not(.removed)').eq(0).on('click', function(){
     //     $(this).toggleClass('flipped');
     //   });
-
-    //});
+    //
+    // });
     ui.showCardsInHand(showHandTimer);
+    var margin = 0;
+    for (var i = 0; i < pack.length; i++) {
+      $(".card[data-card-id='"+pack[i].id +"']").css("margin-left", margin + "px");
+      margin += 2;
+    }
   },
   showCardsInHand: function(timer){
     $(".player-user--cards").empty();
     for (var i = 0; i < player.cards.length; i++) {
       if (player.cards[i].deck == "treasures") {
         var backface = _IMGPATH + 'cards/treasures-backface.png';
+        var cardClass = "card card--treasures";
       }
-      else var backface = _IMGPATH + 'cards/doors-backface.png';
+      else {
+        var backface = _IMGPATH + 'cards/doors-backface.png';
+        var cardClass = "card card--doors";
+      }
       $('.player-user--cards').append('\
-        <div class="card card--treasures" data-card-id="'+player.cards[i].id+ '"style="animation-delay:' + timer + 'ms;"> \
+        <div class="' + cardClass + '" data-card-id="'+player.cards[i].id+ '"style="animation-delay:' + timer + 'ms;"> \
           <div class="flipper">\
             <figure class="front"><img src="'+player.cards[i].img+'"></figure> \
             <figure class="back"><img src="'+backface+'"></figure> \
