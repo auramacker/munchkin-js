@@ -22,6 +22,9 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearence: none;
 }
 img {
   width: 100%;
@@ -219,6 +222,9 @@ Preloader
   padding: 0;
   width: 160px;
   height: 248px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 .card .flipper {
   -webkit-transition: all 400ms ease-in-out;
@@ -720,8 +726,11 @@ height
   vertical-align: middle;
 }
 .player-user--cards {
-  display: inline-block;
-  max-width: 50%;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  margin-left: -342px;
+  max-width: 685px;
   height: 350px;
   white-space: nowrap;
   overflow-x: scroll;
@@ -734,6 +743,8 @@ height
 .player-user--cards .card .flipper {
   width: 225px;
   height: 350px;
+  -webkit-border-radius: 30px;
+  border-radius: 30px;
 }
 .player-user--cards .card {
   position: relative;

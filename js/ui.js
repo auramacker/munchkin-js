@@ -10,8 +10,8 @@ var ui = {
       $('.pack.pack--treasures').append('\
         <div class="card card--treasures flipped" data-card-id="'+treasuresCards[i].id+'" style="z-index:'+zIndexTreasures+'; margin-left:'+offsetTreasures+'px;"> \
           <div class="flipper">\
-            <figure class="front"><img src="'+treasuresCards[i].img+'"></figure> \
-            <figure class="back"><img src="'+treasuresBackfaceCards+'"></figure> \
+            <figure class="front" style="background-image: url('+treasuresCards[i].img+');"></figure> \
+            <figure class="back" style="background-image: url('+treasuresBackfaceCards+');"></figure> \
           </div>\
         </div>\
       ');
@@ -24,8 +24,8 @@ var ui = {
       $('.pack.pack--doors').append('\
         <div class="card card--doors flipped" data-card-id="'+doorsCards[i].id+'" style="z-index:'+zIndexDoors+'; margin-left:'+offsetDoors+'px;"> \
           <div class="flipper">\
-            <figure class="front"><img src="'+doorsCards[i].img+'"></figure> \
-            <figure class="back"><img src="'+doorsBackfaceImg+'"></figure> \
+            <figure class="front" style="background-image: url('+doorsCards[i].img+');"></figure> \
+            <figure class="back" style="background-image: url('+doorsBackfaceImg+');"></figure> \
           </div>\
         </div>\
       ');
@@ -137,8 +137,8 @@ var ui = {
       $('.player-user--cards').append('\
         <div class="' + cardClass + '" data-card-id="'+player.cards[i].id+ '"style="animation-delay:' + timer + 'ms;"> \
           <div class="flipper">\
-            <figure class="front"><img src="'+player.cards[i].img+'"></figure> \
-            <figure class="back"><img src="'+backface+'"></figure> \
+            <figure class="front" style="background-image: url('+player.cards[i].img+');"></figure> \
+            <figure class="back" style="background-image: url('+backface+');"></figure> \
           </div>\
         </div>\
       ');
