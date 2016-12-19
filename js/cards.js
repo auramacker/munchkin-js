@@ -51,6 +51,39 @@
         class: null,
         classBonus: null
       };
+  monstersObjArr[1] = {
+        id: "032",
+        img: _IMGPATH + "cards/" + "032" + ".png",
+        name: "Амазонка",
+        description: "Не дерётся с Женщинами, вместо этого даёт им 1 Сокровище",
+        effect: "Блин, какая-то баба надрала тебе задницу. Где твоя гордость, горячий мачо, крутой манчкин? Теряешь Классы. Если ты и так без Класса, скинь 3 Уровня",
+        numTreasures: 2,
+        monsterLevel: 8,
+        looseLevel: "loseClass",
+        gender: "female",
+        genderBonus: "giveTreasure1",
+        race: null,
+        raceBonus: null,
+        class: null,
+        classBonus: null
+  };
+  monstersObjArr[2] = {
+        id: "043",
+        img: _IMGPATH + "cards/" + "043" + ".png",
+        name: "Бигфут",
+        description: "+3 если в бою есть Дварфы или Халфлинги.",
+        effect: "Наступил-то слегка-да затрещали бока; хоть остался живой, да с пустой головой. Теряешь надетый головняк.",
+        numTreasures: 3,
+        monsterLevel: 12,
+        looseLevel: "loseHelmet",
+        gender: null,
+        genderBonus: null,
+        race: "dwarf" + _EFFECTSPLITTER + "halfing",
+        raceBonus: +3,
+        class: null,
+        classBonus: null
+      };
+
 // -----------------------------------
 // ******** curse cards variables ********
   var cursesObjArr = [], createdCursesArr = [];
@@ -61,6 +94,20 @@
         description: "Будешь знать, как всяких уток в подземелье подбирать. Теряешь 2 Уровня.",
         cardEffect: "looseLevels2"
       };
+  cursesObjArr[1] = {
+        id: "001",
+        img: _IMGPATH + "cards/" + "001" + ".png",
+        name: "Проклятье! Невелика потеря",
+        description: "Выбери и сбрось 1 маленькую шмотку. Маленькая - это любая шмотка, на которой не написано, что она Большая.",
+        cardEffect: "lostSmallStuff1"
+  };
+  cursesObjArr[2] = {
+        id: "005",
+        img: _IMGPATH + "cards/" + "005" + ".png",
+        name: "Проклятье!",
+        description: "Теряешь надетый головняк",
+        cardEffect: "lostHelmet"
+  };
 // -----------------------------------
 // ******** player class variables ********
   var classesObjArr = [], createdClassesArr = [];
@@ -71,6 +118,16 @@
         description: "Можешь скинуть до 3 карт в бою, каждая дает тебе +1 Бонус. При ничьей в бою ты побеждаешь.",
         cardEffect: "cardDropping+"
       };
+  classesObjArr[1] = {
+        id: "159",
+        img: _IMGPATH + "cards/" + "159" + ".png",
+        name: "Волшебник",
+        description: "Заклинание Полёта: Можешь сбростиь до 3 карт после броска на Смывку; каждая даёет +1 к Смывке.\
+        Заклинание Усмирения: Можешь сбростиь всю 'руку' (мин. 3 карты), чтобы усмирить одного монстраи не драться с ним; ты получаешь только \
+        его Сокровища, но не Уровень. Если в бою учавствуют другие монстры, с ними придётся воевать.",
+        cardEffect: "cardDroppingRun+" + _EFFECTSPLITTER + "calmDown"
+      };
+
 // -----------------------------------
 // ******** race cards variables ********
   var racesObjArr = [], createdRacesArr = [];
@@ -80,6 +137,14 @@
         name: "Дварф",
         description: "Ты можешь нести любое количество Больших шмоток. Ты можешь держать в \"Руке\" 6 карт.",
         cardEffect: "bigStuff" + _EFFECTSPLITTER + "manyCardsInHand"
+      };
+  racesObjArr[1] = {
+        id: "152",
+        img: _IMGPATH + "cards/" + "152" + ".png",
+        name: "Халфлинг",
+        description: "На каждом ходу можешь продать одну шмотку за двойную цену (цена других шмоток не меняется).\
+        Если твой бросок на Смывку не удался, ты можешь сбросить 1 карту и попробовать еще раз.",
+        cardEffect: "sellStuffx2" + _EFFECTSPLITTER + "cardDroppingRun+"
       };
 // -----------------------------------
 // ******** Treasures part ********
@@ -94,8 +159,50 @@
         slotType: "oneHand",
         power: +2,
         cost: 400,
+        race: null,
+        class: null,
         effect: null,
         isBig: false
+      };
+  stuffObjArr[1] = {
+        id: "138",
+        img: _IMGPATH + "cards/" + "138" + ".png",
+        name: "Чарующая Дуда",
+        description: "Этот мелодичный инструмент зачаровывает твоих врагов\
+         и даёет тебе +3 к Смывке. В лучае успешной Смывки ты по пути прихватываешь 1 Сокровище втёмную.",
+        slotType: "oneHand",
+        power: null,
+        cost: 300,
+        race: null,
+        class: null,
+        effect: "runBonus+3" + _EFFECTSPLITTER + "getCardClose1",
+        isBig: true
+      };
+  stuffObjArr[2] = {
+        id: "130",
+        img: _IMGPATH + "cards/" + "130" + ".png",
+        name: "Булава Остроконечности",
+        description: null,
+        slotType: "oneHand",
+        power: +4,
+        class: "clirick",
+        race: null,
+        cost: 600,
+        effect: null,
+        isBig: false
+      };
+  stuffObjArr[3] = {
+        id: "117",
+        img: _IMGPATH + "cards/" + "117" + ".png",
+        name: "Бензопила Кровавого Расчленения",
+        description: null,
+        slotType: "twoHands",
+        power: +3,
+        cost: 600,
+        race: null,
+        class: null,
+        effect: null,
+        isBig: true
       };
 // -----------------------------------
 // ******** poision cards variables ********
@@ -108,6 +215,30 @@
         cost: 100,
         effect: "anySidePlus+3"
       };
+  poisionsObjArr[1] = {
+        id: "111",
+        img: _IMGPATH + "cards/" + "111" + ".png",
+        name: "Снотворное Зелье",
+        description: "Применить в любом бою, +2 любой стороне. Одноразовая.",
+        cost: 100,
+        effect: "anySidePlus+2"
+      };
+  poisionsObjArr[2] = {
+        id: "110",
+        img: _IMGPATH + "cards/" + "110" + ".png",
+        name: "Клёвые Шарики",
+        description: "Применить в любом бою, +5 любой стороне. Одноразовая.",
+        cost: null,
+        effect: "anySidePlus+5"
+      };
+  poisionsObjArr[3] = {
+        id: "109",
+        img: _IMGPATH + "cards/" + "109" + ".png",
+        name: "Зелье Идиотской Храбрости",
+        description: "Применить в любом бою, +2 любой стороне. Одноразовая.",
+        cost: 100,
+        effect: "anySidePlus+2"
+      };
 // -----------------------------------
 // ******** bonus cards variables ********
   var bonusesObjArr = [], createdBonusesArr = [];
@@ -115,6 +246,22 @@
         id: "092",
         img: _IMGPATH + "cards/" + "092" + ".png",
         name: "1000 голдов",
+        description: "Получи уровень.",
+        cardEffect: "levelUp1",
+        isReusable: false
+      };
+  bonusesObjArr[1] = {
+        id: "137",
+        img: _IMGPATH + "cards/" + "137" + ".png",
+        name: "Укради уровень",
+        description: "Выбери любого игрока и стащи у него уровень. Ты получаешь один Уровень, он теряет.",
+        cardEffect: "stealLevel1",
+        isReusable: false
+      };
+  bonusesObjArr[2] = {
+        id: "136",
+        img: _IMGPATH + "cards/" + "136" + ".png",
+        name: "Получи уровень",
         description: "Получи уровень.",
         cardEffect: "levelUp1",
         isReusable: false

@@ -92,7 +92,7 @@ var ui = {
     }
   },
   getCardsFromPack: function(pack, player, number){
-    var i = 0, showHandTimer, animDelay = 100;
+    var i = 0, showHandTimer = 0, animDelay = 100;
     model.getCard(pack, player, number);
     for (; i < player.cards.length; i++) {
       //$(".card[data-card-id='" + player.cards[i].id + "']").css("animation-delay", animDelay + "ms");

@@ -61,6 +61,8 @@ function StuffCard(obj) {
   this.slotType = obj.slotType,
   this.power = obj.power,
   this.cost = obj.cost,
+  this.class = obj.class,
+  this.race = obj.race,
   this.effect = obj.effect,
   this.isBig = obj.isBig
 }
