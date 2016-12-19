@@ -716,28 +716,43 @@ height
   bottom: 0;
   left: 0;
   width: 100%;
-  padding-bottom: 20px;
-  height: 248px;
   text-align: center;
   vertical-align: middle;
 }
 .player-user--cards {
   display: inline-block;
   max-width: 50%;
-  height: 248px;
+  height: 350px;
   white-space: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
   vertical-align: middle;
 }
+.player-user--cards .card,
+.player-user--cards .card .front,
+.player-user--cards .card .back,
+.player-user--cards .card .flipper {
+  width: 225px;
+  height: 350px;
+}
 .player-user--cards .card {
+  position: relative;
+  bottom: -50%;
   visibility: hidden;
   display: inline-block;
+  -webkit-transition: all 300ms ease-in-out;
+  -moz-transition: all 300ms ease-in-out;
+  -ms-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
   -webkit-animation: anim-c 500ms ease-in-out forwards;
   -moz-animation: anim-c 500ms ease-in-out forwards;
   -ms-animation: anim-c 500ms ease-in-out forwards;
   -o-animation: anim-c 500ms ease-in-out forwards;
   animation: anim-c 500ms ease-in-out forwards;
+}
+.player-user--cards .card:hover {
+  bottom: 0;
 }
 .player-user--inventory {
   position: absolute;
