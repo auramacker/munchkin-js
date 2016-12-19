@@ -15,13 +15,13 @@ body {
   line-height: 1.7;
   height: 100vh;
   background-image: url("../images/body.png");
+  background-size: 25%;
+  background-repeat: repeat;
+  background-position: top left;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
 }
 img {
   width: 100%;
@@ -570,11 +570,22 @@ Preloader
   -o-transform: translate3d(40px, -50%, 0);
   transform: translate3d(40px, -50%, 0);
 }
+/*
+Pack
+*/
 .pack {
   display: inline-block;
   position: relative;
   width: 160px;
   height: 248px;
+}
+.pack::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 .pack.pack--treasures .card:not(:last-child),
 .pack.pack--doors .card:not(:last-child) {
@@ -583,7 +594,7 @@ Preloader
   left: 0;
 }
 .pack + .pack {
-  margin-left: 20px;
+  margin-left: 30px;
 }
 .pack-left,
 .pack-right {
@@ -616,6 +627,8 @@ height
   width: 70px;
   -webkit-border-radius: 50%;
   border-radius: 50%;
+  -webkit-box-shadow: 0 1px 6px 2px rgba(25,25,25,0.8);
+  box-shadow: 0 1px 6px 2px rgba(25,25,25,0.8);
 }
 .player--avatar .player--label-level {
   position: absolute;
@@ -630,6 +643,8 @@ height
   text-align: center;
   -webkit-border-radius: 2px;
   border-radius: 2px;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
   background-color: #ffcf4f;
   color: #4c1a11;
   -webkit-box-shadow: 0 1px 4px rgba(25,25,25,0.8);
@@ -724,13 +739,14 @@ height
   -o-animation: anim-c 500ms ease-in-out forwards;
   animation: anim-c 500ms ease-in-out forwards;
 }
-.player-inventory {
-  margin-left: 60px;
+.player-user--inventory {
+  position: absolute;
+  bottom: 55px;
+  right: 0px;
   border: 4px solid #ffcf4f;
   -webkit-box-shadow: 0 0 6px rgba(25,25,25,0.4);
   box-shadow: 0 0 6px rgba(25,25,25,0.4);
   display: inline-block;
-  vertical-align: middle;
   height: 70px;
   width: 70px;
   line-height: 70px;
@@ -738,15 +754,56 @@ height
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
-.player-inventory img {
+.player-user--inventory img {
   display: inline-block;
   height: 40px;
   width: 40px;
   vertical-align: middle;
 }
 .player-human {
-  vertical-align: middle;
-  margin-right: 60px;
+  margin-top: 60px;
+  -webkit-transform: scale(1.8);
+  -moz-transform: scale(1.8);
+  -ms-transform: scale(1.8);
+  -o-transform: scale(1.8);
+  transform: scale(1.8);
+}
+.player-user--avatar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 200px;
+  height: 227px;
+  margin-bottom: -30px;
+  display: block;
+  -webkit-border-radius: 100px 100px 0 0;
+  border-radius: 100px 100px 0 0;
+  background: url("../images/1_02.png") no-repeat;
+  background-position: top right;
+  background-size: contain;
+  -webkit-box-shadow: -10px -7px 10px rgba(25,25,25,0.6);
+  box-shadow: -10px -7px 10px rgba(25,25,25,0.6);
+}
+.player-user::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 195px;
+  height: 154px;
+  width: 100%;
+  margin-bottom: -30px;
+  z-index: -1;
+  background-image: url("../images/1_04.png");
+  background-size: contain;
+  background-position: 4px 0px;
+  -webkit-box-shadow: -10px -7px 10px rgba(25,25,25,0.6);
+  box-shadow: -10px -7px 10px rgba(25,25,25,0.6);
+}
+.player-buttons {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding-bottom: 20px;
 }
 @-moz-keyframes anim-c {
   from {

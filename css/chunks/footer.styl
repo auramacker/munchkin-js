@@ -22,12 +22,13 @@
 		display inline-block
 		animation(anim-c 500ms ease-in-out forwards)
 
-.player-inventory
-	margin-left 60px
+.player-user--inventory
+	position absolute
+	bottom 55px
+	right 0px
 	border 4px solid $yellow
 	box-shadow(0 0 6px rgba($black, 40%))
 	display inline-block
-	vertical-align middle
 	height $circle-h - ($stroke-w * 2)
 	width $circle-h - ($stroke-w * 2)
 	line-height $circle-h - ($stroke-w * 2)
@@ -41,8 +42,9 @@
 
 
 .player-human
-	vertical-align middle
-	margin-right 60px
+	margin-top 60px
+	transform(scale(1.8))
+
 
 @keyframes anim-c
 	from
@@ -54,3 +56,37 @@
 		opacity 1
 		transform(translateY(0))
 
+.player-user--avatar
+	position fixed
+	bottom 0
+	left 0
+	width 200px
+	height 227px
+	margin-bottom -30px
+	display block
+	border-radius 100px 100px 0 0
+	background url('../images/1_02.png') no-repeat
+	background-position top right
+	background-size contain
+	box-shadow(-10px -7px 10px  rgba($black, 60%))
+
+.player-user::after
+	content ''
+	position absolute
+	bottom 0
+	left 195px
+	height 154px
+	width 100%
+	margin-bottom -30px
+	z-index -1
+	background-image url(../images/1_04.png)
+	background-size contain
+	background-position 4px 0px
+	box-shadow(-10px -7px 10px  rgba($black, 60%))
+	
+.player-buttons
+	position fixed
+	bottom 0
+	right 0
+	padding-bottom 20px
+	
