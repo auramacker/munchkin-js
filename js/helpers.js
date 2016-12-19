@@ -44,3 +44,9 @@ function shuffle(array) {
 
   return array;
 }
+
+$(window).ready(function(){
+  setTimeout(function(){
+    $('.preloader').fadeOut(300);
+  }, 600);
+});

@@ -1,0 +1,28 @@
+// Pack
+
+.pack
+	display inline-block
+	position relative
+	width $card-w
+	height $card-h
+	&.pack--treasures,
+	&.pack--doors
+		.card:not(:last-child)
+			position absolute
+			top 0
+			left 0
+
+.pack + .pack
+	margin-left 20px
+
+.pack-left,
+.pack-right
+	position absolute
+	left 100px
+	top 50%
+	transform(translate3d(0, -50%, 0))
+	
+.pack-right
+	left auto
+	right 100px
+

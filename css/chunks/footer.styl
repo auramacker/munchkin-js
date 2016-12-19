@@ -1,0 +1,56 @@
+	
+.player-user
+	position fixed
+	bottom 0
+	left 0
+	width 100%
+	padding-bottom 20px
+	height $card-h
+	text-align center
+	vertical-align middle
+	
+.player-user--cards
+	display inline-block
+	max-width 50%
+	height 248px
+	white-space nowrap
+	overflow-x scroll
+	overflow-y hidden
+	vertical-align middle
+	.card
+		visibility hidden
+		display inline-block
+		animation(anim-c 500ms ease-in-out forwards)
+
+.player-inventory
+	margin-left 60px
+	border 4px solid $yellow
+	box-shadow(0 0 6px rgba($black, 40%))
+	display inline-block
+	vertical-align middle
+	height $circle-h - ($stroke-w * 2)
+	width $circle-h - ($stroke-w * 2)
+	line-height $circle-h - ($stroke-w * 2)
+	background-color $white
+	border-radius 50%
+	img
+		display inline-block
+		height 40px
+		width 40px
+		vertical-align middle
+
+
+.player-human
+	vertical-align middle
+	margin-right 60px
+
+@keyframes anim-c
+	from
+		visibility hidden
+		opacity 0
+		transform(translateY(100%))
+	to
+		visibility visible
+		opacity 1
+		transform(translateY(0))
+

@@ -1,0 +1,180 @@
+@font-face
+	font-family Munchikin
+	font-style normal
+	src url('../font/Munchkin.ttf')
+
+$font = Munchikin, serif
+$yellow = #ffcf4f
+$yellowl = #f1daa7
+$brown = #4c1a11
+$black = #191919
+$white = #ffffff
+
+clearfix()
+	&:before,
+	&:after
+		content ''
+		display table
+	&:after
+		clear both
+		
+border-radius()
+	-webkit-border-radius arguments
+	border-radius arguments
+
+box-shadow()
+	-webkit-box-shadow arguments
+	box-shadow arguments
+
+transform()
+	-webkit-transform arguments
+	-moz-transform arguments
+	-ms-transform arguments
+	-o-transform arguments
+	transform arguments
+
+transition()
+	-webkit-transition arguments
+	-moz-transition arguments
+	-ms-transition arguments
+	-o-transition arguments
+	transition arguments
+
+animation()
+	-webkit-animation arguments
+	-moz-animation arguments
+	-ms-animation arguments
+	-o-animation arguments
+	animation arguments
+
+animation-delay()
+	-webkit-animation-delay arguments
+	animation-delay arguments
+
+box-sizing()
+	-webkit-box-sizing arguments
+	-moz-box-sizing arguments
+	box-sizing arguments
+
+user-select()
+	-webkit-user-select arguments
+	-moz-user-select arguments
+	-ms-user-select arguments
+	user-select arguments
+
+backface-visibility()
+	-webkit-backface-visibility arguments
+	backface-visibility arguments
+
+bgsz()
+	background-size cover
+	background-position center center
+	background-repeat no-repeat
+
+appearence()
+	-moz-appearance arguments
+	-webkit-appearance arguments
+	appearence arguments
+
+/*!
+General
+*/
+
+body
+	margin 0
+	padding 0
+	font-family $font
+	overflow hidden
+	font-size 16px
+	line-height 1.7
+	height 100vh
+	background-image url(../images/body.png)
+	user-select(none)
+	bgsz()
+
+img
+	width 100%
+	height auto
+
+ul, ol
+	margin 0
+	padding 0
+	list-style-type none
+
+/*!
+Input
+*/
+
+label
+	display block
+	font-size 14px
+	text-transform none
+	margin-bottom 3px
+
+input,
+select
+	line-height normal
+	box-sizing border-box
+	display block
+	width 100%
+	height 34px
+	background-color #f1daa7
+	border 1px solid #f0e0be
+	font-size 13px
+	outline none
+	border-radius 4px
+	padding 5px 10px
+	color #404040
+	margin-bottom 30px
+	box-shadow none
+	appearence(none)
+
+input::-webkit-input-placeholder
+	color #b49e6e
+
+
+input:-moz-placeholder
+	color #b49e6e
+
+input::-moz-placeholder 
+	color #b49e6e
+
+/*!
+Button
+*/
+.btn
+	display inline-block
+	margin 0
+	border-radius 4px
+	text-align center
+	text-decoration none
+	cursor pointer
+	color $brown
+	font-size 14px
+	padding 5px 20px
+	line-height 1.5
+	background-color darken($yellowl, 30%)
+	box-shadow 0 2px 0 darken($yellowl, 50%)
+	transition(all 250ms ease-in-out)
+	&:hover
+		background-color darken($yellowl, 35%)
+
+
+
+/*!
+Preloader
+*/
+
+.preloader
+	position fixed
+	top 0
+	left 0
+	width 100%
+	height 100%
+	background-color rgba($black, 100%)
+	z-index 9999
+	svg
+		position absolute
+		top 50%
+		left 50%
+		margin -50px 0 0 -50px

@@ -1,0 +1,85 @@
+.desk
+	position relative
+	text-align center
+	height 75vh
+	margin 60px 60px 0
+	border-radius 30px
+	background-image url(../images/desk.png)
+	background-repeat repeat
+	background-position top left
+	box-shadow(0 20px 40px rgba(#000, 80%))
+
+.is-2cpu
+	.player--cpu:nth-child(1)
+		left 0
+		top 50%
+		transform(translate3d(-40px, -50%, 0))
+	.player--cpu:nth-child(2)
+		right 0
+		left auto
+		top 50%
+		transform(translate3d(40px, -50%, 0))
+
+.is-3cpu
+	.player--cpu:nth-child(1)
+		left 0
+		top 50%
+		transform(translate3d(-40px, -50%, 0))
+	.player--cpu:nth-child(2)
+		top 0
+		right auto
+		left 50%
+		transform(translate3d(-50%, -40px, 0))
+	.player--cpu:nth-child(3)
+		right 0
+		left auto
+		top 50%
+		transform(translate3d(40px, -50%, 0))
+
+
+.is-4cpu
+	.player--cpu:nth-child(1)
+		left 0
+		top 50%
+		transform(translate3d(-40px, -50%, 0))
+	.player--cpu:nth-child(2)
+		top 0
+		right auto
+		left 25%
+		transform(translate3d(-50%, -40px, 0))
+	.player--cpu:nth-child(3)
+		left auto
+		right 25%
+		transform(translate3d(-50%, -40px, 0))
+	.player--cpu:nth-child(4)
+		right 0
+		left auto
+		top 50%
+		transform(translate3d(40px, -50%, 0))
+
+
+.is-5cpu
+	.player--cpu:nth-child(1)
+		left 0
+		top 50%
+		transform(translate3d(-40px, -50%, 0))
+	.player--cpu:nth-child(2)
+		top 0
+		right auto
+		left 25%
+		transform(translate3d(-50%, -40px, 0))
+	.player--cpu:nth-child(3)
+		top 0
+		right auto
+		left 50%
+		transform(translate3d(-50%, -40px, 0))		
+	.player--cpu:nth-child(4)
+		top 0
+		right 25%
+		left auto
+		transform(translate3d(50%, -40px, 0))
+	.player--cpu:nth-child(5)
+		right 0
+		left auto
+		top 50%
+		transform(translate3d(40px, -50%, 0))

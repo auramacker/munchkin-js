@@ -1,0 +1,58 @@
+
+.popup
+	position fixed
+	top 0
+	left 0
+	width 100%
+	height 100%
+	z-index 999
+	visibility hidden
+	opacity 0
+	transition(all 300ms ease-in-out)
+	background-image url(../images/popup.png)
+	bgsz()
+
+.popup.is-visible
+	opacity 1
+	visibility visible
+
+.popup--close
+	position absolute
+	right 20px
+	top 20px
+
+.init-notification
+	position absolute
+	background-color rgba(#000, 85%)
+	padding 30px
+	border-radius 20px
+	min-width 220px
+	top 50%
+	left 50%
+	color $white
+	text-align center
+	box-shadow 0 10px 20px rgba(#000, 40%)
+	transform(translate3d(-50%, -50%, 0))
+	.logo
+		display inline-block
+		max-height 50px
+		width auto
+		margin-bottom 20px
+	.gender
+		margin 0 0 15px
+		.male,
+		.female
+			cursor pointer
+			display inline-block
+			margin 0 6px
+			height 20px
+			width 20px
+			&:not(.checked)
+				filter grayscale(100%)
+	label
+		color darken($yellowl, 35%)
+		text-align left !important
+	a.start
+		display block
+		margin-top 20px
+	

@@ -1,0 +1,73 @@
+
+$card-h = 248px
+$card-w = 160px
+$card-t = 400ms
+
+.card
+	perspective 1000px
+	user-select(none)
+	cursor pointer
+
+.card.flipped .flipper
+	transform(rotateY(180deg))
+
+.card, 
+.card .front, 
+.card .back, 
+.card .flipper
+	margin 0
+	padding 0
+	width $card-w
+	height $card-h
+
+.card .flipper
+	transition(all $card-t ease-in-out)
+	transform-style preserve-3d
+
+.card
+	.front, 
+	.back
+		backface-visibility(hidden)
+		border-radius(25px)
+		overflow hidden
+		position absolute
+		top 0
+		left 0
+
+	.front
+		z-index 2
+		transform(rotateY(0deg))
+
+	.back
+		transform(rotateY(180deg))
+
+.card.card--treasures .front,
+.card.card--treasures .back
+	box-shadow(1px 1px 1px #ffb932)
+	
+.card.card--doors .front,
+.card.card--doors .back
+	box-shadow(1px 1px 1px #75482d)
+
+.card:not(.flipped)
+	animation(flip_card $card-t + 150 ease-in-out forwards)
+
+@keyframes flip_card
+	from, to
+		transform(scale(1))
+	50%
+		transform(scale(1.25))
+		
+
+.card.removed
+	animation(card-o 600ms ease-in-out forwards)
+
+@keyframes card-o
+	from
+		opacity 1
+		visibility visible
+		transform(translate3d(0, 0, 0))
+	to
+		opacity 0
+		visibility hidden
+		transform(translate3d(300%, 200%, 0))
