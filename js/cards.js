@@ -2,31 +2,31 @@
   var player;
   var cpuArr = [], cpuObjArr = [];
   cpuObjArr[0] = {
-      id: 001,
+      id: 1,
       isUser: false,
       name: "testCpu1",
       gender: "male"
     } ;
   cpuObjArr[1] = {
-      id: 002,
+      id: 2,
       isUser: false,
       name: "testCpu2",
       gender: "female"
     } ;
   cpuObjArr[2] = {
-      id: 003,
+      id: 3,
       isUser: false,
       name: "testCpu3",
       gender: "male"
     } ;
   cpuObjArr[3] = {
-      id: 004,
+      id: 4,
       isUser: false,
       name: "testCpu4",
       gender: "female"
     } ;
   cpuObjArr[4] = {
-      id: 005,
+      id: 5,
       isUser: false,
       name: "testCpu4",
       gender: "female"
@@ -83,6 +83,22 @@
         class: null,
         classBonus: null
       };
+  monstersObjArr[3] = {
+        id: "047",
+        img: _IMGPATH + "cards/" + "047" + ".png",
+        name: "Сочащаяся Слизь",
+        description: "Ну и мерзость! +4 против Эльфов.",
+        effect: "Сбрось надетую Обувк. Если уже без Обувки, теряешь 1 Уровень.",
+        numTreasures: 1,
+        monsterLevel: 1,
+        looseLevel: "loseFootGear",
+        gender: null,
+        genderBonus: null,
+        race: "elf",
+        raceBonus: +4,
+        class: null,
+        classBonus: null
+      };
 
 // -----------------------------------
 // ******** curse cards variables ********
@@ -108,6 +124,13 @@
         description: "Теряешь надетый головняк",
         cardEffect: "lostHelmet"
   };
+  cursesObjArr[3] = {
+        id: "010",
+        img: _IMGPATH + "cards/" + "010" + ".png",
+        name: "В Конец Мерзкое Проклятие!",
+        description: "Теряешь Шмотку, Дающую Тебе Наибольший Бонус",
+        cardEffect: "lostBestStuff"
+  };
 // -----------------------------------
 // ******** player class variables ********
   var classesObjArr = [], createdClassesArr = [];
@@ -126,6 +149,14 @@
         Заклинание Усмирения: Можешь сбростиь всю 'руку' (мин. 3 карты), чтобы усмирить одного монстраи не драться с ним; ты получаешь только \
         его Сокровища, но не Уровень. Если в бою учавствуют другие монстры, с ними придётся воевать.",
         cardEffect: "cardDroppingRun+" + _EFFECTSPLITTER + "calmDown"
+      };
+  classesObjArr[2] = {
+        id: "141",
+        img: _IMGPATH + "cards/" + "141" + ".png",
+        name: "Клирик",
+        description: "Воскрешение: Когда тебе надо вытянуть карты в открытую, ты можешь частично или полностью взять их из соответствующего сброса\
+        . Затем ты должен сбросить с 'руки' по 1 карте за каждую такую карту. Изгнание: можешь сбросить до 3 карт в бою против Андедов. Каждый сброс даёет тебе +3 Бонус.",
+        cardEffect: "takeFromRebound" + _EFFECTSPLITTER + "undeadBonus+3"
       };
 
 // -----------------------------------
@@ -204,6 +235,19 @@
         effect: null,
         isBig: true
       };
+  stuffObjArr[4] = {
+        id: "139",
+        img: _IMGPATH + "cards/" + "139" + ".png",
+        name: "Сандалеты-Протекторы",
+        description: "Проклятия, которые ты берёшь при открывании Дверей, не срабатывают. Проклятия, наложенные другими игроками, действуют как обычно",
+        slotType: "footGear",
+        power: null,
+        cost: 700,
+        race: null,
+        class: null,
+        effect: null,
+        isBig: false
+      };
 // -----------------------------------
 // ******** poision cards variables ********
   var poisionsObjArr = [], createdPoisionsArr = [];
@@ -238,6 +282,16 @@
         description: "Применить в любом бою, +2 любой стороне. Одноразовая.",
         cost: 100,
         effect: "anySidePlus+2"
+      };
+  poisionsObjArr[4] = {
+        id: "036",
+        img: _IMGPATH + "cards/" + "036" + ".png",
+        name: "Зелье Стрелочника",
+        description: "Применить в любом бою. Любой другой игрок (по твоему выбору) бьётся с монстром,\
+         может просить помощии получает Сокровища и Уровни, если победит.\
+         Затем исходный игрок продолжает свой ход и может Чистить Нычки независимо от исхода боя. Одноразовая.",
+        cost: 300,
+        effect: "redirectMonster"
       };
 // -----------------------------------
 // ******** bonus cards variables ********

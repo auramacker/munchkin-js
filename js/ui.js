@@ -93,32 +93,41 @@ var ui = {
   },
   getCardsFromPack: function(pack, player, number){
     var i = 0, showHandTimer = 0, animDelay = 100;
-    model.getCard(pack, player, number);
-    for (; i < player.cards.length; i++) {
-      //$(".card[data-card-id='" + player.cards[i].id + "']").css("animation-delay", animDelay + "ms");
-      //$(".card[data-card-id='" + player.cards[i].id + "']").addClass("removed");
-      $(".card[data-card-id='" + player.cards[i].id + "']").remove();
-      //animDelay += 200;
-    }
-    showHandTimer = animDelay + 100;
-    // setTimeout(function(){
-    //
-    //   $(".card.removed").remove();
-    // }, showHandTimer);
+    for(; i < number; i++) {
+     if (pack[i].deck == "treasures"){
+       $(".pack--treasures").find("div:first").remove();
+     }
+     else {
+       $(".pack--doors").find("div:first").remove();
+     }
+   }
+     model.getCard(pack, player, number);
+    if (player.isUser) {
+      showHandTimer = animDelay + 100;
+      // setTimeout(function(){
+      //
+      //   $(".card.removed").remove();
+      // }, showHandTimer);
 
-    // Debug
-    // $('.pack').each(function(){
-    //
-    //   var p = $(this);
-    //
-    //   p.find('.card:not(.removed)').eq(0).on('click', function(){
-    //     $(this).toggleClass('flipped');
-    //   });
-    //
-    // });
-    ui.showCardsInHand(showHandTimer);
+      // Debug
+      // $('.pack').each(function(){
+      //
+      //   var p = $(this);
+      //
+      //   p.find('.card:not(.removed)').eq(0).on('click', function(){
+      //     $(this).toggleClass('flipped');
+      //   });
+      //
+      // });
+      ui.showCardsInHand(showHandTimer);
+    }
+    else {
+      $("#"+ player.id +" .player--info-card-length").text(player.cards.length);
+      $("#"+ player.id +" .player--info-equipment").text(player.equipment.length);
+      console.log(player)
+    }
     var margin = 0;
-    for (var i = 0; i < pack.length; i++) {
+    for (var i = 0; i < pack.length; i++) { // pack margins
       $(".card[data-card-id='"+pack[i].id +"']").css("margin-left", margin + "px");
       margin += 2;
     }
@@ -144,8 +153,5 @@ var ui = {
       ');
       timer += 200;
     }
-
-
-
   }
 }

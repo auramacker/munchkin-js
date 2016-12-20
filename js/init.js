@@ -17,6 +17,10 @@ function initData(){
     ui.showPack(); // show pack
     ui.getCardsFromPack(treasuresCards, player, 2);
     ui.getCardsFromPack(doorsCards, player, 2);
+    for (var i = 0; i < cpuArr.length; i++) {
+      ui.getCardsFromPack(treasuresCards, cpuArr[i], 2);
+      ui.getCardsFromPack(doorsCards, cpuArr[i], 2);
+    }
     // ui.getCardsFromPack(doorsCards, player, 4);
   })
 };
