@@ -124,7 +124,6 @@ var ui = {
     else {
       $("#"+ player.id +" .player--info-card-length").text(player.cards.length);
       $("#"+ player.id +" .player--info-equipment").text(player.equipment.length);
-      console.log(player)
     }
     var margin = 0;
     for (var i = 0; i < pack.length; i++) { // pack margins
