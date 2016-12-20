@@ -104,26 +104,6 @@ var ui = {
      model.getCard(pack, player, number);
     if (player.isUser) {
       showHandTimer = animDelay + 100;
-      // setTimeout(function(){
-      //
-      //   $(".card.removed").remove();
-      // }, showHandTimer);
-
-      // Debug
-      // $('.pack').each(function(){
-      //
-      //   var p = $(this);
-      //
-      //   p.find('.card:not(.removed)').eq(0).on('click', function(){
-      //     $(this).toggleClass('flipped');
-      //   });
-      //
-      // });
-
-
- 
-
-
       ui.showCardsInHand(showHandTimer);
     }
     else {
@@ -157,5 +137,10 @@ var ui = {
       ');
       timer += 200;
     }
+  },
+  setDragNDropp: function(){
+    $(".player-user--cards > div").draggable();
+    $(".inventory .card-place").droppable();
+
   }
 }

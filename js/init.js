@@ -1,9 +1,4 @@
 function initData(){
-  var playersNumber, playerInfo;
-  ui.showPopUp();
-  ui.showInitNotification();
-  ui.initPlayersNumber();
-  $(".init-notification .start").click(function(){
     playersNumber = ui.getPlayersNumber();
     playerInfo = ui.getInitNotifyResult();
     createPlayers(playersNumber, playerInfo);
@@ -21,12 +16,10 @@ function initData(){
       ui.getCardsFromPack(treasuresCards, cpuArr[i], 2);
       ui.getCardsFromPack(doorsCards, cpuArr[i], 2);
     }
-         $('.player-user--inventory').click(function(){
-        $('.inventory-wrap').toggleClass('is-visible');
-      });
-    // ui.getCardsFromPack(doorsCards, player, 4);
-  });
-
+    $('.player-user--inventory').click(function(){
+      $('.inventory-wrap').toggleClass('is-visible');
+    });
+    gameLoop(player);
 };
 
 function createCards(value){ // all | doors, treasures | ??? monsters, curses, classes, races, stuff, poisions, bonuses
