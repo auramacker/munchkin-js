@@ -21,9 +21,14 @@ function initData(){
       ui.getCardsFromPack(treasuresCards, cpuArr[i], 2);
       ui.getCardsFromPack(doorsCards, cpuArr[i], 2);
     }
+         $('.player-user--inventory').click(function(){
+        $('.inventory-wrap').toggleClass('is-visible');
+      });
     // ui.getCardsFromPack(doorsCards, player, 4);
-  })
+  });
+
 };
+
 function createCards(value){ // all | doors, treasures | ??? monsters, curses, classes, races, stuff, poisions, bonuses
   switch(value) {
     case "all":

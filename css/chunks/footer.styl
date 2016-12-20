@@ -1,12 +1,30 @@
 	
-.player-user
+footer.player-user
 	position fixed
 	bottom 0
 	left 0
 	width 100%
 	text-align center
-	vertical-align middle
-	
+	z-index 100
+	&::after
+		content ''
+		position absolute
+		bottom 0
+		left 195px
+		height 154px
+		width 100%
+		margin-bottom -30px
+		z-index -1
+		background-image url(../images/1_04.png)
+		background-size contain
+		background-position 4px 0px
+		box-shadow(-10px -7px 10px rgba($black, 60%))
+
+
+/*!
+Footer
+*/
+
 $card-hl = 350px
 $card-wl = 225px
 
@@ -20,7 +38,6 @@ $card-wl = 225px
 	white-space nowrap
 	overflow-x scroll
 	overflow-y hidden
-	vertical-align middle
 	.card, 
 	.card .front, 
 	.card .back, 
@@ -29,51 +46,33 @@ $card-wl = 225px
 		height $card-hl
 		border-radius(30px)
 	.card
+		visibility hidden
 		position relative
 		bottom -50%
-		visibility hidden
 		display inline-block
 		transition(all 300ms ease-in-out)
-		animation(anim-c 500ms ease-in-out forwards)
+		animation(show_cards_in_hand 500ms ease-in-out forwards)
 	.card:hover
 		bottom 0
+		visibility visible
 
 
-.player-user--inventory
-	position absolute
-	bottom 55px
-	right 0px
-	border 4px solid $yellow
-	box-shadow(0 0 6px rgba($black, 40%))
-	display inline-block
-	height $circle-h - ($stroke-w * 2)
-	width $circle-h - ($stroke-w * 2)
-	line-height $circle-h - ($stroke-w * 2)
-	background-color $white
-	border-radius 50%
-	img
-		display inline-block
-		height 40px
-		width 40px
-		vertical-align middle
-
-
-.player-human
-	margin-top 60px
-	transform(scale(1.8))
-
-
-@keyframes anim-c
+@keyframes show_cards_in_hand
 	from
 		visibility hidden
 		opacity 0
-		transform(translateY(100%))
+		transform(scale(0.86) translate3d(0, 100%, 0))
 	to
 		visibility visible
 		opacity 1
-		transform(translateY(0))
+		transform(scale(1) translate3d(0, 0, 0))
 
-.player-user--avatar
+/*!
+Left Side
+*/
+
+
+.player-user--human
 	position fixed
 	bottom 0
 	left 0
@@ -87,23 +86,89 @@ $card-wl = 225px
 	background-size contain
 	box-shadow(-10px -7px 10px  rgba($black, 60%))
 
-.player-user::after
-	content ''
+// User
+
+$circle-hl = 120px
+
+.player-human
+	margin-top 40px
+	max-width $circle-hl
+	.player--avatar
+		height $circle-hl
+		.player--label-level
+			height 35px
+			width 35px
+			line-height 35px
+			font-size 18px
+		img 
+			height $circle-hl - ($stroke-w * 2)
+			width $circle-hl - ($stroke-w * 2)
+
+//Inventory Btn
+
+$ih = 70px
+
+.player-user--inventory
 	position absolute
-	bottom 0
-	left 195px
-	height 154px
-	width 100%
-	margin-bottom -30px
-	z-index -1
-	background-image url(../images/1_04.png)
-	background-size contain
-	background-position 4px 0px
-	box-shadow(-10px -7px 10px  rgba($black, 60%))
-	
+	cursor pointer
+	bottom 50px
+	right 5px
+	display inline-block
+	height $ih
+	width $ih
+	line-height $ih
+	background-color lighten($yellowl, 40%)
+	border-radius 50%
+	border 3px solid $brown
+	box-shadow(0 2px 6px rgba($black, 60%))
+	span.inventory-level
+		position absolute
+		top 0
+		left 0
+		height 100%
+		width 100%
+		color $white
+		font-size 24px
+		background-color rgba($black, 80%)
+		opacity 0
+		border-radius 50%
+		transition(all 300ms ease-in-out)
+		transform(scale(0))
+		&::before
+			content '+'
+	&:hover
+		span.inventory-level
+			opacity 1
+			transform(scale(1))
+		// right 0
+		// bottom 0
+		// height 20px
+		// width 20px
+		// line-height 24px
+		// font-size 12px
+		// background-color $yellow
+		// border-radius 50%
+		// box-shadow(0 2px 2px rgba($black, 60%))
+		// color $brown
+	img
+		display inline-block
+		height $ih - 15px
+		line-height $ih
+		width auto
+		vertical-align middle
+
+
+/*!
+Right Side
+*/
+
 .player-buttons
 	position fixed
 	bottom 0
 	right 0
-	padding-bottom 20px
+	padding-right 60px
+	padding-bottom 30px
+	a
+		margin-right 10px
+		margin-bottom 10px
 	

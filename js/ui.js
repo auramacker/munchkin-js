@@ -119,6 +119,11 @@ var ui = {
       //   });
       //
       // });
+
+
+ 
+
+
       ui.showCardsInHand(showHandTimer);
     }
     else {

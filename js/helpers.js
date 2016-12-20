@@ -7,18 +7,23 @@ function getDiceNumber(){
 
 function svgPlayerLevel(element, level){
 
-	var circle = element.find('.player--svg-level-bar'),
-		label = element.find('.player--label-level'),
-		r = circle.attr('r'),
-		c = Math.PI * ( r * 2 );
+  element.each(function(){
+    var t = $(this),
+    circle = t.find('.player--svg-level-bar'),
+    label = t.find('.player--label-level'),
+    r = circle.attr('r'),
+    c = Math.PI * ( r * 2 );
 
-  	if ( level <= _MINLEVEL ) level = _MINLEVEL;
-  	if ( level >= _MAXLEVEL ) level = _MAXLEVEL;
+    if ( level <= _MINLEVEL ) level = _MINLEVEL;
+    if ( level >= _MAXLEVEL ) level = _MAXLEVEL;
 
-  	var strokeDashoffset = ( (_MAXLEVEL - level ) / _MAXLEVEL ) * c;
+    var strokeDashoffset = ( (_MAXLEVEL - level ) / _MAXLEVEL ) * c;
 
-  	circle.css({ strokeDashoffset: strokeDashoffset });
-  	label.text(level);
+    circle.css({ strokeDashoffset: strokeDashoffset });
+    label.text(level);
+  });
+
+
 
 }
 
