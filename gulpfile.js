@@ -1,8 +1,7 @@
 
-var gulp         = require('gulp'),
-		stylus         = require('gulp-stylus'),
-
-		browserSync  = require('browser-sync').create();
+var gulp = require('gulp'),
+	stylus = require('gulp-stylus'),
+	browserSync = require('browser-sync').create();
 
 
 gulp.task('styles', function () {

@@ -148,7 +148,7 @@ var ui = {
         id = races.concat(classes, stuff);
           for (var i = 0; i < id.length; i++) {
             $(".card[data-card-id='"+ id[i] +"']").toggleClass("has-option");
-            $(".card[data-card-id='"+ id[i] +"']").append("<div class='extra-option'>x</div>");
+            $(".card[data-card-id='"+ id[i] +"']").append("<div class='extra-option'>+</div>");
           }
       }
       $(".extra-option").click(function(){

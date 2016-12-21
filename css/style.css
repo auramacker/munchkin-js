@@ -282,6 +282,26 @@ Start Popup
   -o-animation: card-o 600ms ease-in-out forwards;
   animation: card-o 600ms ease-in-out forwards;
 }
+.card.has-option {
+  position: relative;
+}
+.card.has-option .extra-option {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 30px;
+  width: 30px;
+  line-height: 35px;
+  text-align: center;
+  background-color: #4c1a11;
+  border: 2px solid #ffcf4f;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  font-size: 36px;
+  color: #ffcf4f;
+  -webkit-box-shadow: 0 2px 2px rgba(25,25,25,0.6);
+  box-shadow: 0 2px 2px rgba(25,25,25,0.6);
+}
 @-moz-keyframes flip_card {
   from, to {
     -webkit-transform: scale(1);

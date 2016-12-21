@@ -63,6 +63,23 @@ $card-t = 400ms
 .card.removed
 	animation(card-o 600ms ease-in-out forwards)
 
+.card.has-option
+	position relative
+	.extra-option
+		position absolute
+		top 20px
+		right 20px
+		height 30px
+		width 30px
+		line-height 35px
+		text-align center
+		background-color $brown
+		border 2px solid $yellow
+		border-radius 50%
+		font-size 36px
+		color $yellow
+		box-shadow(0 2px 2px rgba($black, 60%))
+
 @keyframes card-o
 	from
 		opacity 1
