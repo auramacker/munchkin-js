@@ -138,6 +138,7 @@ var ui = {
       timer += 200;
     }
   },
+<<<<<<< HEAD
   inventorySetting: function(){
     if ($(".inventory-wrap").hasClass("is-visible")) {
       if (!$(".player-user--cards .card").hasClass("has-option")) {
@@ -160,5 +161,11 @@ var ui = {
       $(".player-user--cards .card.has-option").find(".extra-option").remove();
       $(".card.has-option").removeClass("has-option");
     }
+=======
+  setDragNDropp: function(){
+    // $(".player-user--cards > div").draggable();
+    // $(".inventory .card-place").droppable();
+
+>>>>>>> 65528f0857daa7c4d76eb8ce95ac91a457cddd2f
   }
 }

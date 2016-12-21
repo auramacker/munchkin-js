@@ -33,10 +33,10 @@ $card-wl = 225px
 	bottom 0
 	left 50%
 	margin-left -342px
-	max-width 685px
+	max-width $card-wl * 3
 	height $card-hl
 	white-space nowrap
-	overflow-x scroll
+	overflow-x visible
 	overflow-y hidden
 	.card, 
 	.card .front, 
@@ -50,7 +50,7 @@ $card-wl = 225px
 		position relative
 		bottom -50%
 		display inline-block
-		transition(all 300ms ease-in-out)
+		transition(bottom 300ms ease-in-out)
 		animation(show_cards_in_hand 500ms ease-in-out forwards)
 	.card:hover
 		bottom 0

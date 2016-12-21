@@ -578,10 +578,10 @@ Footer
   bottom: 0;
   left: 50%;
   margin-left: -342px;
-  max-width: 685px;
+  max-width: 675px;
   height: 350px;
   white-space: nowrap;
-  overflow-x: scroll;
+  overflow-x: visible;
   overflow-y: hidden;
 }
 .player-user--cards .card,
@@ -598,11 +598,11 @@ Footer
   position: relative;
   bottom: -50%;
   display: inline-block;
-  -webkit-transition: all 300ms ease-in-out;
-  -moz-transition: all 300ms ease-in-out;
-  -ms-transition: all 300ms ease-in-out;
-  -o-transition: all 300ms ease-in-out;
-  transition: all 300ms ease-in-out;
+  -webkit-transition: bottom 300ms ease-in-out;
+  -moz-transition: bottom 300ms ease-in-out;
+  -ms-transition: bottom 300ms ease-in-out;
+  -o-transition: bottom 300ms ease-in-out;
+  transition: bottom 300ms ease-in-out;
   -webkit-animation: show_cards_in_hand 500ms ease-in-out forwards;
   -moz-animation: show_cards_in_hand 500ms ease-in-out forwards;
   -ms-animation: show_cards_in_hand 500ms ease-in-out forwards;

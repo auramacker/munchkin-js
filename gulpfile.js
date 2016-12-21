@@ -4,14 +4,6 @@ var gulp         = require('gulp'),
 
 		browserSync  = require('browser-sync').create();
 
-gulp.task('browser-sync', ['styles'], function() {
-		browserSync.init({
-				server: {
-						baseDir: ""
-				},
-				notify: true
-		});
-});
 
 gulp.task('styles', function () {
 	return gulp.src('css/*.styl')
@@ -22,9 +14,21 @@ gulp.task('styles', function () {
 
 
 
-gulp.task('watch', function () {
+gulp.task('watch', ['styles'], function () {
+
+	browserSync.init({
+		open: true,
+		server: {
+			baseDir: "./"
+		},
+		notify: true
+	});
+
+
 	gulp.watch('css/**/*.styl', ['styles']);
-	gulp.watch('js/*.js').on("change", browserSync.reload);
+	gulp.watch('js/*.js').on('change', browserSync.reload);
+	gulp.watch('*.html').on('change', browserSync.reload);
+
 });
 
-gulp.task('default', ['browser-sync', 'watch']);
+gulp.task('default', ['watch']);
