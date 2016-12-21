@@ -153,7 +153,7 @@ var ui = {
       }
       $(".extra-option").on("click", function(){
         // moving to inventory
-        var isCost = model.isHasCost(player, $(this).attr("data-card-id"));
+        var isCost = model.isHasCost(player, $(this).parent().attr("data-card-id"));
         if (isCost) {
           if (!$(this).hasClass("has-list")) {
             $(this).append("<div class='options-list'><span class='btn'>Экипировать</span>\
