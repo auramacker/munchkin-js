@@ -139,8 +139,8 @@ var ui = {
     }
   },
   setDragNDropp: function(){
-    $(".player-user--cards > div").draggable();
-    $(".inventory .card-place").droppable();
+    // $(".player-user--cards > div").draggable();
+    // $(".inventory .card-place").droppable();
 
   }
 }

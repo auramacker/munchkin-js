@@ -581,6 +581,8 @@ Footer
   max-width: 675px;
   height: 350px;
   white-space: nowrap;
+  overflow-x: visible;
+  overflow-y: hidden;
 }
 .player-user--cards .card,
 .player-user--cards .card .front,
