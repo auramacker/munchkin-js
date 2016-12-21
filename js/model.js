@@ -14,5 +14,16 @@ var model = {
       }
     }
     return result
+  },
+  isHasCost: function(player, id){
+    var i = 0, length = player.cards.length, result = false;
+    for (; i < length; i++) {
+      if (player.cards[i].id == id) {
+        if (player.cards[i].cost != null) {
+          result = true;
+          return result
+        }
+      }
+    }
   }
 };

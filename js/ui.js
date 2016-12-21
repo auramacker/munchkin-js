@@ -151,9 +151,24 @@ var ui = {
             $(".card[data-card-id='"+ id[i] +"']").append("<div class='extra-option'>+</div>");
           }
       }
-      $(".extra-option").click(function(){
+      $(".extra-option").on("click", function(){
         // moving to inventory
-        $(this).parent(".card.has-option").remove();
+        var isCost = model.isHasCost(player, $(this).attr("data-card-id"));
+        if (isCost) {
+          if (!$(this).hasClass("has-list")) {
+            $(this).append("<div class='options-list'><span class='btn'>Экипировать</span>\
+            <span class='btn'>Продать</span><span class='btn'>Скинуть</span></div>");
+            $(this).toggleClass("has-list");
+          }
+        }
+        else {
+          if (!$(this).hasClass("has-list")){
+            $(this).append("<div class='options-list'><span class='btn'>Экипировать</span>\
+            <span class='btn'>Скинуть</span></div>");
+            $(this).toggleClass("has-list");
+          }
+        }
+        $(this).parent().toggleClass("options-opened");
       })
     }
     else {
