@@ -19,7 +19,9 @@ function initData(){
     $('.player-user--inventory').click(function(){
       $('.inventory-wrap').toggleClass('is-visible');
     });
-    gameLoop(player);
+    setInterval(function(){
+      gameLoop(player);
+    }, 120);
 };
 
 function createCards(value){ // all | doors, treasures | ??? monsters, curses, classes, races, stuff, poisions, bonuses

@@ -138,9 +138,27 @@ var ui = {
       timer += 200;
     }
   },
-  setDragNDropp: function(){
-    $(".player-user--cards > div").draggable();
-    $(".inventory .card-place").droppable();
-
+  inventorySetting: function(){
+    if ($(".inventory-wrap").hasClass("is-visible")) {
+      if (!$(".player-user--cards .card").hasClass("has-option")) {
+        var races = model.getCardTypeId(player, "RaceCard"),
+            classes = model.getCardTypeId(player, "ClassCard"),
+            stuff = model.getCardTypeId(player, "StuffCard"),
+            id = [] ;
+        id = races.concat(classes, stuff);
+          for (var i = 0; i < id.length; i++) {
+            $(".card[data-card-id='"+ id[i] +"']").toggleClass("has-option");
+            $(".card[data-card-id='"+ id[i] +"']").append("<div class='extra-option'>x</div>");
+          }
+      }
+      $(".extra-option").click(function(){
+        // moving to inventory
+        $(this).parent(".card.has-option").remove();
+      })
+    }
+    else {
+      $(".player-user--cards .card.has-option").find(".extra-option").remove();
+      $(".card.has-option").removeClass("has-option");
+    }
   }
 }

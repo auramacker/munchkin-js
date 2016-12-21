@@ -10,11 +10,11 @@
   //   gameLoop();
   // }, 30);
 })();
-function gameLoop(player){
+function gameLoop(currentPlayer){
   setInventory();
   function setInventory() {
-    if (player.isUser) {
-      ui.setDragNDropp();
+    if (currentPlayer.isUser) {
+      ui.inventorySetting();
     }
   }
 }
