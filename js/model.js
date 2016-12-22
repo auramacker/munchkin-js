@@ -26,7 +26,7 @@ var model = {
       }
     }
   },
-  removeCard(player, cardId) {
+  removeCard: function(player, cardId) {
     var i = 0, length = player.cards.length;
     for (; i < length; i++) {
       if (player.cards[i].id == cardId) {
@@ -35,7 +35,7 @@ var model = {
       }
     }
   },
-  moveToRebound(player, cardId) {
+  moveToRebound: function(player, cardId) {
     var i = 0, length = player.cards.length;
     console.log(player);
     for (; i < length; i++) {
@@ -43,6 +43,17 @@ var model = {
         rebound.push(player.cards[i]);
         model.removeCard(player, cardId);
         return true
+      }
+    }
+  },
+  getCardDeck: function(player, cardId) {
+
+  },
+  returnCard: function(player, cardId) {
+    var i = 0, length = player.cards.length;
+    for (; i < length; i++) {
+      if (player.cards[i].id == cardId) {
+        return player.cards[i]
       }
     }
   }
