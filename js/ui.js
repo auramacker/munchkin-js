@@ -32,7 +32,6 @@ var ui = {
       zIndexDoors--;
       if( i <= 10 ) offsetDoors+=2;
     }
-
   },
   showInitNotification: function() {
     $(".init-notification").show();
@@ -139,47 +138,51 @@ var ui = {
     }
   },
   inventorySetting: function(){
-    if ($(".inventory-wrap").hasClass("is-visible")) {
-      if (!$(".player-user--cards .card").hasClass("has-option")) {
+    $(".player-user--inventory").click(function(){
         var races = model.getCardTypeId(player, "RaceCard"),
             classes = model.getCardTypeId(player, "ClassCard"),
             stuff = model.getCardTypeId(player, "StuffCard"),
             id = [] ;
         id = races.concat(classes, stuff);
           for (var i = 0; i < id.length; i++) {
+            var isCost = model.isHasCost(player, id[i]), costResult = "";
+            if (isCost) {
+              costResult = "<span class='btn sell'>Продать</span>";
+            }
             $(".card[data-card-id='"+ id[i] +"']").toggleClass("has-option");
             $(".card[data-card-id='"+ id[i] +"']").append("<div class='extra-option'>+</div>");
+            // $(".card[data-card-id='"+ id[i] +"'] .extra-option").toggleClass("has-list");
+            $(".card[data-card-id='"+ id[i] +"'] .extra-option").append("<div class='options-list'>\
+            <span class='btn equip'>Экипировать</span>\
+             " + costResult + "\
+            <span class='btn drop'>Скинуть</span>\
+            </div>");
+            $(".options-list").hide();
           }
-      }
-      $(".extra-option").on("click", function(){
-        // moving to inventory
-        var isCost = model.isHasCost(player, $(this).parent().attr("data-card-id"));
-        if (isCost) {
-          if (!$(this).hasClass("has-list")) {
-            $(this).append("<div class='options-list'><span class='btn equip'>Экипировать</span>\
-            <span class='btn sell'>Продать</span><span class='btn drop'>Скинуть</span></div>");
-            $(this).toggleClass("has-list");
-          }
-        }
-        else {
-          if (!$(this).hasClass("has-list")){
-            $(this).append("<div class='options-list'><span class='btn equip'>Экипировать</span>\
-            <span class='btn drop'>Скинуть</span></div>");
-            $(this).toggleClass("has-list");
-          }
-        }
-        $(this).parent().toggleClass("options-opened");
-      });
-      $(".options-list .equip").on("click", function(){ // on equip actions
+        $(".extra-option").on("click", function(){
+            // moving to inventory
+              if (!$(this).hasClass("has-list")) {
+                $(this).toggleClass("has-list");
+                $(this).find(".options-list").show();
+                $(this).parent().toggleClass("options-opened");
+              }
+              else {
+                $(this).removeClass("has-list");
+                $(this).find(".options-list").hide();
+                $(this).parent().removeClass("options-opened");
+              }
+            });
+        $(".options-list .equip").on("click", function(){ // on equip actions
+        })
+        $(".options-list .drop").on("click", function(){ // on drop action
+          console.log($(this).closest(".card").attr("data-card-id"));
+          model.moveToRebound(player, $(this).closest(".card").attr("data-card-id"));
 
-      })
-      $(".options-list .drop").on("click", function(){ // on drop action
-        $(this).parent().parent().parent().remove();
+          $(this).closest(".card").remove();
+        });
       });
-    }
-    else {
-      $(".player-user--cards .card.has-option").find(".extra-option").remove();
-      $(".card.has-option").removeClass("has-option");
-    }
+    },
+  addToRebound(cardId){
+
   }
 }

@@ -25,5 +25,25 @@ var model = {
         }
       }
     }
+  },
+  removeCard(player, cardId) {
+    var i = 0, length = player.cards.length;
+    for (; i < length; i++) {
+      if (player.cards[i].id == cardId) {
+         player.cards.splice(i, 1);
+         return true
+      }
+    }
+  },
+  moveToRebound(player, cardId) {
+    var i = 0, length = player.cards.length;
+    console.log(player);
+    for (; i < length; i++) {
+      if (player.cards[i].id == cardId) {
+        rebound.push(player.cards[i]);
+        model.removeCard(player, cardId);
+        return true
+      }
+    }
   }
 };
