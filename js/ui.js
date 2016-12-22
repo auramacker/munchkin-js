@@ -156,20 +156,26 @@ var ui = {
         var isCost = model.isHasCost(player, $(this).parent().attr("data-card-id"));
         if (isCost) {
           if (!$(this).hasClass("has-list")) {
-            $(this).append("<div class='options-list'><span class='btn'>Экипировать</span>\
-            <span class='btn'>Продать</span><span class='btn'>Скинуть</span></div>");
+            $(this).append("<div class='options-list'><span class='btn equip'>Экипировать</span>\
+            <span class='btn sell'>Продать</span><span class='btn drop'>Скинуть</span></div>");
             $(this).toggleClass("has-list");
           }
         }
         else {
           if (!$(this).hasClass("has-list")){
-            $(this).append("<div class='options-list'><span class='btn'>Экипировать</span>\
-            <span class='btn'>Скинуть</span></div>");
+            $(this).append("<div class='options-list'><span class='btn equip'>Экипировать</span>\
+            <span class='btn drop'>Скинуть</span></div>");
             $(this).toggleClass("has-list");
           }
         }
         $(this).parent().toggleClass("options-opened");
+      });
+      $(".options-list .equip").on("click", function(){ // on equip actions
+
       })
+      $(".options-list .drop").on("click", function(){ // on drop action
+        $(this).parent().parent().parent().remove();
+      });
     }
     else {
       $(".player-user--cards .card.has-option").find(".extra-option").remove();
