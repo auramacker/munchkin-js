@@ -175,24 +175,24 @@ var ui = {
         $(".options-list .equip").on("click", function(){ // on equip actions
         })
         $(".options-list .drop").on("click", function(){ // on drop action
-          var currentCardId = $(this).closest(".card").attr("data-card-id"), currentCard, cardBackface;
-          console.log($(this).closest(".card").attr("data-card-id"));
-          currentCard = model.returnCard(player, currentCardId);
-          cardBackface = (currentCard.deck == "doors") ?  _IMGPATH + 'cards/doors-backface.png' : _IMGPATH + 'cards/treasures-backface.png';
-          $('.pack.pack--rebound').append('\
-            <div class="card card--treasures flipped" data-card-id="'+currentCard.id+'"> \
-              <div class="flipper">\
-                <figure class="front" style="background-image: url('+currentCard.img+');"></figure> \
-                <figure class="back" style="background-image: url('+cardBackface+');"></figure> \
-              </div>\
-            </div>\
-          ');
-          model.moveToRebound(player, currentCardId);
+          var currentCardId = $(this).closest(".card").attr("data-card-id");
+          ui.addToRebound(currentCardId);
           $(this).closest(".card").remove();
         });
       });
     },
   addToRebound(cardId){
-
+    var currentCard, cardBackface;
+    currentCard = model.returnCard(player, cardId);
+    cardBackface = (currentCard.deck == "doors") ?  _IMGPATH + 'cards/doors-backface.png' : _IMGPATH + 'cards/treasures-backface.png';
+    $('.pack.pack--rebound').append('\
+      <div class="card card--treasures flipped" data-card-id="'+currentCard.id+'"> \
+        <div class="flipper">\
+          <figure class="front" style="background-image: url('+currentCard.img+');"></figure> \
+          <figure class="back" style="background-image: url('+cardBackface+');"></figure> \
+        </div>\
+      </div>\
+    ');
+    model.moveToRebound(player, cardId);
   }
 }
