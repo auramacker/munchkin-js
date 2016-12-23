@@ -79,7 +79,18 @@ $card-t = 400ms
 		font-size 36px
 		color $yellow
 		box-shadow(0 2px 2px rgba($black, 60%))
-
+	.options-list
+		position absolute
+		top 50%
+		left 40px
+		right 40px
+		transform(translate3d(0, -50%, 0))
+		.btn
+			display block
+			margin-bottom 8px
+	&.options-opened
+		figure
+			filter grayscale(100%)
 @keyframes card-o
 	from
 		opacity 1
