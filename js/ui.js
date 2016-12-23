@@ -149,15 +149,17 @@ var ui = {
             if (isCost) {
               costResult = "<span class='btn sell'>Продать</span>";
             }
-            $(".card[data-card-id='"+ id[i] +"']").toggleClass("has-option");
-            $(".card[data-card-id='"+ id[i] +"']").append("<div class='extra-option'>+</div>");
-            // $(".card[data-card-id='"+ id[i] +"'] .extra-option").toggleClass("has-list");
-            $(".card[data-card-id='"+ id[i] +"'] .extra-option").append("<div class='options-list'>\
-            <span class='btn equip'>Экипировать</span>\
-             " + costResult + "\
-            <span class='btn drop'>Скинуть</span>\
-            </div>");
-            $(".options-list").hide();
+            if ($(".card[data-card-id='"+ id[i] +"'] .extra-option").length == 0) {
+              $(".card[data-card-id='"+ id[i] +"']").toggleClass("has-option");
+              $(".card[data-card-id='"+ id[i] +"']").append("<div class='extra-option'>+</div>");
+              // $(".card[data-card-id='"+ id[i] +"'] .extra-option").toggleClass("has-list");
+              $(".card[data-card-id='"+ id[i] +"'] .extra-option").append("<div class='options-list'>\
+              <span class='btn equip'>Экипировать</span>\
+               " + costResult + "\
+              <span class='btn drop'>Скинуть</span>\
+              </div>");
+              $(".options-list").hide();
+            }
           }
         $(".extra-option").on("click", function(){
             // moving to inventory
