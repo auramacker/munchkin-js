@@ -153,7 +153,7 @@ var ui = {
               $(".card[data-card-id='"+ id[i] +"']").toggleClass("has-option");
               $(".card[data-card-id='"+ id[i] +"']").append("<div class='extra-option'>+</div>");
               // $(".card[data-card-id='"+ id[i] +"'] .extra-option").toggleClass("has-list");
-              $(".card[data-card-id='"+ id[i] +"'] .extra-option").append("<div class='options-list'>\
+              $(".card[data-card-id='"+ id[i] +"']").append("<div class='options-list'>\
               <span class='btn equip'>Экипировать</span>\
                " + costResult + "\
               <span class='btn drop'>Скинуть</span>\
@@ -165,12 +165,12 @@ var ui = {
             // moving to inventory
               if (!$(this).hasClass("has-list")) {
                 $(this).toggleClass("has-list");
-                $(this).find(".options-list").show();
+                $(this).parent().find(".options-list").show();
                 $(this).parent().toggleClass("options-opened");
               }
               else {
                 $(this).removeClass("has-list");
-                $(this).find(".options-list").hide();
+                $(this).parent().find(".options-list").hide();
                 $(this).parent().removeClass("options-opened");
               }
             });
@@ -187,6 +187,7 @@ var ui = {
     var currentCard, cardBackface;
     currentCard = model.returnCard(player, cardId);
     cardBackface = (currentCard.deck == "doors") ?  _IMGPATH + 'cards/doors-backface.png' : _IMGPATH + 'cards/treasures-backface.png';
+
     $('.pack.pack--rebound').append('\
       <div class="card card--treasures flipped" data-card-id="'+currentCard.id+'"> \
         <div class="flipper">\
