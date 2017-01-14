@@ -15,6 +15,15 @@ var model = {
     }
     return result
   },
+  getCardImage: function(player, cardId) {
+    var i = 0, length = player.cards.length, result;
+    for (; i < length; i++) {
+      if (player.cards[i].id == cardId) {
+        result = player.cards[i].img;
+        return result
+      }
+    }
+  },
   isHasCost: function(player, id){
     var i = 0, length = player.cards.length, result = false;
     for (; i < length; i++) {
@@ -48,6 +57,24 @@ var model = {
   },
   getCardDeck: function(player, cardId) {
 
+  },
+  getCardType: function(player, cardId) {
+    var i = 0, length = player.cards.length, result = undefined;
+    for (; i < length; i++) {
+      if (player.cards[i].id == cardId) {
+        result = player.cards[i].constructor.name.toString();
+        return result
+      }
+    }
+  },
+  getStuffSlot: function(player, cardId) {
+    var i = 0, length = player.cards.length, result = undefined;
+    for (; i < length; i++) {
+      if (player.cards[i].id == cardId) {
+        result = player.cards[i].slotType;
+        return result
+      }
+    }
   },
   returnCard: function(player, cardId) {
     var i = 0, length = player.cards.length;

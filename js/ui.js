@@ -175,15 +175,55 @@ var ui = {
               }
             });
         $(".options-list .equip").on("click", function(){ // on equip actions
+          var currentCard = $(this).closest(".card").attr("data-card-id");
+          var cardType = model.getCardType(player, currentCard);
+          if (cardType == "StuffCard") {
+            var slot = model.getStuffSlot(player, currentCard); // checking slot for stuff
+            switch(slot) {
+              case "oneHand":
+                var result = false, position;
+                if (!player.leftHand) {
+                  player.equipItem(currentCard, "leftHand");
+                  result = true;
+                  position = "left-hand";
+                }
+                else if (!player.rightHand) {
+                  player.equipItem(currentCard, "rightHand");
+                  result = true;
+                  position = "right-hand";
+                }
+                if (result) {
+                  ui.removeFromHand(currentCard);
+                  ui.setToInventory(position, currentCard);
+                  model.removeCard(player, currentCard);
+                }
+              break;
+              case "twoHands":
+              break;
+              case "helmet":
+              break;
+              case "bodyGear":
+              break;
+              case "footGear":
+              break;
+            }
+          }
         })
         $(".options-list .drop").on("click", function(){ // on drop action
           var currentCardId = $(this).closest(".card").attr("data-card-id");
           ui.addToRebound(currentCardId);
-          $(this).closest(".card").remove();
+          ui.removeFromHand(currentCardId);
         });
       });
     },
-  addToRebound(cardId){
+  setToInventory: function(position, cardId) {
+    var img = model.getCardImage(player, cardId);
+    $("." + position ).css("background-image", "url("+ img +")");
+  },
+  removeFromHand: function(cardId){
+    $(".card[data-card-id='"+ cardId +"']").remove();
+  },
+  addToRebound: function(cardId){
     var currentCard, cardBackface;
     currentCard = model.returnCard(player, cardId);
     cardBackface = (currentCard.deck == "doors") ?  _IMGPATH + 'cards/doors-backface.png' : _IMGPATH + 'cards/treasures-backface.png';
