@@ -183,22 +183,25 @@ var ui = {
               case "oneHand":
                 var result = false, position;
                 if (!player.leftHand) {
-                  player.equipItem(currentCard, "leftHand");
+                  player.equipWeapon(currentCard, "leftHand");
                   result = true;
                   position = "left-hand";
+                  player.getWeaponPower();
                 }
                 else if (!player.rightHand) {
-                  player.equipItem(currentCard, "rightHand");
+                  player.equipWeapon(currentCard, "rightHand");
                   result = true;
                   position = "right-hand";
-                }
-                if (result) {
-                  ui.removeFromHand(currentCard);
-                  ui.setToInventory(position, currentCard);
-                  model.removeCard(player, currentCard);
+                  player.getWeaponPower();
                 }
               break;
               case "twoHands":
+                  if (!player.twoHands) {
+                    player.equipWeapon(currentCard, "twoHands");
+                    result = true;
+                    position = "two-hand";
+                    player.getWeaponPower();
+                  }
               break;
               case "helmet":
               break;
@@ -206,6 +209,12 @@ var ui = {
               break;
               case "footGear":
               break;
+            }
+            if (result) {
+              ui.removeFromHand(currentCard);
+              ui.setToInventory(position, currentCard);
+              model.removeCard(player, currentCard);
+              ui.updateStrength();
             }
           }
         })
@@ -216,9 +225,13 @@ var ui = {
         });
       });
     },
+  updateStrength: function(){
+    $(".inventory-level").text(player.strength);
+  },
   setToInventory: function(position, cardId) {
     var img = model.getCardImage(player, cardId);
     $("." + position ).css("background-image", "url("+ img +")");
+    $("." + position ).attr("data-card-id", cardId);
   },
   removeFromHand: function(cardId){
     $(".card[data-card-id='"+ cardId +"']").remove();
