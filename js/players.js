@@ -11,8 +11,8 @@ function Player(objPlayer){
   this.class2 = null,
   this.race1 = null,
   this.race2 = null,
-  this.isSuperMunchkin = null,
-  this.ishalfBreed = null,
+  this.superMunchkin = null,
+  this.halfBreed = null,
   this.helmet = null,
   this.gear = null,
   this.rightHand = null,
@@ -100,14 +100,24 @@ function Player(objPlayer){
   this.getFootGearPower = function(){
     this.strength += this.footGear.power;
   },
-  this.equipRace = function(cardId) {
+  this.equipClassRace = function(where ,cardId) {
     var i = 0; length = this.cards.length, result = false;
     for (; i < length; i++) {
       if (this.cards[i].id == cardId) {
-        this.race1 = this.cards[i];
+        this[where] = this.cards[i];
+        break;
       }
     }
   },
+  // this.equipClass = function(where ,cardId) {
+  //   var i = 0; length = this.cards.length, result = false;
+  //   for (; i < length; i++) {
+  //     if (this.cards[i].id == cardId) {
+  //       this[where] = this.cards[i];
+  //       break;
+  //     }
+  //   }
+  // },
   this.equipClass = function(cardId){
     var i = 0; length = this.cards.length, result = false;
     for (; i < length; i++) {

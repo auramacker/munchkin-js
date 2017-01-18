@@ -58,6 +58,15 @@ var model = {
   getCardDeck: function(player, cardId) {
 
   },
+  getCardClass: function(player, cardId) {
+    var i = 0, length = player.cards.length, result = undefined;
+    for (; i < length; i++) {
+      if (player.cards[i].id == cardId){
+        result = player.cards[i].cardClass;
+        return result
+      }
+    }
+  },
   getCardType: function(player, cardId) {
     var i = 0, length = player.cards.length, result = undefined;
     for (; i < length; i++) {

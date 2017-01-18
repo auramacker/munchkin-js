@@ -35,6 +35,7 @@ function ClassCard(objClassCard){
   this.id = objClassCard.id,
   this.name = objClassCard.name,
   this.img = objClassCard.img,
+  this.cardClass = objClassCard.cardClass,
   this.description = objClassCard.description,
   this.cardEffect = objClassCard.cardEffect
 
@@ -44,6 +45,7 @@ function RaceCard(objRaceCard){
   this.id = objRaceCard.id,
   this.name = objRaceCard.name,
   this.img = objRaceCard.img,
+  this.cardClass = objRaceCard.cardClass,
   this.description = objRaceCard.description,
   this.cardEffect = objRaceCard.cardEffect
 }

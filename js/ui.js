@@ -178,6 +178,7 @@ var ui = {
           var currentCard = $(this).closest(".card").attr("data-card-id");
           var cardType = model.getCardType(player, currentCard);
           var result = false, position;
+          console.log(cardType);
           if (cardType == "StuffCard") {
             var slot = model.getStuffSlot(player, currentCard); // checking slot for stuff
             switch(slot) {
@@ -200,6 +201,7 @@ var ui = {
                     player.equipWeapon(currentCard, "twoHands");
                     result = true;
                     position = "two-hand"; // class in css
+                    ui.setOpacity(position, 1);
                     player.getWeaponPower();
                   }
               break;
@@ -230,17 +232,43 @@ var ui = {
             }
           }
           else if (cardType == "ClassCard") {
-            if (!player.class1) {
-              player.equipClass(currentCard);
+            var cardClass = model.getCardClass(player, currentCard);
+            if (cardClass == "superMunchkin" && !player.superMunchkin) {
+              player.equipClassRace("superMunchkin", currentCard);
+              result = true;
+              position = "supermunchkin";
+            }
+            else if (!player.class1) {
+              player.equipClassRace("class1", currentCard);
               result = true;
               position = "class1";
             }
+            else if (player.superMunchkin) {
+              if (!player.class2) {
+                player.equipClassRace("class2", currentCard);
+                result = true;
+                position = "class2";
+              }
+            }
           }
           else if (cardType == "RaceCard") {
-            if (!player.race1) {
-              player.equipRace(currentCard);
+            var cardClass = model.getCardClass(player, currentCard);
+            if (cardClass == "halfBreed" && !player.halfBreed) {
+              player.equipClassRace("halfBreed", currentCard);
+              result = true;
+              position = "halfblood";
+            }
+            else if (!player.race1) {
+              player.equipClassRace("race1", currentCard);
               result = true;
               position = "race1";
+            }
+            else if (player.halfBreed) {
+              if (!player.race2) {
+                player.equipClassRace("race2", currentCard);
+                result = true;
+                position = "race2";
+              }
             }
           }
           if (result) {
@@ -260,10 +288,14 @@ var ui = {
   updateStrength: function(){
     $(".inventory-level").text(player.strength);
   },
+  setOpacity: function(position, opacity) {
+    $("." + position).css("opacity", opacity);
+  },
   setToInventory: function(position, cardId) {
     var img = model.getCardImage(player, cardId);
     $("." + position ).css("background-image", "url("+ img +")");
     $("." + position ).attr("data-card-id", cardId);
+    $("." + position ).append("<span class='unset-card'>-</span>");
   },
   removeFromHand: function(cardId){
     $(".card[data-card-id='"+ cardId +"']").remove();
