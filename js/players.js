@@ -54,17 +54,29 @@ function Player(objPlayer){
   },
   this.getWeaponPower = function(){
     if ((this.twoHands != "blocked") && (this.twoHands)) {
-      this.strength = this.level + this.twoHands.power;
+      this.strength += this.twoHands.power;
     }
     else if (this.leftHand && this.rightHand && (this.leftHand  != "blocked") && (this.rightHand != "blocked")) {
-      this.strength = this.level + this.leftHand.power + this.rightHand.power;
+      this.strength -= this.leftHand.power;
+      this.strength += this.leftHand.power + this.rightHand.power;
     }
     else if (this.leftHand && (this.leftHand != "blocked")) {
-      this.strength = this.level + this.leftHand.power ;
+      this.strength += this.leftHand.power ;
     }
     else if (this.rightHand && (this.rightHand != "blocked")) {
-      this.strength = this.level + this.rightHand.power;
+      this.strength += this.rightHand.power;
     }
+  },
+  this.equipHelmet = function(cardId) {
+    var i = 0; length = this.cards.length, result = false;
+    for (; i < length; i++) {
+      if (this.cards[i].id == cardId) {
+        this.helmet = this.cards[i];
+      }
+    }
+  },
+  this.getHelmetPower = function(){
+    this.strength += this.helmet.power;
   },
   this.equipRace = function() {
 

@@ -10,7 +10,7 @@ function initData(){
     createCards("treasures");
     treasuresCards = shuffle(buferTreasures);
     ui.showPack(); // show pack
-    ui.getCardsFromPack(treasuresCards, player, 10);
+    ui.getCardsFromPack(treasuresCards, player, 12);
     ui.getCardsFromPack(doorsCards, player, 2);
     // for (var i = 0; i < cpuArr.length; i++) {
       // ui.getCardsFromPack(treasuresCards, cpuArr[i], 2);

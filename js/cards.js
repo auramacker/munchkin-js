@@ -252,6 +252,19 @@
         effect: null,
         isBig: false
       };
+  stuffObjArr[5] = {
+        id: "013",
+        img: _IMGPATH + "cards/" + "013" + ".png",
+        name: "Остроконечная шляпа могущества",
+        description: null,
+        slotType: "helmet",
+        power: +3,
+        cost: 400,
+        race: null,
+        class: "wizard",
+        effect: null,
+        isBig: false
+      };
 // -----------------------------------
 // ******** poision cards variables ********
   var poisionsObjArr = [], createdPoisionsArr = [];

@@ -204,6 +204,12 @@ var ui = {
                   }
               break;
               case "helmet":
+                if (!player.helmet) {
+                  player.equipHelmet(currentCard);
+                  result = true;
+                  position = "helmet";
+                  player.getHelmetPower();
+                }
               break;
               case "bodyGear":
               break;
