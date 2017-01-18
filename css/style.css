@@ -286,6 +286,7 @@ Start Popup
   position: relative;
 }
 .card.has-option .extra-option {
+  cursor: pointer;
   position: absolute;
   top: 20px;
   right: 20px;
@@ -994,6 +995,7 @@ Right Side
   transform: translate3d(40px, -50%, 0);
 }
 .card-place {
+  position: relative;
   display: inline-block;
   margin: 0;
   padding: 0;
@@ -1006,8 +1008,40 @@ Right Side
   border-radius: 25px;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,0.2);
+  z-index: 3;
   -webkit-box-shadow: 0 2px 6px rgba(25,25,25,0.6);
   box-shadow: 0 2px 6px rgba(25,25,25,0.6);
+}
+.card-place .unset-card {
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 30px;
+  width: 30px;
+  line-height: 35px;
+  text-align: center;
+  background-color: #4c1a11;
+  border: 2px solid #ffcf4f;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  font-size: 36px;
+  color: #ffcf4f;
+  opacity: 0;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+  -webkit-box-shadow: 0 2px 2px rgba(25,25,25,0.6);
+  box-shadow: 0 2px 2px rgba(25,25,25,0.6);
+}
+.card-place:hover .unset-card {
+  opacity: 1;
+}
+.has-3child .card-place:nth-child(1) .unset-card {
+  right: auto;
+  left: 20px;
 }
 .inventory-wrap {
   position: fixed;
@@ -1039,11 +1073,24 @@ Right Side
   top: -20px;
   left: 50%;
   opacity: 0.4;
+  z-index: 4;
   -webkit-transform: translate3d(-50%, 0, 0);
   -moz-transform: translate3d(-50%, 0, 0);
   -ms-transform: translate3d(-50%, 0, 0);
   -o-transform: translate3d(-50%, 0, 0);
   transform: translate3d(-50%, 0, 0);
+}
+.has-3child.has-supermunchkin .card-place:nth-child(1),
+.has-3child.has-halfblood .card-place:nth-child(1) {
+  margin-right: 30px;
+}
+.has-3child.has-supermunchkin .card-place:nth-child(3),
+.has-3child.has-halfblood .card-place:nth-child(3) {
+  margin-left: 30px;
+}
+.has-3child.has-supermunchkin .card-place:nth-child(2),
+.has-3child.has-halfblood .card-place:nth-child(2) {
+  z-index: 2;
 }
 .inventory {
   margin: 60px;
@@ -1075,7 +1122,7 @@ Right Side
   transform: translate3d(0, 0, 0);
 }
 .inventory-top {
-  display: inline-block;
+  display: block;
 }
 .inventory-top:before,
 .inventory-top:after {
