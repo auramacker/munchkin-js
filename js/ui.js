@@ -211,7 +211,13 @@ var ui = {
                   player.getHelmetPower();
                 }
               break;
-              case "bodyGear":
+              case "gear":
+                if (!player.gear) {
+                  player.equipGear(currentCard);
+                  result = true;
+                  position = "gear";
+                  player.getGearPower();
+                }
               break;
               case "footGear":
               break;

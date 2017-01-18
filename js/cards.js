@@ -265,6 +265,19 @@
         effect: null,
         isBig: false
       };
+  stuffObjArr[6] = {
+        id: "011",
+        img: _IMGPATH + "cards/" + "011" + ".png",
+        name: "Мифрильный доспех",
+        description: null,
+        slotType: "gear",
+        power: +3,
+        cost: 600,
+        race: null,
+        class: "notWizard",
+        effect: null,
+        isBig: true
+      };
 // -----------------------------------
 // ******** poision cards variables ********
   var poisionsObjArr = [], createdPoisionsArr = [];

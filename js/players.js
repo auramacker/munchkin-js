@@ -14,7 +14,7 @@ function Player(objPlayer){
   this.isSuperMunchkin = null,
   this.ishalfBreed = null,
   this.helmet = null,
-  this.armor = null,
+  this.gear = null,
   this.rightHand = null,
   this.leftHand = null,
   this.twoHands = null,
@@ -77,6 +77,17 @@ function Player(objPlayer){
   },
   this.getHelmetPower = function(){
     this.strength += this.helmet.power;
+  },
+  this.equipGear = function(cardId){
+    var i = 0; length = this.cards.length, result = false;
+    for (; i < length; i++) {
+      if (this.cards[i].id == cardId) {
+        this.gear = this.cards[i];
+      }
+    }
+  },
+  this.getGearPower = function(){
+    this.strength += this.gear.power;
   },
   this.equipRace = function() {
 
