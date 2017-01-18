@@ -89,6 +89,17 @@ function Player(objPlayer){
   this.getGearPower = function(){
     this.strength += this.gear.power;
   },
+  this.equipFootGear = function(cardId){
+    var i = 0; length = this.cards.length, result = false;
+    for (; i < length; i++) {
+      if (this.cards[i].id == cardId) {
+        this.footGear = this.cards[i];
+      }
+    }
+  },
+  this.getFootGearPower = function(){
+    this.strength += this.footGear.power;
+  },
   this.equipRace = function() {
 
   },

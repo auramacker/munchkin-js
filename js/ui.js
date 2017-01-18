@@ -195,11 +195,11 @@ var ui = {
                   player.getWeaponPower();
                 }
               break;
-              case "twoHands":
+              case "twoHands": // slot in card
                   if (!player.twoHands) {
                     player.equipWeapon(currentCard, "twoHands");
                     result = true;
-                    position = "two-hand";
+                    position = "two-hand"; // class in css
                     player.getWeaponPower();
                   }
               break;
@@ -220,6 +220,12 @@ var ui = {
                 }
               break;
               case "footGear":
+                if (!player.footGear) {
+                  player.equipFootGear(currentCard);
+                  result = true;
+                  position = "footgear";
+                  player.getFootGearPower();
+                }
               break;
             }
             if (result) {
