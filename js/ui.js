@@ -177,11 +177,11 @@ var ui = {
         $(".options-list .equip").on("click", function(){ // on equip actions
           var currentCard = $(this).closest(".card").attr("data-card-id");
           var cardType = model.getCardType(player, currentCard);
+          var result = false, position;
           if (cardType == "StuffCard") {
             var slot = model.getStuffSlot(player, currentCard); // checking slot for stuff
             switch(slot) {
               case "oneHand":
-                var result = false, position;
                 if (!player.leftHand) {
                   player.equipWeapon(currentCard, "leftHand");
                   result = true;
@@ -228,12 +228,26 @@ var ui = {
                 }
               break;
             }
-            if (result) {
-              ui.removeFromHand(currentCard);
-              ui.setToInventory(position, currentCard);
-              model.removeCard(player, currentCard);
-              ui.updateStrength();
+          }
+          else if (cardType == "ClassCard") {
+            if (!player.class1) {
+              player.equipClass(currentCard);
+              result = true;
+              position = "class1";
             }
+          }
+          else if (cardType == "RaceCard") {
+            if (!player.race1) {
+              player.equipRace(currentCard);
+              result = true;
+              position = "race1";
+            }
+          }
+          if (result) {
+            ui.removeFromHand(currentCard);
+            ui.setToInventory(position, currentCard);
+            model.removeCard(player, currentCard);
+            ui.updateStrength();
           }
         })
         $(".options-list .drop").on("click", function(){ // on drop action

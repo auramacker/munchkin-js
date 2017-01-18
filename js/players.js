@@ -100,10 +100,20 @@ function Player(objPlayer){
   this.getFootGearPower = function(){
     this.strength += this.footGear.power;
   },
-  this.equipRace = function() {
-
+  this.equipRace = function(cardId) {
+    var i = 0; length = this.cards.length, result = false;
+    for (; i < length; i++) {
+      if (this.cards[i].id == cardId) {
+        this.race1 = this.cards[i];
+      }
+    }
   },
-  this.equipClass = function(){
-
+  this.equipClass = function(cardId){
+    var i = 0; length = this.cards.length, result = false;
+    for (; i < length; i++) {
+      if (this.cards[i].id == cardId) {
+        this.class1 = this.cards[i];
+      }
+    }
   }
 }
