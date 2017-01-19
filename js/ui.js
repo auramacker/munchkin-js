@@ -184,16 +184,20 @@ var ui = {
             switch(slot) {
               case "oneHand":
                 if (!player.leftHand) {
-                  player.equipWeapon(currentCard, "leftHand");
-                  result = true;
-                  position = "left-hand";
-                  player.getWeaponPower();
+                  result = player.equipWeapon(currentCard, "leftHand");
+                  if (result == true) {
+                    position = "left-hand";
+                    player.getWeaponPower();
+                  }
+                  else throw result
                 }
                 else if (!player.rightHand) {
-                  player.equipWeapon(currentCard, "rightHand");
-                  result = true;
-                  position = "right-hand";
-                  player.getWeaponPower();
+                  result = player.equipWeapon(currentCard, "rightHand");
+                  if (result == true) {
+                    position = "right-hand";
+                    player.getWeaponPower();
+                  }
+                  else throw result
                 }
               break;
               case "twoHands": // slot in card

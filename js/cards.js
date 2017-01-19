@@ -229,7 +229,7 @@
         race: null,
         class: null,
         effect: null,
-        isBig: false
+        isBig: true
       };
   stuffObjArr[1] = {
         id: "138",

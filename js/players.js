@@ -19,7 +19,7 @@ function Player(objPlayer){
   this.leftHand = null,
   this.twoHands = null,
   this.footGear = null,
-  this.isHasBigItem = null,
+  this.isHasBigItem = false,
   this.cards = [],
   this.curse = [], // проклятие
   this.equipment = [],
@@ -38,19 +38,58 @@ function Player(objPlayer){
     var i = 0; length = this.cards.length, result = false;
     for (; i < length; i++) {
       if (this.cards[i].id == cardId) {
-        if (where == "twoHands" && !this.twoHands) {
-          this[where] = this.cards[i];
-          this.leftHand = "blocked";
-          this.rightHand = "blocked";
-          break;
+        result = this.checkWeapon(this.cards[i]);
+        if (result == true) {
+          if (where == "twoHands" && !this.twoHands) {
+            this[where] = this.cards[i];
+            this.leftHand = "blocked";
+            this.rightHand = "blocked";
+            return result
+          }
+          else if (!this[where]) {
+            this[where] = this.cards[i];
+            this.twoHands = "blocked";
+            return result
+          }
         }
-        else if (!this[where]) {
-          this[where] = this.cards[i];
-          this.twoHands = "blocked";
-          break;
-        }
+        else return result
       }
     }
+  },
+  this.checkWeapon = function(card){
+    var result = {}, lastResult;
+    debugger;
+    if (card.isBig) {
+      if (!this.isHasBigItem) {
+        this.isHasBigItem = true;
+        result.isBig = true;
+      }
+      else {
+        result.isBig = "You already have big item!";
+      }
+    }
+    else {
+      result.isBig = true;
+    }
+    if (card.class == null) {
+      result.class = true;
+    }
+    else if ((card.class == this.class1) || (card.class == this.class2)) {
+      result.class = true;
+    }
+    else {
+      result.class = "You have not " + card.class + " class!";
+    }
+    for (var prop in result) {
+      if (result[prop] != true) {
+        lastResult = result[prop];
+        return lastResult;
+      }
+      else {
+        lastResult = true;
+      }
+    }
+    return lastResult
   },
   this.getWeaponPower = function(){
     if ((this.twoHands != "blocked") && (this.twoHands)) {
@@ -109,15 +148,6 @@ function Player(objPlayer){
       }
     }
   },
-  // this.equipClass = function(where ,cardId) {
-  //   var i = 0; length = this.cards.length, result = false;
-  //   for (; i < length; i++) {
-  //     if (this.cards[i].id == cardId) {
-  //       this[where] = this.cards[i];
-  //       break;
-  //     }
-  //   }
-  // },
   this.equipClass = function(cardId){
     var i = 0; length = this.cards.length, result = false;
     for (; i < length; i++) {
