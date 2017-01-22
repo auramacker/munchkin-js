@@ -187,7 +187,6 @@ Preloader
 
 
 .message-list
-	display none
 	position fixed
 	top 30px
 	right 30px
@@ -199,6 +198,10 @@ Preloader
 	padding 15px
 	background-color rgba(#000, 80%)
 	z-index 9999999
+	opacity .75
+	transition(all 300ms ease-in-out)
+	&:hover
+		opacity 1
 	p
 		margin 0 0 5px
 		font-size 14px
