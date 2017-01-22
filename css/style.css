@@ -123,6 +123,41 @@ Preloader
   left: 50%;
   margin: -50px 0 0 -50px;
 }
+.message-list {
+  position: fixed;
+  top: 60px;
+  right: 60px;
+  width: 300px;
+  max-height: 200px;
+  overflow-y: auto;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  border: 1px solid #191919;
+  padding: 15px;
+  background-color: rgba(0,0,0,0.8);
+}
+.message-list p {
+  margin: 0 0 5px;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(255,255,255,0.6);
+  font-family: Helvetica;
+}
+.message-list p:last-child {
+  margin-bottom: 0;
+}
+.message-list p.success {
+  color: #5cb85c;
+}
+.message-list p.info {
+  color: #5bc0de;
+}
+.message-list p.warning {
+  color: #f0ad4e;
+}
+.message-list p.danger {
+  color: #d9534f;
+}
 /*
 Start Popup
 */
@@ -759,9 +794,9 @@ Right Side
 }
 .player-buttons .round-btn {
   display: inline-block;
-  height: 40px;
-  width: 40px;
-  line-height: 40px;
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
   -webkit-border-radius: 50%;
   border-radius: 50%;
   text-align: center;
@@ -771,21 +806,21 @@ Right Side
 }
 .player-buttons .round-btn img {
   display: inline-block;
-  height: 30px;
-  line-height: 40px;
+  height: 40px;
+  line-height: 50px;
   width: auto;
   vertical-align: middle;
 }
 .player-buttons .round-btn.btn-battle {
-  height: 60px;
-  width: 60px;
-  line-height: 60px;
+  height: 70px;
+  width: 70px;
+  line-height: 70px;
   border-width: 4px;
 }
 .player-buttons .round-btn.btn-battle img {
   display: inline-block;
-  height: 40px;
-  line-height: 60px;
+  height: 50px;
+  line-height: 70px;
   width: auto;
   vertical-align: middle;
 }
