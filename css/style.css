@@ -755,10 +755,46 @@ Right Side
   right: 0;
   padding-right: 60px;
   padding-bottom: 30px;
+  white-space: nowrap;
 }
-.player-buttons a {
-  margin-right: 10px;
-  margin-bottom: 10px;
+.player-buttons .round-btn {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  text-align: center;
+  background-color: rgba(255,207,79,0.7);
+  border: 3px solid #4c1a11;
+  vertical-align: middle;
+}
+.player-buttons .round-btn img {
+  display: inline-block;
+  height: 30px;
+  line-height: 40px;
+  width: auto;
+  vertical-align: middle;
+}
+.player-buttons .round-btn.btn-battle {
+  height: 60px;
+  width: 60px;
+  line-height: 60px;
+  border-width: 4px;
+}
+.player-buttons .round-btn.btn-battle img {
+  display: inline-block;
+  height: 40px;
+  line-height: 60px;
+  width: auto;
+  vertical-align: middle;
+}
+.player-buttons .round-btn.btn-disable {
+  background-color: #ddd;
+  border-color: #555;
+}
+.player-buttons .round-btn.btn-disable img {
+  filter: grayscale(100%);
 }
 @-moz-keyframes show_cards_in_hand {
   from {
