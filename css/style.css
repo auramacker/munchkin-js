@@ -158,6 +158,11 @@ Preloader
 .message-list p.danger {
   color: #d9534f;
 }
+.message-list p span {
+  color: rgba(255,255,255,0.8);
+  margin-right: 6px;
+  font-size: 10px;
+}
 /*
 Start Popup
 */
