@@ -144,7 +144,7 @@ Preloader
   transition: all 300ms ease-in-out;
 }
 .message-list:hover {
-  opacity: 1;
+  opacity: 1 !important;
 }
 .message-list p {
   margin: 0 0 5px;
