@@ -189,7 +189,7 @@ var ui = {
                     position = "left-hand";
                     player.getWeaponPower();
                   }
-                  else throw result
+                  else ui.showLog(result, "danger")
                 }
                 else if (!player.rightHand) {
                   result = player.equipWeapon(currentCard, "rightHand");
@@ -197,7 +197,7 @@ var ui = {
                     position = "right-hand";
                     player.getWeaponPower();
                   }
-                  else throw result
+                  else ui.showLog(result, "danger")
                 }
               break;
               case "twoHands": // slot in card
@@ -208,7 +208,7 @@ var ui = {
                       ui.setOpacity(position, 1);
                       player.getWeaponPower();
                     }
-                    else throw result
+                    else ui.showLog(result, "danger")
                   }
               break;
               case "helmet":
@@ -218,7 +218,7 @@ var ui = {
                     position = "helmet";
                     player.getHelmetPower();
                   }
-                  else throw result
+                  else ui.showLog(result, "danger")
                 }
               break;
               case "gear":
@@ -228,7 +228,7 @@ var ui = {
                     position = "gear";
                     player.getGearPower();
                   }
-                  else throw result
+                  else ui.showLog(result, "danger")
                 }
               break;
               case "footGear":
@@ -238,7 +238,7 @@ var ui = {
                     position = "footgear";
                     player.getFootGearPower();
                   }
-                  else throw result
+                  else ui.showLog(result, "danger")
                 }
               break;
             }
@@ -283,7 +283,7 @@ var ui = {
               }
             }
           }
-          if (result) {
+          if (result == true) {
             ui.removeFromHand(currentCard);
             ui.setToInventory(position, currentCard);
             model.removeCard(player, currentCard);
@@ -297,6 +297,25 @@ var ui = {
         });
       });
     },
+  showLog: function(text, type){ // success| warning| info| danger
+    var date = new Date();
+    function addZero(i) {
+      if (i < 10) {
+        i = "0" + i;
+      }
+      return i;
+    }
+    var h = addZero(date.getHours());
+    var m = addZero(date.getMinutes());
+    var s = addZero(date.getSeconds());
+    var time = h + ":" + m + ":" + s;
+    $(".message-list").prepend("<p class='"+ type +"'><time>"+ time +"&nbsp;&nbsp;</time><span>"+ text +"</span></p>");
+    ui.setOpacity("message-list", 1);
+    setTimeout(function(){
+      ui.setOpacity("message-list", 0.75);
+    }, 2000);
+
+  },
   updateStrength: function(){
     $(".inventory-level").text(player.strength);
   },
