@@ -124,6 +124,7 @@ Preloader
   margin: -50px 0 0 -50px;
 }
 .message-list {
+  display: none;
   position: fixed;
   top: 30px;
   right: 30px;
@@ -135,6 +136,7 @@ Preloader
   border: 1px solid #191919;
   padding: 15px;
   background-color: rgba(0,0,0,0.8);
+  z-index: 9999999;
 }
 .message-list p {
   margin: 0 0 5px;
