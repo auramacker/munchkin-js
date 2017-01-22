@@ -58,7 +58,6 @@ function Player(objPlayer){
   },
   this.checkWeapon = function(card){
     var result = {}, lastResult;
-    debugger;
     if (card.isBig) {
       if (!this.isHasBigItem) {
         this.isHasBigItem = true;
@@ -74,8 +73,13 @@ function Player(objPlayer){
     if (card.class == null) {
       result.class = true;
     }
-    else if ((card.class == this.class1) || (card.class == this.class2)) {
-      result.class = true;
+    else if ((this.class1 != null) || (this.class2 != null)) {
+      if ((card.class == this.class1.cardClass) || (card.class == this.class2.cardClass)) {
+        result.class = true;
+      }
+      else {
+        result.class = "You have not " + card.class + " class!";
+      }
     }
     else {
       result.class = "You have not " + card.class + " class!";
@@ -110,34 +114,187 @@ function Player(objPlayer){
     var i = 0; length = this.cards.length, result = false;
     for (; i < length; i++) {
       if (this.cards[i].id == cardId) {
-        this.helmet = this.cards[i];
+        result = this.checkHelmet(this.cards[i]);
+        if (result == true) {
+          this.helmet = this.cards[i];
+          return result
+        }
+        else return result
       }
     }
   },
   this.getHelmetPower = function(){
     this.strength += this.helmet.power;
   },
+  this.checkHelmet = function(card){
+    var result = {}, lastResult;
+    if (card.isBig) {
+      if (!this.isHasBigItem) {
+        this.isHasBigItem = true;
+        result.isBig = true;
+      }
+      else {
+        result.isBig = "You already have big item!";
+      }
+    }
+    else {
+      result.isBig = true;
+    }
+    if (card.class == null) {
+      result.class = true;
+    }
+    else if ((this.class1 != null) || (this.class2 != null)) {
+      if ((card.class == this.class1.cardClass) || (card.class == this.class2.cardClass)) {
+        result.class = true;
+      }
+      else {
+        result.class = "You have not " + card.class + " class!";
+      }
+    }
+    else {
+      result.class = "You have not " + card.class + " class!";
+    }
+    for (var prop in result) {
+      if (result[prop] != true) {
+        lastResult = result[prop];
+        return lastResult;
+      }
+      else {
+        lastResult = true;
+      }
+    }
+    return lastResult
+  },
   this.equipGear = function(cardId){
     var i = 0; length = this.cards.length, result = false;
     for (; i < length; i++) {
       if (this.cards[i].id == cardId) {
-        this.gear = this.cards[i];
+        result = this.checkGear(this.cards[i]);
+        if (result == true) {
+          this.gear = this.cards[i];
+          return result
+        }
+        else return result
       }
     }
   },
   this.getGearPower = function(){
     this.strength += this.gear.power;
   },
+  this.checkGear = function(card){
+    var result = {}, lastResult;
+    if (card.isBig) {
+      if (!this.isHasBigItem) {
+        result.isBig = true;
+      }
+      else {
+        result.isBig = "You already have big item!";
+      }
+    }
+    else {
+      result.isBig = true;
+    }
+    if (card.class == null) {
+      result.class = true;
+    }
+    else if ((this.class1 != null) || (this.class2 != null)) {
+      var not, notClass;
+      not = card.class.search("!");
+      if (not != -1) {
+        notClass = card.class.slice(1);
+        if ((notClass == this.class1.cardClass) || (notClass == this.class2.cardClass)) {
+          result.class = "You have " + notClass + " class!";
+        }
+      }
+      else {
+        if ((card.class == this.class1.cardClass) || (card.class == this.class2.cardClass)) {
+          result.class = true;
+        }
+        else {
+          result.class = "You have not " + card.class + " class!";
+        }
+      }
+    }
+    else {
+      var not;
+      not = card.class.search("!");
+      if (not != -1) {
+        result.class = true;
+      }
+      else {
+        result.class = "You have not " + card.class + " class!";
+      }
+    }
+    for (var prop in result) {
+      if (result[prop] != true) {
+        lastResult = result[prop];
+        return lastResult;
+      }
+      else {
+        lastResult = true;
+      }
+    }
+    if (lastResult == true) {
+      if (result.isBig == true) {
+        this.isHasBigItem = true;
+      }
+    }
+    return lastResult
+  },
   this.equipFootGear = function(cardId){
     var i = 0; length = this.cards.length, result = false;
     for (; i < length; i++) {
       if (this.cards[i].id == cardId) {
-        this.footGear = this.cards[i];
+        result = this.checkFootGear(this.cards[i]);
+        if (result == true) {
+          this.footGear = this.cards[i];
+          return result
+        }
+        else return result
       }
     }
   },
   this.getFootGearPower = function(){
     this.strength += this.footGear.power;
+  },
+  this.checkFootGear = function(card) {
+    var result = {}, lastResult;
+    if (card.isBig) {
+      if (!this.isHasBigItem) {
+        this.isHasBigItem = true;
+        result.isBig = true;
+      }
+      else {
+        result.isBig = "You already have big item!";
+      }
+    }
+    else {
+      result.isBig = true;
+    }
+    if (card.class == null) {
+      result.class = true;
+    }
+    else if ((this.class1 != null) || (this.class2 != null)) {
+      if ((card.class == this.class1.cardClass) || (card.class == this.class2.cardClass)) {
+        result.class = true;
+      }
+      else {
+        result.class = "You have not " + card.class + " class!";
+      }
+    }
+    else {
+      result.class = "You have not " + card.class + " class!";
+    }
+    for (var prop in result) {
+      if (result[prop] != true) {
+        lastResult = result[prop];
+        return lastResult;
+      }
+      else {
+        lastResult = true;
+      }
+    }
+    return lastResult
   },
   this.equipClassRace = function(where ,cardId) {
     var i = 0; length = this.cards.length, result = false;

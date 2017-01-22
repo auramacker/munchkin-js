@@ -202,35 +202,43 @@ var ui = {
               break;
               case "twoHands": // slot in card
                   if (!player.twoHands) {
-                    player.equipWeapon(currentCard, "twoHands");
-                    result = true;
-                    position = "two-hand"; // class in css
-                    ui.setOpacity(position, 1);
-                    player.getWeaponPower();
+                    result = player.equipWeapon(currentCard, "twoHands");
+                    if (result == true) {
+                      position = "two-hand"; // class in css
+                      ui.setOpacity(position, 1);
+                      player.getWeaponPower();
+                    }
+                    else throw result
                   }
               break;
               case "helmet":
                 if (!player.helmet) {
-                  player.equipHelmet(currentCard);
-                  result = true;
-                  position = "helmet";
-                  player.getHelmetPower();
+                  result = player.equipHelmet(currentCard);
+                  if (result == true) {
+                    position = "helmet";
+                    player.getHelmetPower();
+                  }
+                  else throw result
                 }
               break;
               case "gear":
                 if (!player.gear) {
-                  player.equipGear(currentCard);
-                  result = true;
-                  position = "gear";
-                  player.getGearPower();
+                  result = player.equipGear(currentCard);
+                  if (result == true ) {
+                    position = "gear";
+                    player.getGearPower();
+                  }
+                  else throw result
                 }
               break;
               case "footGear":
                 if (!player.footGear) {
-                  player.equipFootGear(currentCard);
-                  result = true;
-                  position = "footgear";
-                  player.getFootGearPower();
+                  result = player.equipFootGear(currentCard);
+                  if (result == true) {
+                    position = "footgear";
+                    player.getFootGearPower();
+                  }
+                  else throw result
                 }
               break;
             }

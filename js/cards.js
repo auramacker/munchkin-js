@@ -229,7 +229,7 @@
         race: null,
         class: null,
         effect: null,
-        isBig: true
+        isBig: false
       };
   stuffObjArr[1] = {
         id: "138",
@@ -306,7 +306,7 @@
         power: +3,
         cost: 600,
         race: null,
-        class: "notWizard",
+        class: "!wizard",
         effect: null,
         isBig: true
       };
