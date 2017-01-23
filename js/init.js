@@ -16,9 +16,6 @@ function initData(){
       // ui.getCardsFromPack(treasuresCards, cpuArr[i], 2);
       // ui.getCardsFromPack(doorsCards, cpuArr[i], 2);
     // }
-    $('.player-user--inventory').click(function(){
-      $('.inventory-wrap').toggleClass('is-visible');
-    });
     gameLoop(player);
 };
 

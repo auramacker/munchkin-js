@@ -92,5 +92,22 @@ var model = {
         return player.cards[i]
       }
     }
+  },
+  unsetCard: function(player, cardId) {
+    var result = false;
+    for (prop in player) {
+      if (player[prop] != null) {
+        if (player[prop].id == cardId) {
+          player.cards.unshift(player[prop]);
+          if (player[prop].power) {
+            player.strength -= player[prop].power;
+          }
+          player[prop] = null;
+          result = true;
+          return result
+        }
+      }
+    }
+    return result
   }
 };

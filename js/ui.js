@@ -138,165 +138,153 @@ var ui = {
     }
   },
   inventorySetting: function(){
+    ui.addButtonsToCards();
+    $("body").on("click", ".extra-option", function(){
+        // moving to inventory
+          if (!$(this).hasClass("has-list")) {
+            $(this).toggleClass("has-list");
+            $(this).parent().find(".options-list").show();
+            $(this).parent().toggleClass("options-opened");
+          }
+          else {
+            $(this).removeClass("has-list");
+            $(this).parent().find(".options-list").hide();
+            $(this).parent().removeClass("options-opened");
+          }
+    });
     $(".player-user--inventory").click(function(){
-        var races = model.getCardTypeId(player, "RaceCard"),
-            classes = model.getCardTypeId(player, "ClassCard"),
-            stuff = model.getCardTypeId(player, "StuffCard"),
-            id = [] ;
-        id = races.concat(classes, stuff);
-          for (var i = 0; i < id.length; i++) {
-            var isCost = model.isHasCost(player, id[i]), costResult = "";
-            if (isCost) {
-              costResult = "<span class='btn sell'>Продать</span>";
-            }
-            if ($(".card[data-card-id='"+ id[i] +"'] .extra-option").length == 0) {
-              $(".card[data-card-id='"+ id[i] +"']").toggleClass("has-option");
-              $(".card[data-card-id='"+ id[i] +"']").append("<div class='extra-option'>+</div>");
-              // $(".card[data-card-id='"+ id[i] +"'] .extra-option").toggleClass("has-list");
-              $(".card[data-card-id='"+ id[i] +"']").append("<div class='options-list'>\
-              <span class='btn equip'>Экипировать</span>\
-               " + costResult + "\
-              <span class='btn drop'>Скинуть</span>\
-              </div>");
-              $(".options-list").hide();
-            }
-          }
-        $(".extra-option").on("click", function(){
-            // moving to inventory
-              if (!$(this).hasClass("has-list")) {
-                $(this).toggleClass("has-list");
-                $(this).parent().find(".options-list").show();
-                $(this).parent().toggleClass("options-opened");
+      $('.inventory-wrap').toggleClass('is-visible');
+    });
+    $("body").on("click", ".equip", function(){ // on equip actions
+      var currentCard = $(this).closest(".card").attr("data-card-id");
+      var cardType = model.getCardType(player, currentCard);
+      var result = false, position;
+      console.log(cardType);
+      if (cardType == "StuffCard") {
+        var slot = model.getStuffSlot(player, currentCard); // checking slot for stuff
+        switch(slot) {
+          case "oneHand":
+            if (!player.leftHand) {
+              result = player.equipWeapon(currentCard, "leftHand");
+              if (result == true) {
+                position = "left-hand";
+                player.getWeaponPower();
               }
-              else {
-                $(this).removeClass("has-list");
-                $(this).parent().find(".options-list").hide();
-                $(this).parent().removeClass("options-opened");
+              else ui.showLog(result, "danger")
+            }
+            else if (!player.rightHand) {
+              result = player.equipWeapon(currentCard, "rightHand");
+              if (result == true) {
+                position = "right-hand";
+                player.getWeaponPower();
               }
-            });
-        $(".options-list .equip").on("click", function(){ // on equip actions
-          var currentCard = $(this).closest(".card").attr("data-card-id");
-          var cardType = model.getCardType(player, currentCard);
-          var result = false, position;
-          console.log(cardType);
-          if (cardType == "StuffCard") {
-            var slot = model.getStuffSlot(player, currentCard); // checking slot for stuff
-            switch(slot) {
-              case "oneHand":
-                if (!player.leftHand) {
-                  result = player.equipWeapon(currentCard, "leftHand");
-                  if (result == true) {
-                    position = "left-hand";
-                    player.getWeaponPower();
-                  }
-                  else ui.showLog(result, "danger")
-                }
-                else if (!player.rightHand) {
-                  result = player.equipWeapon(currentCard, "rightHand");
-                  if (result == true) {
-                    position = "right-hand";
-                    player.getWeaponPower();
-                  }
-                  else ui.showLog(result, "danger")
-                }
-              break;
-              case "twoHands": // slot in card
-                  if (!player.twoHands) {
-                    result = player.equipWeapon(currentCard, "twoHands");
-                    if (result == true) {
-                      position = "two-hand"; // class in css
-                      ui.setOpacity(position, 1);
-                      player.getWeaponPower();
-                    }
-                    else ui.showLog(result, "danger")
-                  }
-              break;
-              case "helmet":
-                if (!player.helmet) {
-                  result = player.equipHelmet(currentCard);
-                  if (result == true) {
-                    position = "helmet";
-                    player.getHelmetPower();
-                  }
-                  else ui.showLog(result, "danger")
-                }
-              break;
-              case "gear":
-                if (!player.gear) {
-                  result = player.equipGear(currentCard);
-                  if (result == true ) {
-                    position = "gear";
-                    player.getGearPower();
-                  }
-                  else ui.showLog(result, "danger")
-                }
-              break;
-              case "footGear":
-                if (!player.footGear) {
-                  result = player.equipFootGear(currentCard);
-                  if (result == true) {
-                    position = "footgear";
-                    player.getFootGearPower();
-                  }
-                  else ui.showLog(result, "danger")
-                }
-              break;
+              else ui.showLog(result, "danger")
             }
-          }
-          else if (cardType == "ClassCard") {
-            var cardClass = model.getCardClass(player, currentCard);
-            if (cardClass == "superMunchkin" && !player.superMunchkin) {
-              player.equipClassRace("superMunchkin", currentCard);
-              result = true;
-              position = "supermunchkin";
-            }
-            else if (!player.class1) {
-              player.equipClassRace("class1", currentCard);
-              result = true;
-              position = "class1";
-            }
-            else if (player.superMunchkin) {
-              if (!player.class2) {
-                player.equipClassRace("class2", currentCard);
-                result = true;
-                position = "class2";
+          break;
+          case "twoHands": // slot in card
+              if (!player.twoHands) {
+                result = player.equipWeapon(currentCard, "twoHands");
+                if (result == true) {
+                  position = "two-hand"; // class in css
+                  ui.setOpacity(position, 1);
+                  player.getWeaponPower();
+                }
+                else ui.showLog(result, "danger")
               }
-            }
-          }
-          else if (cardType == "RaceCard") {
-            var cardClass = model.getCardClass(player, currentCard);
-            if (cardClass == "halfBreed" && !player.halfBreed) {
-              player.equipClassRace("halfBreed", currentCard);
-              result = true;
-              position = "halfblood";
-            }
-            else if (!player.race1) {
-              player.equipClassRace("race1", currentCard);
-              result = true;
-              position = "race1";
-            }
-            else if (player.halfBreed) {
-              if (!player.race2) {
-                player.equipClassRace("race2", currentCard);
-                result = true;
-                position = "race2";
+          break;
+          case "helmet":
+            if (!player.helmet) {
+              result = player.equipHelmet(currentCard);
+              if (result == true) {
+                position = "helmet";
+                player.getHelmetPower();
               }
+              else ui.showLog(result, "danger")
             }
+          break;
+          case "gear":
+            if (!player.gear) {
+              result = player.equipGear(currentCard);
+              if (result == true ) {
+                position = "gear";
+                player.getGearPower();
+              }
+              else ui.showLog(result, "danger")
+            }
+          break;
+          case "footGear":
+            if (!player.footGear) {
+              result = player.equipFootGear(currentCard);
+              if (result == true) {
+                position = "footgear";
+                player.getFootGearPower();
+              }
+              else ui.showLog(result, "danger")
+            }
+          break;
+        }
+      }
+      else if (cardType == "ClassCard") {
+        var cardClass = model.getCardClass(player, currentCard);
+        if (cardClass == "superMunchkin" && !player.superMunchkin) {
+          player.equipClassRace("superMunchkin", currentCard);
+          result = true;
+          position = "supermunchkin";
+        }
+        else if (!player.class1) {
+          player.equipClassRace("class1", currentCard);
+          result = true;
+          position = "class1";
+        }
+        else if (player.superMunchkin) {
+          if (!player.class2) {
+            player.equipClassRace("class2", currentCard);
+            result = true;
+            position = "class2";
           }
-          if (result == true) {
-            ui.removeFromHand(currentCard);
-            ui.setToInventory(position, currentCard);
-            model.removeCard(player, currentCard);
-            ui.updateStrength();
+        }
+      }
+      else if (cardType == "RaceCard") {
+        var cardClass = model.getCardClass(player, currentCard);
+        if (cardClass == "halfBreed" && !player.halfBreed) {
+          player.equipClassRace("halfBreed", currentCard);
+          result = true;
+          position = "halfblood";
+        }
+        else if (!player.race1) {
+          player.equipClassRace("race1", currentCard);
+          result = true;
+          position = "race1";
+        }
+        else if (player.halfBreed) {
+          if (!player.race2) {
+            player.equipClassRace("race2", currentCard);
+            result = true;
+            position = "race2";
           }
-        })
-        $(".options-list .drop").on("click", function(){ // on drop action
-          var currentCardId = $(this).closest(".card").attr("data-card-id");
-          ui.addToRebound(currentCardId);
-          ui.removeFromHand(currentCardId);
-        });
-      });
-    },
+        }
+      }
+      if (result == true) {
+        ui.removeFromHand(currentCard);
+        ui.setToInventory(position, currentCard);
+        model.removeCard(player, currentCard);
+        ui.updateStrength();
+      }
+    });
+    $("body").on("click", ".drop", function(){ // on drop action
+      var currentCardId = $(this).closest(".card").attr("data-card-id");
+      ui.addToRebound(currentCardId);
+      ui.removeFromHand(currentCardId);
+    });
+    $("body").on("click", ".unset-card", function(){ // unset card
+      var cardId = $(this).parent().attr("data-card-id"), cardClass, result;
+      cardClass = $(this).parent().attr("class").split(" ")[1];
+      $(this).parent().css("background-image", "url(" + _IMGPATH + "cards/" + cardClass + ".png)");
+      result = model.unsetCard(player, cardId);
+      ui.showCardsInHand(0);
+      ui.addButtonsToCards();
+    });
+  },
   showLog: function(text, type){ // success| warning| info| danger
     var date = new Date();
     function addZero(i) {
@@ -326,10 +314,34 @@ var ui = {
     var img = model.getCardImage(player, cardId);
     $("." + position ).css("background-image", "url("+ img +")");
     $("." + position ).attr("data-card-id", cardId);
-    $("." + position ).append("<span class='unset-card'>-</span>");
+    $("." + position + " .unset-card").show();
   },
   removeFromHand: function(cardId){
     $(".card[data-card-id='"+ cardId +"']").remove();
+  },
+  addButtonsToCards: function(){
+    var races = model.getCardTypeId(player, "RaceCard"),
+        classes = model.getCardTypeId(player, "ClassCard"),
+        stuff = model.getCardTypeId(player, "StuffCard"),
+        id = [] ;
+    id = races.concat(classes, stuff);
+      for (var i = 0; i < id.length; i++) {
+        var isCost = model.isHasCost(player, id[i]), costResult = "";
+        if (isCost) {
+          costResult = "<span class='btn sell'>Продать</span>";
+        }
+        if ($(".card[data-card-id='"+ id[i] +"'] .extra-option").length == 0) {
+          $(".card[data-card-id='"+ id[i] +"']").toggleClass("has-option");
+          $(".card[data-card-id='"+ id[i] +"']").append("<div class='extra-option'>+</div>");
+          // $(".card[data-card-id='"+ id[i] +"'] .extra-option").toggleClass("has-list");
+          $(".card[data-card-id='"+ id[i] +"']").append("<div class='options-list'>\
+          <span class='btn equip'>Экипировать</span>\
+           " + costResult + "\
+          <span class='btn drop'>Скинуть</span>\
+          </div>");
+        }
+      }
+      $(".options-list").hide();
   },
   addToRebound: function(cardId){
     var currentCard, cardBackface;
