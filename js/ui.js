@@ -154,6 +154,12 @@ var ui = {
     });
     $(".player-user--inventory").click(function(){
       $('.inventory-wrap').toggleClass('is-visible');
+      if ($(".extra-option").css("display") == "none") {
+        $(".extra-option").show();
+      }
+      else {
+        $(".extra-option").hide();
+      }
     });
     $("body").on("click", ".equip", function(){ // on equip actions
       var currentCard = $(this).closest(".card").attr("data-card-id");
@@ -283,6 +289,12 @@ var ui = {
       result = model.unsetCard(player, cardId);
       ui.showCardsInHand(0);
       ui.addButtonsToCards();
+      var container = $(".player-user--cards"),
+          scrollTo = $(".player-user--cards").children().first();
+          console.log(scrollTo);
+      container.scrollLeft(
+        scrollTo.offset().left - container.offset().left + container.scrollLeft() - 20
+      )
     });
   },
   showLog: function(text, type){ // success| warning| info| danger
@@ -341,6 +353,10 @@ var ui = {
           </div>");
         }
       }
+      if ($(".inventory-wrap").hasClass("is-visible")) {
+        $(".extra-option").show();
+      }
+      else $(".extra-option").hide();
       $(".options-list").hide();
   },
   addToRebound: function(cardId){
