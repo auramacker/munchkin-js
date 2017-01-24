@@ -4,6 +4,11 @@ _MAXLEVEL = 10;
 _CARDSSIZE = 5;
 _IMGPATH = "images/";
 _EFFECTSPLITTER = "##";
+
+var gameObject = {
+  pulledCard: null,
+  gameStatus: "not started"
+}
 // ********* Doors cards constructors *********
 function MonsterCard(objMonster){ // {id, img, name, description, numTreasures, monsterLevel, looseLevel, gender, race, class}
 this.deck = "doors",

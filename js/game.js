@@ -12,9 +12,15 @@
 })();
 function gameLoop(currentPlayer){
   setInventory();
+  $("body").on("click", ".btn-battle", function(){
+    openDoor();
+  });
   function setInventory() {
     if (currentPlayer.isUser) {
       ui.inventorySetting();
     }
+  };
+  function openDoor(){
+    ui.pullCard("doors");
   }
 }

@@ -1,4 +1,23 @@
 var model = {
+  returnFromPack: function(pack, cardId) {
+    var i = 0, length, result;
+    if (pack == "doors") {
+      length = doorsCards.length;
+      for (; i < length; i ++) {
+        if (doorsCards[i].id == cardId) {
+          return doorsCards[i]
+        }
+      }
+    }
+    else if (pack == "treasures") {
+      length = treasuresCards.length;
+      for (; i < length; i ++) {
+        if (treasuresCards[i].id == cardId) {
+          return treasuresCards[i]
+        }
+      }
+    }
+  },
   getCard: function(pack, player, number){
     var i = 0;
     for (; i < number; i++) {
@@ -67,7 +86,10 @@ var model = {
       }
     }
   },
-  getCardType: function(player, cardId) {
+  getCardType: function(card) {
+    return card.constructor.name.toString()
+  },
+  getPlayerCardType: function(player, cardId) {
     var i = 0, length = player.cards.length, result = undefined;
     for (; i < length; i++) {
       if (player.cards[i].id == cardId) {
@@ -101,6 +123,9 @@ var model = {
           player.cards.unshift(player[prop]);
           if (player[prop].power) {
             player.strength -= player[prop].power;
+          }
+          if (player[prop].isBig == true) {
+            player.isHasBigItem = false;
           }
           player[prop] = null;
           result = true;

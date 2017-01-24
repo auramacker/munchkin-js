@@ -137,6 +137,29 @@ var ui = {
       timer += 200;
     }
   },
+  pullCard: function(pack){
+    if (pack == "doors") {
+      var card = $(".pack--doors").children().first();
+      var cardId = card.attr("data-card-id"), cardType;
+      card.removeClass("flipped");
+      gameObject.pulledCard = model.returnFromPack("doors", cardId);
+      cardType = model.getCardType(gameObject.pulledCard);
+      switch (cardType) {
+        case "RaceCard":
+          ui.showLog("Вы нашли карту Расы!", "info");
+        break;
+        case "ClassCard":
+          ui.showLog("Вы нашли карту Класса!", "info");
+        break;
+        case "MonsterCard":
+          ui.showLog("Вы наткнулись на Монстра!", "danger");
+        break;
+        case "CurseCard":
+          ui.showLog("Вы вытащили Проклятие!", "danger");
+        break;
+      }
+    }
+  },
   inventorySetting: function(){
     ui.addButtonsToCards();
     $("body").on("click", ".extra-option", function(){
@@ -163,7 +186,7 @@ var ui = {
     });
     $("body").on("click", ".equip", function(){ // on equip actions
       var currentCard = $(this).closest(".card").attr("data-card-id");
-      var cardType = model.getCardType(player, currentCard);
+      var cardType = model.getPlayerCardType(player, currentCard);
       var result = false, position;
       console.log(cardType);
       if (cardType == "StuffCard") {
