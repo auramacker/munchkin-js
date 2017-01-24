@@ -283,18 +283,21 @@ var ui = {
       ui.removeFromHand(currentCardId);
     });
     $("body").on("click", ".unset-card", function(){ // unset card
-      var cardId = $(this).parent().attr("data-card-id"), cardClass, result;
-      cardClass = $(this).parent().attr("class").split(" ")[1];
-      $(this).parent().css("background-image", "url(" + _IMGPATH + "cards/" + cardClass + ".png)");
-      result = model.unsetCard(player, cardId);
-      ui.showCardsInHand(0);
-      ui.addButtonsToCards();
-      var container = $(".player-user--cards"),
-          scrollTo = $(".player-user--cards").children().first();
-          console.log(scrollTo);
-      container.scrollLeft(
-        scrollTo.offset().left - container.offset().left + container.scrollLeft() - 20
-      )
+      if ($(this).parent().attr("data-card-id")) {
+        var cardId = $(this).parent().attr("data-card-id"), cardClass, result;
+        cardClass = $(this).parent().attr("class").split(" ")[1];
+        $(this).parent().css("background-image", "url(" + _IMGPATH + "cards/" + cardClass + ".png)");
+        $(this).parent().removeAttr("data-card-id");
+        result = model.unsetCard(player, cardId);
+        ui.showCardsInHand(0);
+        ui.addButtonsToCards();
+        var container = $(".player-user--cards"),
+            scrollTo = $(".player-user--cards").children().first();
+            console.log(scrollTo);
+        container.scrollLeft(
+          scrollTo.offset().left - container.offset().left + container.scrollLeft() - 20
+        )
+      }
     });
   },
   showLog: function(text, type){ // success| warning| info| danger
@@ -363,8 +366,7 @@ var ui = {
     var currentCard, cardBackface;
     currentCard = model.returnCard(player, cardId);
     cardBackface = (currentCard.deck == "doors") ?  _IMGPATH + 'cards/doors-backface.png' : _IMGPATH + 'cards/treasures-backface.png';
-
-    $('.pack.pack--rebound').append('\
+    $('.pack--rebound').append('\
       <div class="card card--treasures flipped" data-card-id="'+currentCard.id+'"> \
         <div class="flipper">\
           <figure class="front" style="background-image: url('+currentCard.img+');"></figure> \
