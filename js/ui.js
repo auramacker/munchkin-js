@@ -300,8 +300,8 @@ var ui = {
         ui.updateStrength();
       }
     });
-    $("body").on("click", ".drop", function(){ // on drop action
-      var currentCardId = $(this).closest(".card").attr("data-card-id");
+    $(".drop").on("click", function(){ // on drop action
+      var currentCardId = $(this).parent().parent('.card').attr("data-card-id");
       ui.addToRebound(currentCardId);
       ui.removeFromHand(currentCardId);
     });
@@ -355,7 +355,7 @@ var ui = {
     $("." + position + " .unset-card").show();
   },
   removeFromHand: function(cardId){
-    $(".card[data-card-id='"+ cardId +"']").remove();
+    $(".player-user--cards .card[data-card-id='"+ cardId +"']").remove();
   },
   addButtonsToCards: function(){
     var races = model.getCardTypeId(player, "RaceCard"),
@@ -386,11 +386,11 @@ var ui = {
       $(".options-list").hide();
   },
   addToRebound: function(cardId){
-    var currentCard, cardBackface;
+    var currentCard, cardBackface, cardPack;
     currentCard = model.returnCard(player, cardId);
     cardBackface = (currentCard.deck == "doors") ?  _IMGPATH + 'cards/doors-backface.png' : _IMGPATH + 'cards/treasures-backface.png';
-    $('.pack--rebound').append('\
-      <div class="card card--treasures flipped" data-card-id="'+currentCard.id+'"> \
+    cardPack = (currentCard.deck == "doors") ? "card--doors" : "card--treasures";
+    $('.pack--rebound').append('<div class="card '+ cardPack +' flipped" data-card-id="'+currentCard.id+'"> \
         <div class="flipper">\
           <figure class="front" style="background-image: url('+currentCard.img+');"></figure> \
           <figure class="back" style="background-image: url('+cardBackface+');"></figure> \
