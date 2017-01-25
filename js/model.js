@@ -77,6 +77,32 @@ var model = {
   getCardDeck: function(player, cardId) {
 
   },
+  checkMonsterCard(monster, player) {
+    var types = ["race", "class", "gender"];
+    for (var i = 0; i < types.length; i++) {
+      getTypeBonus(types[i]);
+    }
+    function getTypeBonus(type) {
+      if (monster[type] != null) {
+        var i = 0, length = monster[type].length;
+        for (; i < length; i++) {
+          if ((player[type+"1"] != null)) {
+            if (monster[type][i] == player[type+"1"].cardClass) {
+              monster.monsterLevel += monster[type+"Bonus"];
+              break;
+            }
+          }
+          if (player[type+"2"] != null) {
+            if (monster[type][i] == player[type+"2"].cardClass) {
+              monster.monsterLevel += monster[type+"Bonus"];
+              break;
+            }
+          }
+        }
+      }
+    };
+
+  },
   getCardClass: function(player, cardId) {
     var i = 0, length = player.cards.length, result = undefined;
     for (; i < length; i++) {

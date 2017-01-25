@@ -5,13 +5,13 @@ function initData(){
     console.log(player);
     ui.showCpuPlayers(cpuArr);
     ui.showPopUp("close");
-    createCards("doors");
+    createCards("monsters");
     doorsCards = shuffle(buferDoors);
     createCards("treasures");
     treasuresCards = shuffle(buferTreasures);
     ui.showPack(); // show pack
     ui.getCardsFromPack(treasuresCards, player, 12);
-    ui.getCardsFromPack(doorsCards, player, 12);
+    ui.getCardsFromPack(doorsCards, player, 0);
     // for (var i = 0; i < cpuArr.length; i++) {
       // ui.getCardsFromPack(treasuresCards, cpuArr[i], 2);
       // ui.getCardsFromPack(doorsCards, cpuArr[i], 2);
@@ -85,6 +85,13 @@ function createCards(value){ // all | doors, treasures | ??? monsters, curses, c
       }
       buferTreasures.push.apply(buferTreasures, createdBonusesArr);
       console.log(buferTreasures);
+    break;
+    case "monsters":
+      for (var i = 0; i < monstersObjArr.length; i++) {
+        createdMonstersArr[i] = new MonsterCard(monstersObjArr[i]);
+      }
+      buferDoors.push.apply(buferDoors, createdMonstersArr);
+      console.log(buferDoors);
     break;
   }
 }

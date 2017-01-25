@@ -12,7 +12,7 @@
 })();
 function gameLoop(currentPlayer){
   setInventory();
-  $("body").on("click", ".btn-battle", function(){
+  $("body").on("click", ".pack.pack--doors", function(){
     openDoor();
   });
   function setInventory() {

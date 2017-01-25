@@ -152,7 +152,17 @@ var ui = {
           ui.showLog("Вы нашли карту Класса!", "info");
         break;
         case "MonsterCard":
-          ui.showLog("Вы наткнулись на Монстра!", "danger");
+          player.strength = 30; // setting player for moster test
+          player.race1 = {cardClass: "dwarf"};
+          player.race2 = {cardClass: "halfing"};
+          model.checkMonsterCard(gameObject.pulledCard, player);
+          ui.showLog("Вы наткнулись на "+ gameObject.pulledCard.name +"! Сила монстра против Вас : "+ gameObject.pulledCard.monsterLevel +" единиц.", "danger");
+          $(".btn-battle").on("click", function() {
+            if (player.strength > gameObject.pulledCard.monsterLevel) {
+              ui.showLog("Вы победили монстра!", "info");
+            }
+            return false
+          })
         break;
         case "CurseCard":
           ui.showLog("Вы вытащили Проклятие!", "danger");
