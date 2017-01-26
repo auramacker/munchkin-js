@@ -89,6 +89,6 @@ function BonusCard(objBonusCard) {
   this.name = objBonusCard.name,
   this.img = objBonusCard.img,
   this.description = objBonusCard.description,
-  this.cardEffect = objBonusCard.cardEffect
+  this.effect = objBonusCard.effect
   this.isReusable = objBonusCard.cardIsReusable
 }

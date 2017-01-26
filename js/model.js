@@ -47,9 +47,11 @@ var model = {
     var i = 0, length = player.cards.length, result = false;
     for (; i < length; i++) {
       if (player.cards[i].id == id) {
-        if (player.cards[i].cost != null) {
-          result = true;
-          return result
+        if (player.cards[i].cost != undefined){
+          if (player.cards[i].cost != null){
+            result = true;
+            return result
+          }
         }
       }
     }
@@ -129,8 +131,18 @@ var model = {
       }
     }
   },
-  getCardType: function(card) {
-    return card.constructor.name.toString()
+  getCardType: function(card) { // card == obj or id
+    if (typeof card === "object") {
+      return card.constructor.name.toString()
+    }
+    else if (typeof card === "string") {
+      var i = 0, length = player.cards.length;
+      for (; i < length; i++) {
+        if (player.cards[i].id == card) {
+          return player.cards[i].constructor.name.toString();
+        }
+      }
+    }
   },
   getPlayerCardType: function(player, cardId) {
     var i = 0, length = player.cards.length, result = undefined;

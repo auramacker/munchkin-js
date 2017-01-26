@@ -169,6 +169,8 @@ var ui = {
             }
             ui.showLog("Вы наткнулись на "+ gameObject.pulledCard.name +"! Сила монстра : " +
             + gameObject.pulledCard.monsterLevel +" единиц.", "danger");
+            ui.displayExtraOption("PoisionCard");
+            ui.displayExtraOption("BonusCard");
             $(".btn-battle").on("click", function() {
               if (player.strengthInBattle > gameObject.pulledCard.monsterLevel) {
                 gameObject.battleStatus = "monster defeated";
@@ -183,7 +185,12 @@ var ui = {
               return false
             })
           }
-
+        $("body").on("click", ".player-user--cards .options-list .use", function(){
+          if (gameObject.battleStatus == "started") {
+            var card;
+              card = model.returnCard(player, $(this).parent().parent().attr("data-card-id"));
+          }
+        });
         break;
         case "CurseCard":
           ui.showLog("Вы вытащили Проклятие!", "danger");
@@ -398,19 +405,26 @@ var ui = {
     var races = model.getCardTypeId(player, "RaceCard"),
         classes = model.getCardTypeId(player, "ClassCard"),
         stuff = model.getCardTypeId(player, "StuffCard"),
+        bonuses = model.getCardTypeId(player, "BonusCard"),
+        poisions = model.getCardTypeId(player, "PoisionCard"),
         id = [] ;
-    id = races.concat(classes, stuff);
+    id = races.concat(classes, stuff, bonuses, poisions);
       for (var i = 0; i < id.length; i++) {
-        var isCost = model.isHasCost(player, id[i]), costResult = "";
+        var isCost = model.isHasCost(player, id[i]), costResult = "", bonusesPoisions = "", equip = "<span class='btn equip'>Экипировать</span>";
         if (isCost) {
           costResult = "<span class='btn sell'>Продать</span>";
+        }
+        if ((model.getCardType(id[i]) == "PoisionCard") || (model.getCardType(id[i]) == "BonusCard")) {
+          equip = "";
+          bonusesPoisions = "<span class='btn use'>Использовать</span>";
         }
         if ($(".card[data-card-id='"+ id[i] +"'] .extra-option").length == 0) {
           $(".card[data-card-id='"+ id[i] +"']").toggleClass("has-option");
           $(".card[data-card-id='"+ id[i] +"']").append("<div class='extra-option'>+</div>");
           // $(".card[data-card-id='"+ id[i] +"'] .extra-option").toggleClass("has-list");
           $(".card[data-card-id='"+ id[i] +"']").append("<div class='options-list'>\
-          <span class='btn equip'>Экипировать</span>\
+          "+ bonusesPoisions + "\
+          "+ equip +"\
            " + costResult + "\
           <span class='btn drop'>Скинуть</span>\
           </div>");
@@ -440,5 +454,13 @@ var ui = {
       </div>\
     ');
     model.moveToRebound(player, cardId);
+  },
+  displayExtraOption: function(cardType) {
+    var id = [], i = 0;
+    id = model.getCardTypeId(player, cardType);
+    var length = id.length;
+    for (; i < length; i++) {
+      $(".player-user--cards .card[data-card-id = "+ id[i] +"]").find(".extra-option").show();
+    }
   }
 }

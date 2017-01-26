@@ -363,7 +363,7 @@
         img: _IMGPATH + "cards/" + "092" + ".png",
         name: "1000 голдов",
         description: "Получи уровень.",
-        cardEffect: "levelUp1",
+        effect: "levelUp1",
         isReusable: false
       };
   bonusesObjArr[1] = {
@@ -371,7 +371,7 @@
         img: _IMGPATH + "cards/" + "137" + ".png",
         name: "Укради уровень",
         description: "Выбери любого игрока и стащи у него уровень. Ты получаешь один Уровень, он теряет.",
-        cardEffect: "stealLevel1",
+        effect: "stealLevel1",
         isReusable: false
       };
   bonusesObjArr[2] = {
@@ -379,6 +379,6 @@
         img: _IMGPATH + "cards/" + "136" + ".png",
         name: "Получи уровень",
         description: "Получи уровень.",
-        cardEffect: "levelUp1",
+        effect: "levelUp1",
         isReusable: false
       };
