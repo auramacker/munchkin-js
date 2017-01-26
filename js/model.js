@@ -63,6 +63,16 @@ var model = {
       }
     }
   },
+  moveDoorsRebound: function(card) {
+    var i = 0, length = doorsCards.length, result = false;
+    for (; i < length; i++) {
+      if (card.id =- doorsCards[i].id) {
+        rebound.push(doorsCards[i]);
+        doorsCards.splice(i, 1);
+        return true
+      }
+    }
+  },
   moveToRebound: function(player, cardId) {
     var i = 0, length = player.cards.length;
     console.log(player);
@@ -140,11 +150,21 @@ var model = {
       }
     }
   },
-  returnCard: function(player, cardId) {
-    var i = 0, length = player.cards.length;
-    for (; i < length; i++) {
-      if (player.cards[i].id == cardId) {
-        return player.cards[i]
+  returnCard: function(from, cardId) {
+    if (typeof from === "string") {
+      var i = 0, length = doorsCards.length;
+      for (; i < length; i++) {
+        if (doorsCards[i].id == cardId) {
+          return doorsCards[i]
+        }
+      }
+    }
+    else {
+      var i = 0, length = player.cards.length;
+      for (; i < length; i++) {
+        if (player.cards[i].id == cardId) {
+          return player.cards[i]
+        }
       }
     }
   },

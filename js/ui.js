@@ -114,6 +114,7 @@ var ui = {
       $(".card[data-card-id='"+pack[i].id +"']").css("margin-left", margin + "px");
       margin += 2;
     }
+    ui.addButtonsToCards();
   },
   showCardsInHand: function(timer){
     $(".player-user--cards").empty();
@@ -166,11 +167,14 @@ var ui = {
             for (var i = 0; i < checkResult.length; i++) {
               ui.showLog(checkResult[i], "warning");
             }
-            ui.showLog("Вы наткнулись на "+ gameObject.pulledCard.name +"! Сила монстра против Вас : "+ gameObject.pulledCard.monsterLevel +" единиц.", "danger");
+            ui.showLog("Вы наткнулись на "+ gameObject.pulledCard.name +"! Сила монстра : " +
+            + gameObject.pulledCard.monsterLevel +" единиц.", "danger");
             $(".btn-battle").on("click", function() {
               if (player.strengthInBattle > gameObject.pulledCard.monsterLevel) {
                 gameObject.battleStatus = "monster defeated";
-                ui.showLog("Вы победили монстра!", "info");
+                ui.showLog("Вы победили монстра и получаете награду!", "success");
+                ui.getCardsFromPack(treasuresCards, player, gameObject.pulledCard.numTreasures);
+                ui.removeFromBattle(gameObject.pulledCard);
               }
               else {
                 ui.showLog("Ваша сила ниже чем у монстра. Воспользуйтесь усилителями, бонусами, помощью другого игрока или \
@@ -186,6 +190,11 @@ var ui = {
         break;
       }
     }
+  },
+  removeFromBattle: function(card){
+    ui.addToRebound(card.id, "doors");
+    $(".pack--doors .card--doors[data-card-id ='"+ card.id +"']").remove();
+    model.moveDoorsRebound(card);
   },
   inventorySetting: function(){
     ui.addButtonsToCards();
@@ -328,7 +337,7 @@ var ui = {
         ui.updateStrength();
       }
     });
-    $(".drop").on("click", function(){ // on drop action
+    $("body").on("click", ".drop", function(){ // on drop action
       var currentCardId = $(this).parent().parent('.card').attr("data-card-id");
       ui.addToRebound(currentCardId);
       ui.removeFromHand(currentCardId);
@@ -413,9 +422,14 @@ var ui = {
       else $(".extra-option").hide();
       $(".options-list").hide();
   },
-  addToRebound: function(cardId){
+  addToRebound: function(cardId, from){
     var currentCard, cardBackface, cardPack;
-    currentCard = model.returnCard(player, cardId);
+    if (arguments[1] != undefined) {
+      currentCard = model.returnCard("doors", cardId);
+    }
+    else {
+      currentCard = model.returnCard(player, cardId);
+    }
     cardBackface = (currentCard.deck == "doors") ?  _IMGPATH + 'cards/doors-backface.png' : _IMGPATH + 'cards/treasures-backface.png';
     cardPack = (currentCard.deck == "doors") ? "card--doors" : "card--treasures";
     $('.pack--rebound').append('<div class="card '+ cardPack +' flipped" data-card-id="'+currentCard.id+'"> \
