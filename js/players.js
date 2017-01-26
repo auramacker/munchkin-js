@@ -5,6 +5,7 @@ function Player(objPlayer){
   this.gender = objPlayer.gender,
   this.level = _MINLEVEL,
   this.strength = _MINLEVEL,
+  this.strengthInBattle = this.strength,
   this.levelInBattle = this.level,
   this.coins = 0,
   this.class1 = null,

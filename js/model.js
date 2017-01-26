@@ -78,10 +78,15 @@ var model = {
 
   },
   checkMonsterCard(monster, player) {
-    var types = ["race", "class", "gender"];
+    var types = ["race", "class"], result = [];
     for (var i = 0; i < types.length; i++) {
       getTypeBonus(types[i]);
     }
+    if (monster.gender == player.gender) {
+      monster.monsterLevel += monster.genderBonus;
+      result.push("Сила монстра против Вас возросла на "+ monster.genderBonus +" единиц!");
+    }
+    return result
     function getTypeBonus(type) {
       if (monster[type] != null) {
         var i = 0, length = monster[type].length;
@@ -89,12 +94,14 @@ var model = {
           if ((player[type+"1"] != null)) {
             if (monster[type][i] == player[type+"1"].cardClass) {
               monster.monsterLevel += monster[type+"Bonus"];
+              result.push("Сила монстра против Вас возросла на "+ monster[type+"Bonus"] +" единиц!");
               break;
             }
           }
           if (player[type+"2"] != null) {
             if (monster[type][i] == player[type+"2"].cardClass) {
               monster.monsterLevel += monster[type+"Bonus"];
+              result.push("Сила монстра против Вас возросла на "+ monster[type+"Bonus"] +" единиц!");
               break;
             }
           }

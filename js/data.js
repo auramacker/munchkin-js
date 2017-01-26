@@ -7,7 +7,8 @@ _EFFECTSPLITTER = "##";
 
 var gameObject = {
   pulledCard: null,
-  gameStatus: "not started"
+  gameStatus: "not started",
+  battleStatus: "not started"
 }
 // ********* Doors cards constructors *********
 function MonsterCard(objMonster){ // {id, img, name, description, numTreasures, monsterLevel, looseLevel, gender, race, class}

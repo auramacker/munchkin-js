@@ -152,17 +152,34 @@ var ui = {
           ui.showLog("Вы нашли карту Класса!", "info");
         break;
         case "MonsterCard":
-          player.strength = 30; // setting player for moster test
+        var checkResult;
+
+          player.strength = 1; // setting player for moster test
           player.race1 = {cardClass: "dwarf"};
           player.race2 = {cardClass: "halfing"};
-          model.checkMonsterCard(gameObject.pulledCard, player);
-          ui.showLog("Вы наткнулись на "+ gameObject.pulledCard.name +"! Сила монстра против Вас : "+ gameObject.pulledCard.monsterLevel +" единиц.", "danger");
-          $(".btn-battle").on("click", function() {
-            if (player.strength > gameObject.pulledCard.monsterLevel) {
-              ui.showLog("Вы победили монстра!", "info");
+          player.gender = "male";
+          // setting
+
+          if (gameObject.battleStatus == "not started") {
+            gameObject.battleStatus = "started";
+            checkResult = model.checkMonsterCard(gameObject.pulledCard, player);
+            for (var i = 0; i < checkResult.length; i++) {
+              ui.showLog(checkResult[i], "warning");
             }
-            return false
-          })
+            ui.showLog("Вы наткнулись на "+ gameObject.pulledCard.name +"! Сила монстра против Вас : "+ gameObject.pulledCard.monsterLevel +" единиц.", "danger");
+            $(".btn-battle").on("click", function() {
+              if (player.strengthInBattle > gameObject.pulledCard.monsterLevel) {
+                gameObject.battleStatus = "monster defeated";
+                ui.showLog("Вы победили монстра!", "info");
+              }
+              else {
+                ui.showLog("Ваша сила ниже чем у монстра. Воспользуйтесь усилителями, бонусами, помощью другого игрока или \
+                попытайтесь \"смыться\".", "warning");
+              }
+              return false
+            })
+          }
+
         break;
         case "CurseCard":
           ui.showLog("Вы вытащили Проклятие!", "danger");
@@ -304,6 +321,7 @@ var ui = {
         }
       }
       if (result == true) {
+        player.strengthInBattle = player.strength;
         ui.removeFromHand(currentCard);
         ui.setToInventory(position, currentCard);
         model.removeCard(player, currentCard);
