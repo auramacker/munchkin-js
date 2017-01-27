@@ -25,10 +25,10 @@ function Player(objPlayer){
   this.curse = [], // проклятие
   this.equipment = [],
   this.cardsSize = _CARDSSIZE,
-  this.getUpLevel = function(){
-    if (this.level > _MINLEVEL) {
-      this.level--
-    }
+  this.levelUp = function(level){
+      this.level += level;
+      svgPlayerLevel($('.player-user--human .player--avatar'), player.level);
+      ui.showLog("Ваш Уровень повышен!", "success");
   },
   this.getDownLevel = function(levels){
     if (this.level < _MAXLEVEL) {
@@ -60,7 +60,7 @@ function Player(objPlayer){
         })
       break;
       case "levelUp":
-        player.level += qt;
+        player.levelUp(qt);
         player.strengthInBattle += qt;
         ui.showLog("Вы повысили свой уровень на "+ qt +" единиц! Ваш уровень: "+player.level+"", "success");
         $(".player-user--cards .card[data-card-id='"+card.id+"'] .drop").click();

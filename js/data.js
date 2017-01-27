@@ -1,5 +1,5 @@
 
-_MINLEVEL = 20;
+_MINLEVEL = 8;
 _MAXLEVEL = 10;
 _CARDSSIZE = 5;
 _IMGPATH = "images/";
@@ -19,6 +19,7 @@ this.deck = "doors",
   this.description = objMonster.description,
   this.effect = objMonster.effect,
   this.numTreasures = objMonster.numTreasures,
+  this.numLevels = objMonster.numLevels,
   this.monsterLevel = objMonster.monsterLevel,
   this.looseLevel = objMonster.looseLevel,
   this.gender = objMonster.gender,

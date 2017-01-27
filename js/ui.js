@@ -175,6 +175,7 @@ var ui = {
               if (player.strengthInBattle > gameObject.pulledCard.monsterLevel) {
                 gameObject.battleStatus = "monster defeated";
                 ui.showLog("Вы победили монстра и получаете награду!", "success");
+                player.levelUp(gameObject.pulledCard.numLevels);
                 ui.getCardsFromPack(treasuresCards, player, gameObject.pulledCard.numTreasures);
                 ui.removeFromBattle(gameObject.pulledCard);
               }
