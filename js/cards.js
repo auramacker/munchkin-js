@@ -319,7 +319,7 @@
         name: "Замораживающее взрывное зелье",
         description: "Применить в любом бою, +3 любой стороне. Одноразовое.",
         cost: 100,
-        effect: "anySidePlus+3"
+        effect: "anySidePlus3"
       };
   poisionsObjArr[1] = {
         id: "111",
@@ -327,7 +327,7 @@
         name: "Снотворное Зелье",
         description: "Применить в любом бою, +2 любой стороне. Одноразовая.",
         cost: 100,
-        effect: "anySidePlus+2"
+        effect: "anySidePlus2"
       };
   poisionsObjArr[2] = {
         id: "110",
@@ -335,7 +335,7 @@
         name: "Клёвые Шарики",
         description: "Применить в любом бою, +5 любой стороне. Одноразовая.",
         cost: null,
-        effect: "anySidePlus+5"
+        effect: "anySidePlus5"
       };
   poisionsObjArr[3] = {
         id: "109",
@@ -343,7 +343,7 @@
         name: "Зелье Идиотской Храбрости",
         description: "Применить в любом бою, +2 любой стороне. Одноразовая.",
         cost: 100,
-        effect: "anySidePlus+2"
+        effect: "anySidePlus2"
       };
   poisionsObjArr[4] = {
         id: "036",

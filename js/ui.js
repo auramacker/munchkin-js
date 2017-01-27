@@ -189,6 +189,8 @@ var ui = {
           if (gameObject.battleStatus == "started") {
             var card;
               card = model.returnCard(player, $(this).parent().parent().attr("data-card-id"));
+              $(this).attr("making-choise", "true");
+              player.getBonusEffect(card);
           }
         });
         break;
@@ -220,12 +222,14 @@ var ui = {
     });
     $(".player-user--inventory").click(function(){
       $('.inventory-wrap').toggleClass('is-visible');
-      if ($(".extra-option").css("display") == "none") {
-        $(".extra-option").show();
-      }
-      else {
-        $(".extra-option").hide();
-      }
+      $(".extra-option").each(function(){
+        if ($(this).css("display") == "none") {
+          $(this).show();
+        }
+        else {
+          $(this).hide();
+        }
+      })
     });
     $("body").on("click", ".equip", function(){ // on equip actions
       var currentCard = $(this).closest(".card").attr("data-card-id");
@@ -430,6 +434,7 @@ var ui = {
           </div>");
         }
       }
+      $(".use").attr("making-choise", "false");
       if ($(".inventory-wrap").hasClass("is-visible")) {
         $(".extra-option").show();
       }

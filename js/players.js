@@ -35,6 +35,39 @@ function Player(objPlayer){
       this.level++
     }
   },
+  this.getBonusEffect = function(card) {
+    var effect, qt;
+    qt = +card.effect.charAt(card.effect.length-1);
+    effect = card.effect.slice(0, -1);
+    switch(effect) {
+      case "anySidePlus":
+        $("body").on("click", ".pack--doors", function(){
+          if ((gameObject.battleStatus == "started") && ($(".player-user--cards .card[data-card-id='"+card.id+"'] .use").attr("making-choise") == "true")) {
+            gameObject.pulledCard.monsterLevel += qt;
+            ui.showLog("Вы усилили монстра на "+ qt +" единиц!", "success");
+            ui.showLog("Сила монстра: "+ gameObject.pulledCard.monsterLevel +" единиц!", "danger");
+            $(".player-user--cards .card[data-card-id='"+card.id+"'] .use").attr("making-choise", "false");
+            $(".player-user--cards .card[data-card-id='"+card.id+"'] .drop").click();
+          }
+        })
+        $("body").on("click", ".player-user--human", function(){
+          if ((gameObject.battleStatus == "started") && ($(".player-user--cards .card[data-card-id='"+card.id+"'] .use").attr("making-choise") == "true")) {
+            player.strengthInBattle += qt;
+            ui.showLog("Вы усилили свою силу на "+ qt +" единиц!" + "Ваша сила: "+ player.strengthInBattle +" единиц!", "success");
+            $(".player-user--cards .card[data-card-id='"+card.id+"'] .use").attr("making-choise", "false");
+            $(".player-user--cards .card[data-card-id='"+card.id+"'] .drop").click();
+          }
+        })
+      break;
+      case "levelUp":
+        player.level += qt;
+        player.strengthInBattle += qt;
+        ui.showLog("Вы повысили свой уровень на "+ qt +" единиц! Ваш уровень: "+player.level+"", "success");
+        $(".player-user--cards .card[data-card-id='"+card.id+"'] .drop").click();
+
+      break;
+    }
+  },
   this.equipWeapon = function(cardId, where){
     var i = 0; length = this.cards.length, result = false;
     for (; i < length; i++) {
