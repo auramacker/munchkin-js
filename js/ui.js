@@ -425,7 +425,7 @@ var ui = {
       if (gameObject.battleStatus == "started") {
         var card;
           card = model.returnCard(player, $(this).parent().parent().attr("data-card-id"));
-          cardType = model.getCardType(card);
+          cardType = model.getCardType(card);//
           if (cardType == "PoisionCard") {
             $("body").on("click", ".card-in-battle .btn-close-hint", function(){
               ui.hideHint(this);
