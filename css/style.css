@@ -680,6 +680,7 @@ Footer
   white-space: nowrap;
   overflow-x: visible;
   overflow-y: hidden;
+  pointer-events: none;
 }
 .player-user--cards .card,
 .player-user--cards .card .front,
@@ -689,6 +690,7 @@ Footer
   height: 350px;
   -webkit-border-radius: 30px;
   border-radius: 30px;
+  pointer-events: auto;
 }
 .player-user--cards .card {
   visibility: hidden;
@@ -809,8 +811,8 @@ Right Side
   position: absolute;
   bottom: 0;
   right: 0;
-  padding-right: 60px;
-  padding-bottom: 30px;
+  right: 60px;
+  bottom: 30px;
   white-space: nowrap;
 }
 .player-buttons .round-btn {
@@ -1185,7 +1187,8 @@ Right Side
   z-index: 2;
 }
 .inventory {
-  margin: 60px;
+  position: relative;
+  top: 60px;
   padding: 40px;
   display: inline-block;
   -webkit-border-radius: 30px;
@@ -1193,25 +1196,6 @@ Right Side
   background-image: url("http://blog.spoongraphics.co.uk/wp-content/uploads/2012/textures/15.jpg");
   background-position: top left;
   background-repeat: repeat;
-  opacity: 0;
-  -webkit-transform: translate3d(0, 100%, 0);
-  -moz-transform: translate3d(0, 100%, 0);
-  -ms-transform: translate3d(0, 100%, 0);
-  -o-transform: translate3d(0, 100%, 0);
-  transform: translate3d(0, 100%, 0);
-  -webkit-transition: all 400ms ease-in-out;
-  -moz-transition: all 400ms ease-in-out;
-  -ms-transition: all 400ms ease-in-out;
-  -o-transition: all 400ms ease-in-out;
-  transition: all 400ms ease-in-out;
-}
-.inventory-wrap.is-visible .inventory {
-  opacity: 1;
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
 }
 .inventory-top {
   display: block;

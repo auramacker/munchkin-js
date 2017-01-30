@@ -37,6 +37,7 @@ $card-wl = 225px
 	white-space nowrap
 	overflow-x visible
 	overflow-y hidden
+	pointer-events none
 	.card, 
 	.card .front, 
 	.card .back, 
@@ -44,6 +45,7 @@ $card-wl = 225px
 		width $card-wl
 		height $card-hl
 		border-radius(30px)
+		pointer-events auto
 	.card
 		visibility hidden
 		position relative
@@ -164,8 +166,8 @@ Right Side
 	position absolute
 	bottom 0
 	right 0
-	padding-right 60px
-	padding-bottom 30px
+	right 60px
+	bottom 30px
 	white-space nowrap
 	.round-btn
 		display inline-block
