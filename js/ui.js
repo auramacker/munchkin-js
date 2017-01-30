@@ -142,7 +142,7 @@ var ui = {
     $(window).on('load', function(){
       if (($(window).width() > 1360) && ($(window).height() > 600)) {
         $("body").css("width", $(window).width());
-        $("body").css("height", $(window).height());
+        $("body").css("height", $(window).height());//
       }
       else {
         $("body").css("width", "1360px");
