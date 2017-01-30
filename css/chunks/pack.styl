@@ -1,6 +1,8 @@
 /*!
 Pack
 */
+$card-h = 300px
+$card-w = 190px
 
 .pack
 	display inline-block
@@ -34,7 +36,24 @@ Pack
 	transform(translate3d(-50%, -50%, 0))
 	display inline-block
 	z-index 556
+	padding 30px
 	.card
 		border-radius 25px
+	.card, 
+	.card .front, 
+	.card .back, 
+	.card .flipper
+		width $card-w
+		height $card-h
+	.btn
+		position absolute
+		top -10%
+		left 50%
+		margin-bottom 50px
+		transform(translateX(-50%))
+
+
+
+
 	.card.hint
 		animation blame 1.3s ease-in-out infinite

@@ -566,10 +566,29 @@ Pack
   transform: translate3d(-50%, -50%, 0);
   display: inline-block;
   z-index: 556;
+  padding: 30px;
 }
 .card-in-battle .card {
   -webkit-border-radius: 25px;
   border-radius: 25px;
+}
+.card-in-battle .card,
+.card-in-battle .card .front,
+.card-in-battle .card .back,
+.card-in-battle .card .flipper {
+  width: 190px;
+  height: 300px;
+}
+.card-in-battle .btn {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  margin-bottom: 50px;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 .card-in-battle .card.hint {
   -webkit-animation: blame 1.3s ease-in-out infinite;
@@ -752,7 +771,7 @@ Left Side
   box-shadow: -10px -7px 10px rgba(25,25,25,0.6);
 }
 .player-human {
-  margin-top: 40px;
+  margin-top: 50px;
   max-width: 120px;
 }
 .player-human .player--avatar {
@@ -778,7 +797,7 @@ Left Side
 .player-user--inventory {
   position: absolute;
   cursor: pointer;
-  bottom: 50px;
+  bottom: 40px;
   right: 5px;
   display: inline-block;
   height: 70px;
@@ -1163,8 +1182,8 @@ Right Side
   display: inline-block;
   margin: 0;
   padding: 0;
-  width: 160px;
-  height: 248px;
+  width: 190px;
+  height: 300px;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
