@@ -115,6 +115,11 @@ var ui = {
       $(".card[data-card-id='"+pack[i].id +"']").css("margin-left", margin + "px");
       margin += 2;
     }
+    var container = $(".player-user--cards"),
+        scrollTo = $(".player-user--cards").children().first();
+    container.scrollLeft(
+      scrollTo.offset().left - container.offset().left + container.scrollLeft() - 20
+    )
     ui.addButtonsToCards();
   },
   showCardsInHand: function(timer){
@@ -162,6 +167,8 @@ var ui = {
       card.removeClass("flipped");
       gameObject.pulledCard = model.returnFromPack("doors", cardId);
       cardType = model.getCardType(gameObject.pulledCard);
+      $(".pack--doors .card[data-card-id="+ card.id +"]").remove();
+      ui.addToBattle(gameObject.pulledCard);
       switch (cardType) {
         case "RaceCard":
           ui.showLog("Вы нашли карту Расы!", "info");
@@ -172,12 +179,11 @@ var ui = {
         case "MonsterCard":
         var checkResult;
 
-          player.strength = 1; // setting player for moster test
+          player.strengthInBattle = 30; // setting player for moster test
           player.race1 = {cardClass: "dwarf"};
           player.race2 = {cardClass: "halfing"};
           player.gender = "male";
           // setting
-
           if (gameObject.battleStatus == "not started") {
             gameObject.battleStatus = "started";
             checkResult = model.checkMonsterCard(gameObject.pulledCard, player);
@@ -195,6 +201,8 @@ var ui = {
                 player.levelUp(gameObject.pulledCard.numLevels);
                 ui.getCardsFromPack(treasuresCards, player, gameObject.pulledCard.numTreasures);
                 ui.removeFromBattle(gameObject.pulledCard);
+                $(".card-in-battle .card").remove();
+                gameObject.battleStatus = "not started";
               }
               else {
                 ui.showLog("Ваша сила ниже чем у монстра. Воспользуйтесь усилителями, бонусами, помощью другого игрока или \
@@ -203,14 +211,6 @@ var ui = {
               return false
             })
           }
-        $("body").on("click", ".player-user--cards .options-list .use", function(){
-          if (gameObject.battleStatus == "started") {
-            var card;
-              card = model.returnCard(player, $(this).parent().parent().attr("data-card-id"));
-              $(this).attr("making-choise", "true");
-              player.getBonusEffect(card);
-          }
-        });
         break;
         case "CurseCard":
           ui.showLog("Вы вытащили Проклятие!", "danger");
@@ -218,9 +218,42 @@ var ui = {
       }
     }
   },
+  showHint: function(context) { // if empty just show
+    if (arguments[0] != undefined) {
+      $(context).attr("making-choise", "true");
+    }
+    $(".game-overlay").fadeIn();
+    $(".card-in-battle .card").toggleClass("hint");
+    $(".player-human").toggleClass("hint");
+    $(".card-in-battle .btn-close-hint").show();
+  },
+  hideHint: function(context) { // if empty just show
+    if (arguments[0] != undefined) {
+      $(context).attr("making-choise", "false");
+    }
+    $(".game-overlay").fadeOut();
+    $(".card-in-battle .card").removeClass("hint");
+    $(".player-human").removeClass("hint");
+    $(".card-in-battle .btn-close-hint").hide();
+  },
+  addToBattle: function(card) {
+    $(".card--doors").children().first().remove();
+    console.log(doorsCards);
+    cardBackface = (card.deck == "doors") ?  _IMGPATH + 'cards/doors-backface.png' : _IMGPATH + 'cards/treasures-backface.png';
+    cardPack = (card.deck == "doors") ? "card--doors" : "card--treasures";
+    $(".card-in-battle").append('<div class="card '+ cardPack +' flipped" data-card-id="'+card.id+'" style="z-index: 1000"> \
+        <div class="flipper">\
+          <figure class="front" style="background-image: url('+card.img+');"></figure> \
+          <figure class="back" style="background-image: url('+cardBackface+');"></figure> \
+        </div>\
+      </div>\
+    ');
+    $(".card-in-battle div").removeClass("flipped");
+  },
   removeFromBattle: function(card){
     ui.addToRebound(card.id, "doors");
-    $(".pack--doors .card--doors[data-card-id ='"+ card.id +"']").remove();
+    $(".pack--doors .card[data-card-id="+ card.id +"]").remove();
+    $(".card-in-battle .card[data-card-id ='"+ card.id +"']").fadeOut(100);
     model.moveDoorsRebound(card);
   },
   inventorySetting: function(){
@@ -388,6 +421,20 @@ var ui = {
         )
       }
     });
+    $("body").on("click", ".player-user--cards .options-list .use", function(){
+      if (gameObject.battleStatus == "started") {
+        var card;
+          card = model.returnCard(player, $(this).parent().parent().attr("data-card-id"));
+          cardType = model.getCardType(card);//
+          if (cardType == "PoisionCard") {
+            $("body").on("click", ".card-in-battle .btn-close-hint", function(){
+              ui.hideHint(this);
+            });
+            ui.showHint(this);
+          }
+          player.getBonusEffect(card);
+      }
+    });
   },
   showLog: function(text, type){ // success| warning| info| danger
     var date = new Date();
@@ -510,24 +557,5 @@ var ui = {
 
 
 
-
-    function rollDice(element){
-       
-          var random_value = Math.floor(Math.random() * 6) + 1;
-          element.attr('data-value', random_value);
-
-          if (currentClass == newClass) {
-           element.attr('data-value', 'same');
-          }
-
-    }
-
-    $('.add-r').on('click', function(){
-        rollDice($('.dice-container'));
-        $('.dice-container').addClass( "rolling" ).one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function(){
-            $(this).removeClass( "rolling" );
-        });
-        return false;
-    });
 
 
