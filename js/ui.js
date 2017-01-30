@@ -59,6 +59,7 @@ var ui = {
   },
   showPopUp(close) { // empty - open; "close" - close
     var popup = $(".popup");
+    $(".message-list").hide();
     if (close == "close") {
       popup.removeClass("is-visible");
     }
@@ -400,6 +401,7 @@ var ui = {
     var m = addZero(date.getMinutes());
     var s = addZero(date.getSeconds());
     var time = h + ":" + m + ":" + s;
+    $(".message-list").show();
     $(".message-list").prepend("<p class='"+ type +"'><time>"+ time +"&nbsp;&nbsp;</time><span>"+ text +"</span></p>");
     ui.setOpacity("message-list", 1);
     setTimeout(function(){
