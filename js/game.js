@@ -1,5 +1,6 @@
 (function(){
   var playersNumber, playerInfo;
+  ui.setScreen();
   ui.showPopUp();
   ui.showInitNotification();
   ui.initPlayersNumber();

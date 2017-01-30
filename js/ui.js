@@ -138,6 +138,11 @@ var ui = {
       timer += 200;
     }
   },
+  setScreen: function(){
+    $("body").css("width", $(window).width());
+    $("body").css("height", $(window).height());
+
+  },
   pullCard: function(pack){
     if (pack == "doors") {
       var card = $(".pack--doors").children().first();
