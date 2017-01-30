@@ -41,13 +41,14 @@ function Player(objPlayer){
     effect = card.effect.slice(0, -1);
     switch(effect) {
       case "anySidePlus":
-        $("body").on("click", ".pack--doors", function(){
+        $("body").on("click", ".card-in-battle .card", function(){
           if ((gameObject.battleStatus == "started") && ($(".player-user--cards .card[data-card-id='"+card.id+"'] .use").attr("making-choise") == "true")) {
             gameObject.pulledCard.monsterLevel += qt;
             ui.showLog("Вы усилили монстра на "+ qt +" единиц!", "success");
             ui.showLog("Сила монстра: "+ gameObject.pulledCard.monsterLevel +" единиц!", "danger");
             $(".player-user--cards .card[data-card-id='"+card.id+"'] .use").attr("making-choise", "false");
             $(".player-user--cards .card[data-card-id='"+card.id+"'] .drop").click();
+            ui.hideHint();
           }
         })
         $("body").on("click", ".player-user--human", function(){
@@ -56,6 +57,7 @@ function Player(objPlayer){
             ui.showLog("Вы усилили свою силу на "+ qt +" единиц!" + "Ваша сила: "+ player.strengthInBattle +" единиц!", "success");
             $(".player-user--cards .card[data-card-id='"+card.id+"'] .use").attr("making-choise", "false");
             $(".player-user--cards .card[data-card-id='"+card.id+"'] .drop").click();
+            ui.hideHint();
           }
         })
       break;
