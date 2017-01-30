@@ -20,11 +20,8 @@ body {
   padding: 0;
   position: relative;
   font-family: Munchikin, serif;
-  overflow: hidden;
   font-size: 16px;
   line-height: 1.7;
-  height: 100vh;
-  width: 100vw;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -120,7 +117,7 @@ Button
 Preloader
 */
 .preloader {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -188,7 +185,7 @@ Preloader
 Start Popup
 */
 .popup {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -662,8 +659,7 @@ footer.player-user::after {
   bottom: 0;
   left: 195px;
   height: 154px;
-  width: 100%;
-  margin-bottom: -30px;
+  width: calc(100% - 195px);
   z-index: -1;
   background-image: url("../images/1_04.png");
   background-size: contain;
@@ -676,7 +672,7 @@ Footer
 */
 .player-user--cards {
   position: absolute;
-  bottom: -10px;
+  bottom: 0;
   left: 50%;
   margin-left: -342px;
   max-width: 675px;
@@ -723,7 +719,6 @@ Left Side
   left: 0;
   width: 200px;
   height: 227px;
-  margin-bottom: -30px;
   display: block;
   -webkit-border-radius: 100px 100px 0 0;
   border-radius: 100px 100px 0 0;
@@ -943,7 +938,7 @@ Right Side
   height: 75vh;
   top: 60px;
   left: 60px;
-  width: calc(100% - 120px);
+  right: 60px;
   -webkit-border-radius: 30px;
   border-radius: 30px;
   background-image: url("../images/desk.png");
@@ -1151,8 +1146,7 @@ Right Side
   height: 100%;
   text-align: center;
   background-color: rgba(25,25,25,0.4);
-  opacity: 0;
-  visibility: hidden;
+  display: none;
   -webkit-transition: all 300ms ease-in-out;
   -moz-transition: all 300ms ease-in-out;
   -ms-transition: all 300ms ease-in-out;
@@ -1160,8 +1154,7 @@ Right Side
   transition: all 300ms ease-in-out;
 }
 .inventory-wrap.is-visible {
-  visibility: visible;
-  opacity: 1;
+  display: block;
 }
 .has-3child {
   display: inline-block;

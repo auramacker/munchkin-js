@@ -139,9 +139,13 @@ var ui = {
     }
   },
   setScreen: function(){
-    $("body").css("width", $(window).width());
-    $("body").css("height", $(window).height());
 
+    $(window).on('load ', function(){
+
+
+      $("body").css("width", $(window).width());
+      $("body").css("height", $(window).height());
+    });
   },
   pullCard: function(pack){
     if (pack == "doors") {
