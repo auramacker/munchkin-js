@@ -399,6 +399,13 @@ var ui = {
         ui.updateStrength();
       }
     });
+    $('.add-r').on('click', function(){
+        ui.rollDice($('.dice-container'));
+        $('.dice-container').addClass( "rolling" ).one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function(){
+            $(this).removeClass( "rolling" );
+        });
+        return false;
+    });
     $("body").on("click", ".drop", function(){ // on drop action
       var currentCardId = $(this).parent().parent('.card').attr("data-card-id");
       ui.addToRebound(currentCardId);
@@ -533,27 +540,13 @@ var ui = {
     for (; i < length; i++) {
       $(".player-user--cards .card[data-card-id = "+ id[i] +"]").find(".extra-option").show();
     }
-  }
+  },
+  rollDice: function(element){
+        var random_value = Math.floor(Math.random() * 6) + 1;
+        element.attr('data-value', random_value);
+        // if (currentClass == newClass) {
+        //   element.attr('data-value', 'same');
+        // }
+  },
+
 }
-
-
-
-    function rollDice(element){
-       
-          var random_value = Math.floor(Math.random() * 6) + 1;
-          element.attr('data-value', random_value);
-
-          // if (currentClass == newClass) {
-          //   element.attr('data-value', 'same');
-          // }
-
-    }
-
-    $('.add-r').on('click', function(){
-        rollDice($('.dice-container'));
-        $('.dice-container').addClass( "rolling" ).one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function(){
-            $(this).removeClass( "rolling" );
-        });
-        return false;
-    });
-
