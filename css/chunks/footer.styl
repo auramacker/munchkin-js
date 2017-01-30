@@ -5,7 +5,7 @@ footer.player-user
 	left 0
 	width 100%
 	text-align center
-	z-index 100
+	z-index 556
 	&::after
 		content ''
 		position absolute
@@ -102,6 +102,15 @@ $circle-hl = 120px
 			height $circle-hl - ($stroke-w * 2)
 			width $circle-hl - ($stroke-w * 2)
 
+.player-human.hint .player--avatar img
+	animation blame 1.3s ease-in-out infinite
+
+@keyframes blame
+	0%, 100%
+		box-shadow 0 0 10px 5px #5cb85c
+	50%
+		box-shadow 0 0 20px 10px #5cb85c
+		
 //Inventory Btn
 
 $ih = 70px

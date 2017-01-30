@@ -555,6 +555,29 @@ Pack
   left: auto;
   right: 100px;
 }
+.card-in-battle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  -moz-transform: translate3d(-50%, -50%, 0);
+  -ms-transform: translate3d(-50%, -50%, 0);
+  -o-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+  display: inline-block;
+  z-index: 556;
+}
+.card-in-battle .card {
+  -webkit-border-radius: 25px;
+  border-radius: 25px;
+}
+.card-in-battle .card.hint {
+  -webkit-animation: blame 1.3s ease-in-out infinite;
+  -moz-animation: blame 1.3s ease-in-out infinite;
+  -ms-animation: blame 1.3s ease-in-out infinite;
+  -o-animation: blame 1.3s ease-in-out infinite;
+  animation: blame 1.3s ease-in-out infinite;
+}
 /*
 Player
 */
@@ -651,7 +674,7 @@ footer.player-user {
   left: 0;
   width: 100%;
   text-align: center;
-  z-index: 100;
+  z-index: 556;
 }
 footer.player-user::after {
   content: '';
@@ -744,6 +767,13 @@ Left Side
 .player-human .player--avatar img {
   height: 110px;
   width: 110px;
+}
+.player-human.hint .player--avatar img {
+  -webkit-animation: blame 1.3s ease-in-out infinite;
+  -moz-animation: blame 1.3s ease-in-out infinite;
+  -ms-animation: blame 1.3s ease-in-out infinite;
+  -o-animation: blame 1.3s ease-in-out infinite;
+  animation: blame 1.3s ease-in-out infinite;
 }
 .player-user--inventory {
   position: absolute;
@@ -930,6 +960,46 @@ Right Side
     -ms-transform: scale(1) translate3d(0, 0, 0);
     -o-transform: scale(1) translate3d(0, 0, 0);
     transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+@-moz-keyframes blame {
+  0%, 100% {
+    -webkit-box-shadow: 0 0 10px 5px #5cb85c;
+    box-shadow: 0 0 10px 5px #5cb85c;
+  }
+  50% {
+    -webkit-box-shadow: 0 0 20px 10px #5cb85c;
+    box-shadow: 0 0 20px 10px #5cb85c;
+  }
+}
+@-webkit-keyframes blame {
+  0%, 100% {
+    -webkit-box-shadow: 0 0 10px 5px #5cb85c;
+    box-shadow: 0 0 10px 5px #5cb85c;
+  }
+  50% {
+    -webkit-box-shadow: 0 0 20px 10px #5cb85c;
+    box-shadow: 0 0 20px 10px #5cb85c;
+  }
+}
+@-o-keyframes blame {
+  0%, 100% {
+    -webkit-box-shadow: 0 0 10px 5px #5cb85c;
+    box-shadow: 0 0 10px 5px #5cb85c;
+  }
+  50% {
+    -webkit-box-shadow: 0 0 20px 10px #5cb85c;
+    box-shadow: 0 0 20px 10px #5cb85c;
+  }
+}
+@keyframes blame {
+  0%, 100% {
+    -webkit-box-shadow: 0 0 10px 5px #5cb85c;
+    box-shadow: 0 0 10px 5px #5cb85c;
+  }
+  50% {
+    -webkit-box-shadow: 0 0 20px 10px #5cb85c;
+    box-shadow: 0 0 20px 10px #5cb85c;
   }
 }
 .desk {

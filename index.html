@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="assets/jquery-ui.min.css">
 </head>
 <body>
-	<!-- <div class="game-overlay"></div> -->
+	<div class="game-overlay"></div>
 	<div class="popup">
 
 		<div class="init-notification">
@@ -37,6 +37,9 @@
 		<div class="pack-left">
 			<div class="pack pack--treasures"></div>
 			<div class="pack pack--doors"></div>
+		</div>
+		<div class="card-in-battle">
+			<div class="card card--doors hint" data-card-id="032" style="z-index:1000; margin-left:0px;">           <div class="flipper">            <figure class="front" style="background-image: url(images/cards/032.png);"></figure>             <figure class="back" style="background-image: url(images/cards/doors-backface.png);"></figure>           </div>        </div>
 		</div>
 		<div class="pack-right">
 			<div class="pack pack--rebound"></div>
@@ -118,7 +121,7 @@
 	<footer class="player-user">
 
 		<div class="player-user--human">
-			<div class="player player-human">
+			<div class="player player-human hint">
 				<div class="player--avatar">
 					<img src="images/players/cpu-1m.png" alt="">
 					<span class="player--label-level"></span>
