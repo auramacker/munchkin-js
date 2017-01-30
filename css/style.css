@@ -680,7 +680,6 @@ Footer
   white-space: nowrap;
   overflow-x: visible;
   overflow-y: hidden;
-  pointer-events: none;
 }
 .player-user--cards .card,
 .player-user--cards .card .front,
@@ -690,7 +689,6 @@ Footer
   height: 350px;
   -webkit-border-radius: 30px;
   border-radius: 30px;
-  pointer-events: auto;
 }
 .player-user--cards .card {
   visibility: hidden;
