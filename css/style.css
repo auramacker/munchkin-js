@@ -9,15 +9,13 @@ General
 body {
   margin: 0;
   padding: 0;
+  position: relative;
   font-family: Munchikin, serif;
   overflow: hidden;
   font-size: 16px;
   line-height: 1.7;
   height: 100vh;
-  background-image: url("../images/body.png");
-  background-size: 25%;
-  background-repeat: repeat;
-  background-position: top left;
+  width: 100vw;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -25,6 +23,10 @@ body {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearence: none;
+  background-image: url("../images/body.png");
+  background-size: 25%;
+  background-repeat: repeat;
+  background-position: top left;
 }
 img {
   width: 100%;
@@ -124,7 +126,7 @@ Preloader
   margin: -50px 0 0 -50px;
 }
 .message-list {
-  position: fixed;
+  position: absolute;
   top: 30px;
   right: 30px;
   width: 300px;
@@ -638,7 +640,7 @@ Player
   text-align: center;
 }
 footer.player-user {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -652,7 +654,7 @@ footer.player-user::after {
   left: 195px;
   height: 154px;
   width: 100%;
-  margin-bottom: -30px;
+  margin-bottom: -37px;
   z-index: -1;
   background-image: url("../images/1_04.png");
   background-size: contain;
@@ -664,8 +666,8 @@ footer.player-user::after {
 Footer
 */
 .player-user--cards {
-  position: fixed;
-  bottom: 0;
+  position: absolute;
+  bottom: -10px;
   left: 50%;
   margin-left: -342px;
   max-width: 675px;
@@ -927,10 +929,12 @@ Right Side
   }
 }
 .desk {
-  position: relative;
+  position: absolute;
   text-align: center;
   height: 75vh;
-  margin: 60px 60px 0;
+  top: 60px;
+  left: 60px;
+  width: calc(100% - 120px);
   -webkit-border-radius: 30px;
   border-radius: 30px;
   background-image: url("../images/desk.png");
@@ -1130,7 +1134,7 @@ Right Side
   left: 20px;
 }
 .inventory-wrap {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
