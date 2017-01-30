@@ -141,17 +141,17 @@ var ui = {
   },
   setScreen: function(){
     $(window).on('load resize', function(){
-      if (($(window).width() > 1360) && ($(window).height() > 600)) {
+      if (($(window).width() > 1360) && ($(window).height() > 700)) {
         $("body").width($(window).width());
         $("body").height($(window).height());
       }
-      else if (($(window).height() > 600) && ($(window).width() < 1360)){
+      else if (($(window).height() > 700) && ($(window).width() < 1360)){
         $("body").width(1360);
         $("body").height($(window).height());
       }
-      else if (($(window).height() < 600) && ($(window).width() > 1360)){
+      else if (($(window).height() < 700) && ($(window).width() > 1360)){
         $("body").width($(window).width());
-        $("body").height(600);
+        $("body").height(700);
       }
     });
   },
