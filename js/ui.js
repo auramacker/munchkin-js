@@ -239,7 +239,7 @@ var ui = {
           }
     });
     $(".player-user--inventory").click(function(){
-      $('.inventory-wrap').toggleClass('is-visible');
+      $('.inventory-wrap').fadeToggle(300).toggleClass('is-visible');
       $(".extra-option").each(function(){
         if ($(this).css("display") == "none") {
           $(this).show();
