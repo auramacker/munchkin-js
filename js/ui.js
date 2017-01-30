@@ -488,3 +488,46 @@ var ui = {
     }
   }
 }
+
+
+
+    /*
+    Global Sound
+    */
+    // function sound_effect(element) {
+        
+    //     element.pause();
+    //     element.currentTime = 0;
+    //     element.play();
+        
+    // }
+
+
+    // /*
+    // Roll Dice
+    // */
+
+
+
+
+
+    function rollDice(element){
+       
+          var random_value = Math.floor(Math.random() * 6) + 1;
+          element.attr('data-value', random_value);
+
+          if (currentClass == newClass) {
+           element.attr('data-value', 'same');
+          }
+
+    }
+
+    $('.add-r').on('click', function(){
+        rollDice($('.dice-container'));
+        $('.dice-container').addClass( "rolling" ).one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function(){
+            $(this).removeClass( "rolling" );
+        });
+        return false;
+    });
+
+
