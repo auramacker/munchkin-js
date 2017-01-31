@@ -161,60 +161,65 @@ var ui = {
     });
   },
   pullCard: function(pack){
-    if (pack == "doors") {
-      var card = $(".pack--doors").children().first();
-      var cardId = card.attr("data-card-id"), cardType;
-      card.removeClass("flipped");
-      gameObject.pulledCard = model.returnFromPack("doors", cardId);
-      cardType = model.getCardType(gameObject.pulledCard);
-      $(".pack--doors .card[data-card-id="+ card.id +"]").remove();
-      ui.addToBattle(gameObject.pulledCard);
-      switch (cardType) {
-        case "RaceCard":
-          ui.showLog("Вы нашли карту Расы!", "info");
-        break;
-        case "ClassCard":
-          ui.showLog("Вы нашли карту Класса!", "info");
-        break;
-        case "MonsterCard":
-        var checkResult;
+    if (gameObject.battleStatus == "not started") {
+      if (pack == "doors") {
+        var card = $(".pack--doors").children().first();
+        var cardId = card.attr("data-card-id"), cardType;
+        card.removeClass("flipped");
+        gameObject.pulledCard = model.returnFromPack("doors", cardId);
+        cardType = model.getCardType(gameObject.pulledCard);
+        $(".pack--doors .card[data-card-id="+ card.id +"]").remove();
+        ui.addToBattle(gameObject.pulledCard);
+        switch (cardType) {
+          case "RaceCard":
+            ui.showLog("Вы нашли карту Расы!", "info");
+          break;
+          case "ClassCard":
+            ui.showLog("Вы нашли карту Класса!", "info");
+          break;
+          case "MonsterCard":
+          var checkResult;
 
-          player.strengthInBattle = 30; // setting player for moster test
-          player.race1 = {cardClass: "dwarf"};
-          player.race2 = {cardClass: "halfing"};
-          player.gender = "male";
-          // setting
-          if (gameObject.battleStatus == "not started") {
-            gameObject.battleStatus = "started";
-            checkResult = model.checkMonsterCard(gameObject.pulledCard, player);
-            for (var i = 0; i < checkResult.length; i++) {
-              ui.showLog(checkResult[i], "warning");
+            player.strengthInBattle = 30; // setting player for moster test
+            player.race1 = {cardClass: "dwarf"};
+            player.race2 = {cardClass: "halfing"};
+            player.gender = "male";
+            // setting
+            if (gameObject.battleStatus == "not started") {
+              gameObject.battleStatus = "started";
+              checkResult = model.checkMonsterCard(gameObject.pulledCard, player);
+              for (var i = 0; i < checkResult.length; i++) {
+                ui.showLog(checkResult[i], "warning");
+              }
+              ui.showLog("Вы наткнулись на "+ gameObject.pulledCard.name +"! Сила монстра : " +
+              + gameObject.pulledCard.monsterLevel +" единиц.", "danger");
+              ui.displayExtraOption("PoisionCard");
+              ui.displayExtraOption("BonusCard");
+              $(".btn-battle").on("click", function() {
+                if (player.strengthInBattle > gameObject.pulledCard.monsterLevel) {
+                  gameObject.battleStatus = "monster defeated";
+                  ui.showLog("Вы победили монстра и получаете в награду "+ gameObject.pulledCard.numTreasures+" сокровища!", "success");
+                  player.levelUp(gameObject.pulledCard.numLevels);
+                  ui.getCardsFromPack(treasuresCards, player, gameObject.pulledCard.numTreasures);
+                  ui.removeFromBattle(gameObject.pulledCard);
+                  $(".card-in-battle .card").remove();
+                  gameObject.battleStatus = "not started";
+                }
+                else {
+                  ui.showLog("Ваша сила ниже чем у монстра. Воспользуйтесь усилителями, бонусами, помощью другого игрока или \
+                  попытайтесь \"смыться\".", "warning");
+                }
+                return false
+              });
+              $(".btn-run").on("click", function(){
+
+              });
             }
-            ui.showLog("Вы наткнулись на "+ gameObject.pulledCard.name +"! Сила монстра : " +
-            + gameObject.pulledCard.monsterLevel +" единиц.", "danger");
-            ui.displayExtraOption("PoisionCard");
-            ui.displayExtraOption("BonusCard");
-            $(".btn-battle").on("click", function() {
-              if (player.strengthInBattle > gameObject.pulledCard.monsterLevel) {
-                gameObject.battleStatus = "monster defeated";
-                ui.showLog("Вы победили монстра и получаете награду!", "success");
-                player.levelUp(gameObject.pulledCard.numLevels);
-                ui.getCardsFromPack(treasuresCards, player, gameObject.pulledCard.numTreasures);
-                ui.removeFromBattle(gameObject.pulledCard);
-                $(".card-in-battle .card").remove();
-                gameObject.battleStatus = "not started";
-              }
-              else {
-                ui.showLog("Ваша сила ниже чем у монстра. Воспользуйтесь усилителями, бонусами, помощью другого игрока или \
-                попытайтесь \"смыться\".", "warning");
-              }
-              return false
-            })
-          }
-        break;
-        case "CurseCard":
-          ui.showLog("Вы вытащили Проклятие!", "danger");
-        break;
+          break;
+          case "CurseCard":
+            ui.showLog("Вы вытащили Проклятие!", "danger");
+          break;
+        }
       }
     }
   },
@@ -272,15 +277,18 @@ var ui = {
           }
     });
     $(".player-user--inventory").click(function(){
-      $('.inventory-wrap').fadeToggle(300).toggleClass('is-visible');
-      $(".extra-option").each(function(){
-        if ($(this).css("display") == "none") {
-          $(this).show();
-        }
-        else {
-          $(this).hide();
-        }
-      })
+      if (gameObject.battleStatus == "not started") {
+        $('.inventory-wrap').fadeToggle(300).toggleClass('is-visible');
+        $(".extra-option").each(function(){
+          if ($(this).css("display") == "none") {
+            $(this).show();
+          }
+          else {
+            $(this).hide();
+          }
+        })
+      }
+      else ui.showLog("Вы не можете использовать инвентарь во время боя!", "warning");
     });
     $("body").on("click", ".equip", function(){ // on equip actions
       var currentCard = $(this).closest(".card").attr("data-card-id");
