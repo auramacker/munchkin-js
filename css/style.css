@@ -1025,13 +1025,8 @@ Right Side
 .strength-in-battle {
   position: absolute;
   display: block;
-  top: 40px;
-  right: 0;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
+  top: 15px;
+  right: 15px;
   height: 40px;
   width: 40px;
   line-height: 40px;
@@ -1183,6 +1178,15 @@ Right Side
   -ms-transform: translate3d(40px, -50%, 0);
   -o-transform: translate3d(40px, -50%, 0);
   transform: translate3d(40px, -50%, 0);
+}
+.btn-throw-dice {
+  z-index: 556;
+  position: absolute;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 .card-place {
   position: relative;
