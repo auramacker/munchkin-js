@@ -25,6 +25,7 @@ function Player(objPlayer){
   this.curse = [], // проклятие
   this.equipment = [],
   this.cardsSize = _CARDSSIZE,
+  this.runPoints = 4,
   this.levelUp = function(level){
       this.level += level;
       svgPlayerLevel($('.player-user--human .player--avatar'), player.level);

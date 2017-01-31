@@ -219,12 +219,7 @@ var ui = {
               });
               $(".btn-run").on("click", function(){
                 if (gameObject.battleStatus == "started") {
-                  // $(".card-in-battle .card").fadeOut();
-                  // $(".strength-in-battle").fadeOut();
-                  $(".card-in-battle").css("z-index", "554");
-                  $(".btn-throw-dice").show();
-                  $(".game-overlay").fadeIn();
-                  $(".dice-container").fadeIn();
+                  ui.showDice();
                 }
               });
             }
@@ -235,6 +230,18 @@ var ui = {
         }
       }
     }
+  },
+  hideDice: function(){
+    $(".card-in-battle").css("z-index", "1000");
+    $(".btn-throw-dice").hide();
+    $(".game-overlay").fadeOut();
+    $(".dice-container").fadeOut();
+  },
+  showDice: function(){
+    $(".card-in-battle").css("z-index", "554");
+    $(".btn-throw-dice").show();
+    $(".game-overlay").fadeIn();
+    $(".dice-container").fadeIn();
   },
   setInventoryLevel: function(num){
     $(".inventory-level").text(num);
@@ -441,12 +448,19 @@ var ui = {
         ui.updateStrength();
       }
     });
-    $('.add-r').on('click', function(){
-        ui.rollDice($('.dice-container'));
-        $('.dice-container').addClass( "rolling" ).one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function(){
-            $(this).removeClass( "rolling" );
-        });
-        return false;
+    $("body").on("click", ".btn-throw-dice", function(){
+      gameObject.diceResult = ui.rollDice($('.dice-container'));
+      $('.dice-container').addClass( "rolling" ).one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function(){
+          $(this).removeClass( "rolling" );
+      });
+      setTimeout(function(){
+        if (gameObject.diceResult > player.runPoints) {
+          ui.showLog("На кубике выпало: "+ gameObject.diceResult+". Вам удалось \"смыться\" !", "success");
+        }
+        else {
+          ui.showLog("На кубике выпало: "+ gameObject.diceResult+". Вам не удалось \"смыться\" !", "danger");
+        }
+      }, 1000);
     });
     $("body").on("click", ".drop", function(){ // on drop action
       var currentCardId = $(this).parent().parent('.card').attr("data-card-id");
@@ -585,11 +599,9 @@ var ui = {
     }
   },
   rollDice: function(element){
-        var random_value = Math.floor(Math.random() * 6) + 1;
+        var random_value = getDiceNumber();
         element.attr('data-value', random_value);
-        // if (currentClass == newClass) {
-        //   element.attr('data-value', 'same');
-        // }
+        return random_value
   },
 
 }
