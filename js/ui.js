@@ -600,7 +600,12 @@ var ui = {
   },
   rollDice: function(element){
         var random_value = getDiceNumber();
-        element.attr('data-value', random_value);
+        if (element.attr("data-value") == random_value) {
+          element.attr("data-value", "same");
+        }
+        else {
+          element.attr('data-value', random_value);
+        }
         return random_value
   },
 
