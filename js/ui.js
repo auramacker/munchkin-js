@@ -165,6 +165,8 @@ var ui = {
       if (pack == "doors") {
         var card = $(".pack--doors").children().first();
         var cardId = card.attr("data-card-id"), cardType;
+        gameObject.gameStatus == "started";
+        ui.setButtonsStatus();
         card.removeClass("flipped");
         gameObject.pulledCard = model.returnFromPack("doors", cardId);
         cardType = model.getCardType(gameObject.pulledCard);
@@ -187,12 +189,14 @@ var ui = {
             // setting
             if (gameObject.battleStatus == "not started") {
               gameObject.battleStatus = "started";
+              ui.setButtonsStatus();
               checkResult = model.checkMonsterCard(gameObject.pulledCard, player);
               for (var i = 0; i < checkResult.length; i++) {
                 ui.showLog(checkResult[i], "warning");
               }
               ui.showLog("Вы наткнулись на "+ gameObject.pulledCard.name +"! Сила монстра : " +
               + gameObject.pulledCard.monsterLevel +" единиц.", "danger");
+              ui.showMonsterPower(gameObject.pulledCard.monsterLevel);
               ui.displayExtraOption("PoisionCard");
               ui.displayExtraOption("BonusCard");
               $(".btn-battle").on("click", function() {
@@ -203,7 +207,9 @@ var ui = {
                   ui.getCardsFromPack(treasuresCards, player, gameObject.pulledCard.numTreasures);
                   ui.removeFromBattle(gameObject.pulledCard);
                   $(".card-in-battle .card").remove();
+                  ui.setInventoryLevel(player.strength);
                   gameObject.battleStatus = "not started";
+                  gameObject.gameStatus == "not started";
                 }
                 else {
                   ui.showLog("Ваша сила ниже чем у монстра. Воспользуйтесь усилителями, бонусами, помощью другого игрока или \
@@ -212,7 +218,14 @@ var ui = {
                 return false
               });
               $(".btn-run").on("click", function(){
-
+                if (gameObject.battleStatus == "started") {
+                  // $(".card-in-battle .card").fadeOut();
+                  // $(".strength-in-battle").fadeOut();
+                  $(".card-in-battle").css("z-index", "554");
+                  $(".btn-throw-dice").show();
+                  $(".game-overlay").fadeIn();
+                  $(".dice-container").fadeIn();
+                }
               });
             }
           break;
@@ -222,6 +235,24 @@ var ui = {
         }
       }
     }
+  },
+  setInventoryLevel: function(num){
+    $(".inventory-level").text(num);
+  },
+  setButtonsStatus: function(){
+    if ((gameObject.gameStatus == "started") && (gameObject.battleStatus == "not started")) {
+      $(".player-buttons a").toggleClass("btn-disable");
+      $(".player-buttons a").css("cursor", "default")
+    }
+    if (gameObject.battleStatus == "started") {
+      $(".btn-help, .btn-exchange").toggleClass("btn-disable");
+      $(".btn-help, .btn-exchange").css("cursor", "default");
+      $(".btn-battle, .btn-run").removeClass("btn-disable");
+      $(".btn-battle, .btn-run").css("cursor", "pointer");
+    }
+  },
+  showMonsterPower: function(power){
+    $(".card-in-battle .strength-in-battle").text(power);
   },
   showHint: function(context) { // if empty just show
     if (arguments[0] != undefined) {
@@ -243,7 +274,9 @@ var ui = {
   },
   addToBattle: function(card) {
     $(".card--doors").children().first().remove();
-    console.log(doorsCards);
+    if (model.getCardType(card) == "MonsterCard") {
+      $(".card-in-battle .strength-in-battle").show();
+    }
     cardBackface = (card.deck == "doors") ?  _IMGPATH + 'cards/doors-backface.png' : _IMGPATH + 'cards/treasures-backface.png';
     cardPack = (card.deck == "doors") ? "card--doors" : "card--treasures";
     $(".card-in-battle").append('<div class="card '+ cardPack +' flipped" data-card-id="'+card.id+'" style="z-index: 1000"> \
@@ -260,6 +293,7 @@ var ui = {
     $(".pack--doors .card[data-card-id="+ card.id +"]").remove();
     $(".card-in-battle .card[data-card-id ='"+ card.id +"']").fadeOut(100);
     model.moveDoorsRebound(card);
+    $(".card-in-battle .strength-in-battle").hide();
   },
   inventorySetting: function(){
     ui.addButtonsToCards();
@@ -442,6 +476,7 @@ var ui = {
           card = model.returnCard(player, $(this).parent().parent().attr("data-card-id"));
           cardType = model.getCardType(card);//
           if (cardType == "PoisionCard") {
+            $(".player--svg-level-bar").css("cursor", "pointer");
             $("body").on("click", ".card-in-battle .btn-close-hint", function(){
               ui.hideHint(this);
             });
