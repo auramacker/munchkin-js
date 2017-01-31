@@ -110,22 +110,22 @@ $dice_h = 60px
 				
 
 .dice-container[data-value="1"] .dice
-	transform translateZ(- $dice_h / 2) rotateY(0deg)
+	transform translateZ(- $dice_h / 2) rotateX(-180deg)
 
 .dice-container[data-value="2"] .dice
-	transform translateZ(- $dice_h / 2) rotateX(-180deg)
+	transform translateZ(- $dice_h / 2) rotateY(90deg)
 	
 .dice-container[data-value="3"] .dice
-	transform translateZ(- $dice_h / 2) rotateY(-90deg)
-
-.dice-container[data-value="4"] .dice
-	transform translateZ(- $dice_h / 2) rotateY(90deg)
-
-.dice-container[data-value="5"] .dice
 	transform translateZ(- $dice_h / 2) rotateX(-90deg)
 
-.dice-container[data-value="6"] .dice
+.dice-container[data-value="4"] .dice
 	transform translateZ(- $dice_h / 2) rotateX(90deg)
+
+.dice-container[data-value="5"] .dice
+	transform translateZ(- $dice_h / 2) rotateY(-90deg)
+
+.dice-container[data-value="6"] .dice
+	transform translateZ(- $dice_h / 2) rotateY(0deg)
 
 .dice-container[data-value="same"]
 	transform translateZ(- $dice_h / 2) rotateX(360deg)

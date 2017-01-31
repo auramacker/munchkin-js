@@ -1467,46 +1467,46 @@ Right Side
   right: 12px;
 }
 .dice-container[data-value="1"] .dice {
-  -webkit-transform: translateZ(-30px) rotateY(0deg);
-  -moz-transform: translateZ(-30px) rotateY(0deg);
-  -ms-transform: translateZ(-30px) rotateY(0deg);
-  -o-transform: translateZ(-30px) rotateY(0deg);
-  transform: translateZ(-30px) rotateY(0deg);
-}
-.dice-container[data-value="2"] .dice {
   -webkit-transform: translateZ(-30px) rotateX(-180deg);
   -moz-transform: translateZ(-30px) rotateX(-180deg);
   -ms-transform: translateZ(-30px) rotateX(-180deg);
   -o-transform: translateZ(-30px) rotateX(-180deg);
   transform: translateZ(-30px) rotateX(-180deg);
 }
-.dice-container[data-value="3"] .dice {
-  -webkit-transform: translateZ(-30px) rotateY(-90deg);
-  -moz-transform: translateZ(-30px) rotateY(-90deg);
-  -ms-transform: translateZ(-30px) rotateY(-90deg);
-  -o-transform: translateZ(-30px) rotateY(-90deg);
-  transform: translateZ(-30px) rotateY(-90deg);
-}
-.dice-container[data-value="4"] .dice {
+.dice-container[data-value="2"] .dice {
   -webkit-transform: translateZ(-30px) rotateY(90deg);
   -moz-transform: translateZ(-30px) rotateY(90deg);
   -ms-transform: translateZ(-30px) rotateY(90deg);
   -o-transform: translateZ(-30px) rotateY(90deg);
   transform: translateZ(-30px) rotateY(90deg);
 }
-.dice-container[data-value="5"] .dice {
+.dice-container[data-value="3"] .dice {
   -webkit-transform: translateZ(-30px) rotateX(-90deg);
   -moz-transform: translateZ(-30px) rotateX(-90deg);
   -ms-transform: translateZ(-30px) rotateX(-90deg);
   -o-transform: translateZ(-30px) rotateX(-90deg);
   transform: translateZ(-30px) rotateX(-90deg);
 }
-.dice-container[data-value="6"] .dice {
+.dice-container[data-value="4"] .dice {
   -webkit-transform: translateZ(-30px) rotateX(90deg);
   -moz-transform: translateZ(-30px) rotateX(90deg);
   -ms-transform: translateZ(-30px) rotateX(90deg);
   -o-transform: translateZ(-30px) rotateX(90deg);
   transform: translateZ(-30px) rotateX(90deg);
+}
+.dice-container[data-value="5"] .dice {
+  -webkit-transform: translateZ(-30px) rotateY(-90deg);
+  -moz-transform: translateZ(-30px) rotateY(-90deg);
+  -ms-transform: translateZ(-30px) rotateY(-90deg);
+  -o-transform: translateZ(-30px) rotateY(-90deg);
+  transform: translateZ(-30px) rotateY(-90deg);
+}
+.dice-container[data-value="6"] .dice {
+  -webkit-transform: translateZ(-30px) rotateY(0deg);
+  -moz-transform: translateZ(-30px) rotateY(0deg);
+  -ms-transform: translateZ(-30px) rotateY(0deg);
+  -o-transform: translateZ(-30px) rotateY(0deg);
+  transform: translateZ(-30px) rotateY(0deg);
 }
 .dice-container[data-value="same"] {
   -webkit-transform: translateZ(-30px) rotateX(360deg);
