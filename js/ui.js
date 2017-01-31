@@ -599,7 +599,7 @@ var ui = {
     }
   },
   rollDice: function(element){
-        var random_value = getDiceNumber();
+        var random_value = 5;
         if (element.attr("data-value") == random_value) {
           element.attr("data-value", "same");
         }

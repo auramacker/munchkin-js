@@ -1508,12 +1508,12 @@ Right Side
   -o-transform: translateZ(-30px) rotateY(0deg);
   transform: translateZ(-30px) rotateY(0deg);
 }
-.dice-container[data-value="same"] {
-  -webkit-transform: translateZ(-30px) rotateX(360deg);
-  -moz-transform: translateZ(-30px) rotateX(360deg);
-  -ms-transform: translateZ(-30px) rotateX(360deg);
-  -o-transform: translateZ(-30px) rotateX(360deg);
-  transform: translateZ(-30px) rotateX(360deg);
+.dice-container[data-value="same"] .dice {
+  -webkit-transform: translateZ(-30px) rotateY(270deg);
+  -moz-transform: translateZ(-30px) rotateY(270deg);
+  -ms-transform: translateZ(-30px) rotateY(270deg);
+  -o-transform: translateZ(-30px) rotateY(270deg);
+  transform: translateZ(-30px) rotateY(270deg);
 }
 .dice-container.rolling {
   -webkit-animation: bounce 800ms linear;

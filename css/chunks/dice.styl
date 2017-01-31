@@ -127,8 +127,8 @@ $dice_h = 60px
 .dice-container[data-value="6"] .dice
 	transform translateZ(- $dice_h / 2) rotateY(0deg)
 
-.dice-container[data-value="same"]
-	transform translateZ(- $dice_h / 2) rotateX(360deg)
+.dice-container[data-value="same"] .dice
+	transform translateZ(- $dice_h / 2) rotateY(270deg)
 
 .dice-container.rolling
 	animation bounce 800ms linear
