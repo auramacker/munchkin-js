@@ -603,7 +603,7 @@ var ui = {
     }
   },
   rollDice: function(element){
-        var randomValue = getDiceNumber();
+        var randomValue = getDiceNumber(); 
         if (element.attr("data-value") == randomValue) {
           element.attr("data-value", "same");
         }
