@@ -454,8 +454,12 @@ var ui = {
           $(this).removeClass( "rolling" );
       });
       setTimeout(function(){
-        if (gameObject.diceResult > player.runPoints) {
+        if (gameObject.diceResult >= player.runPoints) {
           ui.showLog("На кубике выпало: "+ gameObject.diceResult+". Вам удалось \"смыться\" !", "success");
+          setTimeout(function(){
+            ui.hideDice() }, 1500);
+          setTimeout(function(){
+            ui.removeFromBattle(gameObject.pulledCard)}, 2000);
         }
         else {
           ui.showLog("На кубике выпало: "+ gameObject.diceResult+". Вам не удалось \"смыться\" !", "danger");
@@ -599,14 +603,14 @@ var ui = {
     }
   },
   rollDice: function(element){
-        var random_value = 5;
-        if (element.attr("data-value") == random_value) {
+        var randomValue = getDiceNumber();
+        if (element.attr("data-value") == randomValue) {
           element.attr("data-value", "same");
         }
         else {
-          element.attr('data-value', random_value);
+          element.attr('data-value', randomValue);
         }
-        return random_value
+        return randomValue
   },
 
 }
