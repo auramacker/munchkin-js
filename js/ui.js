@@ -449,22 +449,30 @@ var ui = {
       }
     });
     $("body").on("click", ".btn-throw-dice", function(){
-      gameObject.diceResult = ui.rollDice($('.dice-container'));
-      $('.dice-container').addClass( "rolling" ).one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function(){
-          $(this).removeClass( "rolling" );
-      });
-      setTimeout(function(){
-        if (gameObject.diceResult >= player.runPoints) {
-          ui.showLog("На кубике выпало: "+ gameObject.diceResult+". Вам удалось \"смыться\" !", "success");
-          setTimeout(function(){
-            ui.hideDice() }, 1500);
-          setTimeout(function(){
-            ui.removeFromBattle(gameObject.pulledCard)}, 2000);
-        }
-        else {
-          ui.showLog("На кубике выпало: "+ gameObject.diceResult+". Вам не удалось \"смыться\" !", "danger");
-        }
-      }, 1000);
+      if ($(".dice-container").attr("status") == "false") {
+        gameObject.diceResult = ui.rollDice($('.dice-container'));
+        $(".dice-container").attr("status", "true");
+        $('.dice-container').addClass( "rolling" ).one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function(){
+            $(this).removeClass( "rolling" );
+        });
+        setTimeout(function(){
+          if (gameObject.diceResult >= player.runPoints) {
+            ui.showLog("На кубике выпало: "+ gameObject.diceResult+". Вам удалось \"смыться\" !", "success");
+            setTimeout(function(){
+              ui.hideDice() }, 1300);
+            setTimeout(function(){
+              ui.removeFromBattle(gameObject.pulledCard);
+              $(".dice-container").attr("status", "false");
+            }, 1700);
+            gameObject.battleStatus = "not started";
+          }
+          else {
+            ui.showLog("На кубике выпало: "+ gameObject.diceResult+". Вам не удалось \"смыться\" !", "danger");
+            setTimeout(function(){
+              ui.hideDice() }, 1300);
+          }
+        }, 1000);
+      }
     });
     $("body").on("click", ".drop", function(){ // on drop action
       var currentCardId = $(this).parent().parent('.card').attr("data-card-id");
@@ -603,13 +611,8 @@ var ui = {
     }
   },
   rollDice: function(element){
-        var randomValue = getDiceNumber(); 
-        if (element.attr("data-value") == randomValue) {
-          element.attr("data-value", "same");
-        }
-        else {
-          element.attr('data-value', randomValue);
-        }
+        var randomValue = getDiceNumber();
+        element.attr('data-value', randomValue);
         return randomValue
   },
 }
