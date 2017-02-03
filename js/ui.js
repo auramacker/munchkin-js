@@ -612,5 +612,4 @@ var ui = {
         }
         return randomValue
   },
-
 }
