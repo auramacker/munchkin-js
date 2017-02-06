@@ -650,11 +650,11 @@ Player
 .player .player--avatar .player--svg-level circle {
   stroke-dashoffset: 0;
   stroke-width: 5px;
-  -webkit-transition: 0s;
-  -moz-transition: 0s;
-  -ms-transition: 0s;
-  -o-transition: 0s;
-  transition: 0s;
+  -webkit-transition: all 300ms ease-in-out;
+  -moz-transition: all 300ms ease-in-out;
+  -ms-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
 }
 .player .player--avatar .player--svg-level circle.player--svg-level-bar {
   stroke: #ffcf4f;
