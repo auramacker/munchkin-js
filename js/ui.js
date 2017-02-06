@@ -195,7 +195,7 @@ var ui = {
                 ui.showLog(checkResult[i], "warning");
               }
               ui.showLog("Вы наткнулись на "+ gameObject.pulledCard.name +"! Сила монстра : " +
-              + gameObject.pulledCard.monsterLevel +" единиц.", "danger");
+              + gameObject.pulledCard.monsterLevel +" единиц.", "warning");
               ui.showMonsterPower(gameObject.pulledCard.monsterLevel);
               ui.displayExtraOption("PoisionCard");
               ui.displayExtraOption("BonusCard");
@@ -448,31 +448,51 @@ var ui = {
         ui.updateStrength();
       }
     });
-    $("body").on("click", ".btn-throw-dice", function(){
-      if ($(".dice-container").attr("status") == "false") {
-        gameObject.diceResult = ui.rollDice($('.dice-container'));
-        $(".dice-container").attr("status", "true");
-        $('.dice-container').addClass( "rolling" ).one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function(){
-            $(this).removeClass( "rolling" );
-        });
-        setTimeout(function(){
-          if (gameObject.diceResult >= player.runPoints) {
-            ui.showLog("На кубике выпало: "+ gameObject.diceResult+". Вам удалось \"смыться\" !", "success");
-            setTimeout(function(){
-              ui.hideDice() }, 1300);
-            setTimeout(function(){
-              ui.removeFromBattle(gameObject.pulledCard);
-              $(".dice-container").attr("status", "false");
-            }, 1700);
-            gameObject.battleStatus = "not started";
-          }
-          else {
-            ui.showLog("На кубике выпало: "+ gameObject.diceResult+". Вам не удалось \"смыться\" !", "danger");
-            setTimeout(function(){
-              ui.hideDice() }, 1300);
-          }
-        }, 1000);
+    $("body").on("click", ".btn-throw-dice", function(){ // have punish
+      if ($(".dice-container").attr("target") == "punish") {
+        if ($(".dice-container").attr("status") == "false") {
+          gameObject.punishResult = ui.rollDice($('.dice-container'));
+          $(".dice-container").attr("status", "true");
+          $('.dice-container').addClass( "rolling" ).one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function(){
+              $(this).removeClass( "rolling" );
+          });
+          setTimeout(function(){
+            ui.showLog("На кубике выпало: " + gameObject.punishResult);
+          }, 500);
+        }
       }
+      else {
+        if ($(".dice-container").attr("status") == "false") {
+          gameObject.diceResult = ui.rollDice($('.dice-container'));
+          $(".dice-container").attr("status", "true");
+          $('.dice-container').addClass( "rolling" ).one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function(){
+              $(this).removeClass( "rolling" );
+          });
+          setTimeout(function(){
+            if (gameObject.diceResult >= player.runPoints) {
+              ui.showLog("На кубике выпало: "+ gameObject.diceResult+". Вам удалось \"смыться\" !", "success");
+              setTimeout(function(){
+                ui.hideDice() }, 1300);
+              setTimeout(function(){
+                ui.removeFromBattle(gameObject.pulledCard);
+                $(".dice-container").attr("status", "false");
+              }, 1700);
+              gameObject.battleStatus = "not started";
+            }
+            else {
+              ui.showLog("На кубике выпало: "+ gameObject.diceResult+". Вам не удалось \"смыться\" !", "danger");
+              setTimeout(function(){
+                ui.hideDice() }, 1300);
+              setTimeout(function(){
+                ui.showLog(gameObject.pulledCard.effect, "danger");
+                player.applyMonseterEffect(gameObject.pulledCard);
+                gameObject.battleStatus = "not started";
+              } ,1500);
+            }
+          }, 1000);
+        }
+      }
+
     });
     $("body").on("click", ".drop", function(){ // on drop action
       var currentCardId = $(this).parent().parent('.card').attr("data-card-id");

@@ -36,6 +36,11 @@ function Player(objPlayer){
       this.level++
     }
   },
+  this.looseLevel = function(num){
+    this.level -= num;
+    svgPlayerLevel($('.player-user--human .player--avatar'), player.level);
+    ui.showLog("Ваш Уровень понижен!", "danger");
+  },
   this.getBonusEffect = function(card) {
     var effect, qt;
     qt = +card.effect.charAt(card.effect.length-1);
@@ -352,6 +357,27 @@ function Player(objPlayer){
       if (this.cards[i].id == cardId) {
         this.class1 = this.cards[i];
       }
+    }
+  },
+  this.applyMonseterEffect = function(monster){
+    var effect = monster.looseLevel;
+    switch(effect) {
+      case "dice":
+        $(".dice-container").attr("target", "punish");
+        $(".dice-container").attr("status", "false");
+        ui.showDice();
+        $("body").on("click", ".btn-throw-dice", function(){
+          setTimeout(function(){
+            if (gameObject.punishResult <= 2) {
+              ui.showLog("Ты мертв!");
+            }
+            else {
+              player.looseLevel(gameObject.punishResult);
+              ui.showLog("Вы потеряли " + gameObject.punishResult + " уровней!");
+            }
+          }, 550);
+        });
+      break;
     }
   }
 }

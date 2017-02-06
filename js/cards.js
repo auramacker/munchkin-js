@@ -56,57 +56,57 @@
         class: null,
         classBonus: null
       };
-    monstersObjArr[1] = {
-          id: "032",
-          img: _IMGPATH + "cards/" + "032" + ".png",
-          name: "Амазонка",
-          description: "Не дерётся с Женщинами, вместо этого даёт им 1 Сокровище",
-          effect: "Блин, какая-то баба надрала тебе задницу. Где твоя гордость, горячий мачо, крутой манчкин? Теряешь Классы. Если ты и так без Класса, скинь 3 Уровня",
-          numTreasures: 2,
-          numLevels: 1,
-          monsterLevel: 8,
-          looseLevel: "loseClass",
-          gender: "female",
-          genderBonus: "giveTreasure1",
-          race: null,
-          raceBonus: null,
-          class: null,
-          classBonus: null
-    };
-    monstersObjArr[2] = {
-          id: "043",
-          img: _IMGPATH + "cards/" + "043" + ".png",
-          name: "Бигфут",
-          description: "+3 если в бою есть Дварфы или Халфлинги.",
-          effect: "Наступил-то слегка-да затрещали бока; хоть остался живой, да с пустой головой. Теряешь надетый головняк.",
-          numTreasures: 3,
-          numLevels: 1,
-          monsterLevel: 12,
-          looseLevel: "loseHelmet",
-          gender: null,
-          genderBonus: null,
-          race: ["dwarf", "halfing"],
-          raceBonus: +3,
-          class: null,
-          classBonus: null
-        };
-    monstersObjArr[3] = {
-          id: "047",
-          img: _IMGPATH + "cards/" + "047" + ".png",
-          name: "Сочащаяся Слизь",
-          description: "Ну и мерзость! +4 против Эльфов.",
-          effect: "Сбрось надетую Обувк. Если уже без Обувки, теряешь 1 Уровень.",
-          numTreasures: 1,
-          numLevels: 1,
-          monsterLevel: 1,
-          looseLevel: "loseFootGear",
-          gender: null,
-          genderBonus: null,
-          race: ["elf"],
-          raceBonus: +4,
-          class: null,
-          classBonus: null
-        };
+    // monstersObjArr[1] = {
+    //       id: "032",
+    //       img: _IMGPATH + "cards/" + "032" + ".png",
+    //       name: "Амазонка",
+    //       description: "Не дерётся с Женщинами, вместо этого даёт им 1 Сокровище",
+    //       effect: "Блин, какая-то баба надрала тебе задницу. Где твоя гордость, горячий мачо, крутой манчкин? Теряешь Классы. Если ты и так без Класса, скинь 3 Уровня",
+    //       numTreasures: 2,
+    //       numLevels: 1,
+    //       monsterLevel: 8,
+    //       looseLevel: "loseClass",
+    //       gender: "female",
+    //       genderBonus: "giveTreasure1",
+    //       race: null,
+    //       raceBonus: null,
+    //       class: null,
+    //       classBonus: null
+    // };
+    // monstersObjArr[2] = {
+    //       id: "043",
+    //       img: _IMGPATH + "cards/" + "043" + ".png",
+    //       name: "Бигфут",
+    //       description: "+3 если в бою есть Дварфы или Халфлинги.",
+    //       effect: "Наступил-то слегка-да затрещали бока; хоть остался живой, да с пустой головой. Теряешь надетый головняк.",
+    //       numTreasures: 3,
+    //       numLevels: 1,
+    //       monsterLevel: 12,
+    //       looseLevel: "loseHelmet",
+    //       gender: null,
+    //       genderBonus: null,
+    //       race: ["dwarf", "halfing"],
+    //       raceBonus: +3,
+    //       class: null,
+    //       classBonus: null
+    //     };
+    // monstersObjArr[3] = {
+    //       id: "047",
+    //       img: _IMGPATH + "cards/" + "047" + ".png",
+    //       name: "Сочащаяся Слизь",
+    //       description: "Ну и мерзость! +4 против Эльфов.",
+    //       effect: "Сбрось надетую Обувку. Если уже без Обувки, теряешь 1 Уровень.",
+    //       numTreasures: 1,
+    //       numLevels: 1,
+    //       monsterLevel: 1,
+    //       looseLevel: "loseFootGear",
+    //       gender: null,
+    //       genderBonus: null,
+    //       race: ["elf"],
+    //       raceBonus: +4,
+    //       class: null,
+    //       classBonus: null
+    //     };
 
 // -----------------------------------
 // ******** curse cards variables ********
