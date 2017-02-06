@@ -1,5 +1,5 @@
 
-_MINLEVEL = 8;
+_MINLEVEL = 1;
 _MAXLEVEL = 10;
 _CARDSSIZE = 5;
 _IMGPATH = "images/";

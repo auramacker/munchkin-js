@@ -6,7 +6,6 @@ function getDiceNumber(){
 }
 
 function svgPlayerLevel(element, level){
-
   element.each(function(){
     var t = $(this),
     circle = t.find('.player--svg-level-bar'),
@@ -16,15 +15,11 @@ function svgPlayerLevel(element, level){
 
     if ( level <= _MINLEVEL ) level = _MINLEVEL;
     if ( level >= _MAXLEVEL ) level = _MAXLEVEL;
-
     var strokeDashoffset = ( (_MAXLEVEL - level ) / _MAXLEVEL ) * c;
 
     circle.css({ strokeDashoffset: strokeDashoffset });
     label.text(level);
   });
-
-
-
 }
 
 function setStartCpuLevel(level){

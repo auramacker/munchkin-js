@@ -3,7 +3,7 @@ function Player(objPlayer){
   this.id = objPlayer.id,
   this.name = objPlayer.name,
   this.gender = objPlayer.gender,
-  this.level = _MINLEVEL,
+  this.level = 5,
   this.strength = _MINLEVEL,
   this.strengthInBattle = this.strength,
   this.levelInBattle = this.level,

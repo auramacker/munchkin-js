@@ -631,7 +631,7 @@ var ui = {
     }
   },
   rollDice: function(element){
-        var randomValue = getDiceNumber();
+        var randomValue = 3//getDiceNumber();
         element.attr('data-value', randomValue);
         return randomValue
   },
