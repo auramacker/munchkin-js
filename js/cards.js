@@ -39,40 +39,40 @@
 // -----------------------------------
 // ******** monster cards variables ********
   var monstersObjArr = [], createdMonstersArr = [];
-  monstersObjArr[0] = {
-        id: "021",
-        img: _IMGPATH + "cards/" + "021" + ".png",
-        name: "3872 орка",
-        description: "+6 против Дварфов (из-за старых обид).",
-        effect: "Брось кубик. На 2 или ниже они затопчат тебя до смерти. В остальных случаях теряешь столько Уровней, сколько показал кубик.",
-        numTreasures: 3,
-        numLevels: 1,
-        monsterLevel: 10,
-        looseLevel: "dice",
-        gender: null,
-        genderBonus: null,
-        race: ["dwarf"],
-        raceBonus: +6,
-        class: null,
-        classBonus: null
-      };
-    // monstersObjArr[1] = {
-    //       id: "032",
-    //       img: _IMGPATH + "cards/" + "032" + ".png",
-    //       name: "Амазонка",
-    //       description: "Не дерётся с Женщинами, вместо этого даёт им 1 Сокровище",
-    //       effect: "Блин, какая-то баба надрала тебе задницу. Где твоя гордость, горячий мачо, крутой манчкин? Теряешь Классы. Если ты и так без Класса, скинь 3 Уровня",
-    //       numTreasures: 2,
-    //       numLevels: 1,
-    //       monsterLevel: 8,
-    //       looseLevel: "loseClass",
-    //       gender: "female",
-    //       genderBonus: "giveTreasure1",
-    //       race: null,
-    //       raceBonus: null,
-    //       class: null,
-    //       classBonus: null
-    // };
+  // monstersObjArr[0] = {
+  //       id: "021",
+  //       img: _IMGPATH + "cards/" + "021" + ".png",
+  //       name: "3872 орка",
+  //       description: "+6 против Дварфов (из-за старых обид).",
+  //       effect: "Брось кубик. На 2 или ниже они затопчат тебя до смерти. В остальных случаях теряешь столько Уровней, сколько показал кубик.",
+  //       numTreasures: 3,
+  //       numLevels: 1,
+  //       monsterLevel: 10,
+  //       looseLevel: "dice",
+  //       gender: null,
+  //       genderBonus: null,
+  //       race: ["dwarf"],
+  //       raceBonus: +6,
+  //       class: null,
+  //       classBonus: null
+  //     };
+     monstersObjArr[0] = {
+           id: "032",
+           img: _IMGPATH + "cards/" + "032" + ".png",
+           name: "Амазонка",
+           description: "Не дерётся с Женщинами, вместо этого даёт им 1 Сокровище",
+           effect: "Блин, какая-то баба надрала тебе задницу. Где твоя гордость, горячий мачо, крутой манчкин? Теряешь Классы. Если ты и так без Класса, скинь 3 Уровня",
+           numTreasures: 2,
+           numLevels: 1,
+           monsterLevel: 8,
+           looseLevel: "loseClass",
+           gender: "female",
+           genderBonus: "giveTreasure1",
+           race: null,
+           raceBonus: null,
+           class: null,
+           classBonus: null
+     };
     // monstersObjArr[2] = {
     //       id: "043",
     //       img: _IMGPATH + "cards/" + "043" + ".png",

@@ -75,9 +75,14 @@ var model = {
       }
     }
   },
+  moveEquipRebound: function(type){
+    if (player[type] != null) {
+      rebound.push(player[type]);
+      player[type] = null;
+    }
+  },
   moveToRebound: function(player, cardId) {
     var i = 0, length = player.cards.length;
-    console.log(player);
     for (; i < length; i++) {
       if (player.cards[i].id == cardId) {
         rebound.push(player.cards[i]);
@@ -162,13 +167,18 @@ var model = {
       }
     }
   },
-  returnCard: function(from, cardId) {
-    if (typeof from === "string") {
+  returnCard: function(from, cardId, position) { // from - doors or equip, cardID, position - if "equip"
+    if ((from == "doors") && (arguments[2] == undefined)) {
       var i = 0, length = doorsCards.length;
       for (; i < length; i++) {
         if (doorsCards[i].id == cardId) {
           return doorsCards[i]
         }
+      }
+    }
+    else if ((from == "equip") && (arguments[2] != undefined) && (arguments[1] == null)){
+      if (player[position] != null) {
+        return player[position]
       }
     }
     else {

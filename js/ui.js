@@ -182,10 +182,6 @@ var ui = {
           case "MonsterCard":
           var checkResult;
 
-            player.strengthInBattle = 30; // setting player for moster test
-            player.race1 = {cardClass: "dwarf"};
-            player.race2 = {cardClass: "halfing"};
-            player.gender = "male";
             // setting
             if (gameObject.battleStatus == "not started") {
               gameObject.battleStatus = "started";
@@ -458,6 +454,8 @@ var ui = {
           });
           setTimeout(function(){
             ui.showLog("На кубике выпало: " + gameObject.punishResult);
+            player.applyDiceEffect();
+            $(".dice-container").attr("status", "false")
           }, 500);
         }
       }
@@ -499,7 +497,7 @@ var ui = {
       ui.addToRebound(currentCardId);
       ui.removeFromHand(currentCardId);
     });
-    $("body").on("click", ".unset-card", function(){ // unset card
+    $("body").on("click", ".unset-card", function(){ // unset card to hand
       if ($(this).parent().attr("data-card-id")) {
         var cardId = $(this).parent().attr("data-card-id"), cardClass, result;
         cardClass = $(this).parent().attr("class").split(" ")[1];
@@ -567,6 +565,9 @@ var ui = {
   removeFromHand: function(cardId){
     $(".player-user--cards .card[data-card-id='"+ cardId +"']").remove();
   },
+  removeFromEquip: function(type){
+
+  },
   addButtonsToCards: function(){
     var races = model.getCardTypeId(player, "RaceCard"),
         classes = model.getCardTypeId(player, "ClassCard"),
@@ -603,24 +604,33 @@ var ui = {
       else $(".extra-option").hide();
       $(".options-list").hide();
   },
-  addToRebound: function(cardId, from){
-    var currentCard, cardBackface, cardPack;
-    if (arguments[1] != undefined) {
-      currentCard = model.returnCard("doors", cardId);
+  addToRebound: function(cardId, from){ // this function can delete from doors pack, player inventory, player equip
+    var currentCard, cardBackface, cardPack; // if cardID is null, delete equip element
+    if ((arguments[1] != undefined) && (arguments[1] == "doors")) {
+      if (from == "doors") {
+        currentCard = model.returnCard("doors", cardId);
+      }
+    }
+    else if (arguments[0] == null) {
+      currentCard = model.returnCard("equip", null, from);
     }
     else {
       currentCard = model.returnCard(player, cardId);
     }
-    cardBackface = (currentCard.deck == "doors") ?  _IMGPATH + 'cards/doors-backface.png' : _IMGPATH + 'cards/treasures-backface.png';
-    cardPack = (currentCard.deck == "doors") ? "card--doors" : "card--treasures";
-    $('.pack--rebound').append('<div class="card '+ cardPack +' flipped" data-card-id="'+currentCard.id+'"> \
-        <div class="flipper">\
-          <figure class="front" style="background-image: url('+currentCard.img+');"></figure> \
-          <figure class="back" style="background-image: url('+cardBackface+');"></figure> \
+    if (currentCard != undefined) {
+      cardBackface = (currentCard.deck == "doors") ?  _IMGPATH + 'cards/doors-backface.png' : _IMGPATH + 'cards/treasures-backface.png';
+      cardPack = (currentCard.deck == "doors") ? "card--doors" : "card--treasures";
+      $('.pack--rebound').append('<div class="card '+ cardPack +' flipped" data-card-id="'+currentCard.id+'"> \
+          <div class="flipper">\
+            <figure class="front" style="background-image: url('+currentCard.img+');"></figure> \
+            <figure class="back" style="background-image: url('+cardBackface+');"></figure> \
+          </div>\
         </div>\
-      </div>\
-    ');
-    model.moveToRebound(player, cardId);
+      ');
+      if (arguments[0] != null) {
+        model.moveToRebound(player, cardId);
+      }
+    }
   },
   displayExtraOption: function(cardType) {
     var id = [], i = 0;

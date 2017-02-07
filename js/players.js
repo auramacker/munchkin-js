@@ -28,6 +28,7 @@ function Player(objPlayer){
   this.runPoints = 4,
   this.levelUp = function(level){
       this.level += level;
+      if (this.level > _MAXLEVEL) this.level = _MAXLEVEL;
       svgPlayerLevel($('.player-user--human .player--avatar'), player.level);
       ui.showLog("Ваш Уровень повышен!", "success");
   },
@@ -38,6 +39,7 @@ function Player(objPlayer){
   },
   this.looseLevel = function(num){
     this.level -= num;
+    if (this.level < _MINLEVEL) this.level = _MINLEVEL;
     svgPlayerLevel($('.player-user--human .player--avatar'), player.level);
     ui.showLog("Ваш Уровень понижен!", "danger");
   },
@@ -365,19 +367,55 @@ function Player(objPlayer){
       case "dice":
         $(".dice-container").attr("target", "punish");
         $(".dice-container").attr("status", "false");
-        ui.showDice();
-        $("body").on("click", ".btn-throw-dice", function(){
-          setTimeout(function(){
-            if (gameObject.punishResult <= 2) {
-              ui.showLog("Ты мертв!");
-            }
-            else {
-              player.looseLevel(gameObject.punishResult);
-              ui.showLog("Вы потеряли " + gameObject.punishResult + " уровней!");
-            }
-          }, 550);
-        });
+        setTimeout(function(){
+          ui.showDice();
+        }, 500)
+      break;
+      case "loseClass":
+      var result1, result2;
+        setTimeout(function(){
+          result1 = player.dropClass("class1");
+          result2 = player.dropClass("class2");
+          if (result1 || result2) {
+            showLog("Вы потеряли класс(-ы-)");
+          }
+          else {
+            player.looseLevel(3);
+          }
+        },500)
       break;
     }
+  },
+  this.dropClass = function(type){
+    ui.addToRebound(null, type);
+    if ($(".inventory ."+type+"").attr("data-card-id")) {
+      $(".inventory ."+type+"").css("background-image", "url(" + _IMGPATH + "cards/" + type + ".png)"); // default bg to slot
+      $(".inventory ."+type+"").removeAttr("data-card-id"); //clean attr
+    }
+    else {
+      return false
+    }
+    model.moveEquipRebound(type);
+    return true
+  },
+  this.applyDiceEffect = function(){
+    setTimeout(function(){
+      if (gameObject.punishResult <= 2) {
+        ui.showLog("Ты мертв!");
+        //player.dead();
+      }
+      else {
+        player.looseLevel(gameObject.punishResult);
+        ui.showLog("Вы потеряли " + gameObject.punishResult + " уровней!");
+        setTimeout(function(){
+          ui.removeFromBattle(gameObject.pulledCard);
+          gameObject.battleStatus = "not started";
+        }, 900);
+      }
+      setTimeout(function(){
+        ui.hideDice();
+        $(".dice-container").attr("target", "");
+      }, 500);
+    }, 650);
   }
 }
