@@ -275,6 +275,10 @@ var ui = {
     $(".player-human").removeClass("hint");
     $(".card-in-battle .btn-close-hint").hide();
   },
+  dropFromHand: function(cardId) {
+    ui.addToRebound(cardId);
+    ui.removeFromHand(cardId);
+  },
   addToBattle: function(card) {
     $(".card--doors").children().first().remove();
     if (model.getCardType(card) == "MonsterCard") {
@@ -493,9 +497,8 @@ var ui = {
 
     });
     $("body").on("click", ".drop", function(){ // on drop action
-      var currentCardId = $(this).parent().parent('.card').attr("data-card-id");
-      ui.addToRebound(currentCardId);
-      ui.removeFromHand(currentCardId);
+      var cardId = $(this).parent().parent('.card').attr("data-card-id");
+      ui.dropFromHand(cardId);
     });
     $("body").on("click", ".unset-card", function(){ // unset card to hand
       if ($(this).parent().attr("data-card-id")) {
@@ -543,8 +546,13 @@ var ui = {
     var s = addZero(date.getSeconds());
     var time = h + ":" + m + ":" + s;
     $(".message-list").show();
-    $(".message-list").prepend("<p class='"+ type +"'><time>"+ time +"&nbsp;&nbsp;</time><span>"+ text +"</span></p>");
+    $(".message-list").append("<p class='"+ type +"'><time>"+ time +"&nbsp;&nbsp;</time><span>"+ text +"</span></p>");
     ui.setOpacity("message-list", 1);
+    var container = $(".message-list"),
+        scrollTo = $(".message-list").children().last();
+    container.scrollTop(
+      scrollTo.offset().left - container.offset().top + container.scrollTop() - 20
+    )
     setTimeout(function(){
       ui.setOpacity("message-list", 0.75);
     }, 2000);
@@ -641,7 +649,7 @@ var ui = {
     }
   },
   rollDice: function(element){
-        var randomValue = 3//getDiceNumber();
+        var randomValue = 2//getDiceNumber();
         element.attr('data-value', randomValue);
         return randomValue
   },

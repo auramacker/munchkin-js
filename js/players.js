@@ -382,6 +382,10 @@ function Player(objPlayer){
           else {
             player.looseLevel(3);
           }
+          setTimeout(function(){
+            ui.removeFromBattle(gameObject.pulledCard);
+            gameObject.battleStatus = "not started";
+          }, 900);
         },500)
       break;
     }
@@ -401,8 +405,11 @@ function Player(objPlayer){
   this.applyDiceEffect = function(){
     setTimeout(function(){
       if (gameObject.punishResult <= 2) {
-        ui.showLog("Ты мертв!");
-        //player.dead();
+        player.death();
+        setTimeout(function(){
+          ui.removeFromBattle(gameObject.pulledCard);
+          gameObject.battleStatus = "not started";
+        }, 900);
       }
       else {
         player.looseLevel(gameObject.punishResult);
@@ -417,5 +424,12 @@ function Player(objPlayer){
         $(".dice-container").attr("target", "");
       }, 500);
     }, 650);
+  },
+  this.death = function(){
+    $(".player-user--cards .card").each(function(){
+      var cardId = $(this).attr("data-card-id");
+      ui.dropFromHand(cardId);
+    })
+    ui.showLog("Ты мертв!");
   }
 }
