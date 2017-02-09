@@ -209,5 +209,38 @@ var model = {
       }
     }
     return result
+  },
+  moveToPack: function(player, card){
+    var i = 0, length = rebound.length, deleteElemPos;
+    if (card.deck == "doors") {
+      doorsCards.push(card);
+    }
+    else {
+      treasuresCards.push(card);
+    }
+    for (; i < length; i++) {
+      if (rebound[i] != undefined) {
+        if (rebound[i].id == card.id) {
+          delete rebound[i];
+        }
+      }
+    }
+  },
+  sparseArray: function(array){
+    var i = 0, length = array.length;
+    while (i < length) {
+      if (array[i] == undefined) {
+        array.splice(i, 1)
+      }
+      i++
+    }
+  },
+  fixId: function(card) {
+    card.id = card.id.toString();
+    var bufId = card.id;
+    console.log(bufId);
+    if (card.id.indexOf("-") != -1) {
+      card.id = bufId.replace("-", "0");
+    }
   }
 };

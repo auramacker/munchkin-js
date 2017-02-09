@@ -478,6 +478,7 @@ var ui = {
               setTimeout(function(){
                 ui.removeFromBattle(gameObject.pulledCard);
                 $(".dice-container").attr("status", "false");
+                ui.checkPack("doors");
               }, 1700);
               gameObject.battleStatus = "not started";
             }
@@ -640,6 +641,51 @@ var ui = {
       }
     }
   },
+  addToPacks: function(card) {
+    var cardBackface, cardPack, pack;
+    if (card != undefined) {
+      cardBackface = (card.deck == "doors") ? _IMGPATH + 'cards/doors-backface.png' : _IMGPATH + 'cards/treasures-backface.png';
+      cardPack = (card.deck == "doors") ? "card--doors" : "card--treasures";
+      pack = (card.deck == "doors") ? "pack--doors" : "pack--treasures";
+      $("." + pack).append('<div class="card '+ cardPack +' flipped" data-card-id="'+card.id+'"> \
+          <div class="flipper">\
+            <figure class="front" style="background-image: url('+card.img+');"></figure> \
+            <figure class="back" style="background-image: url('+cardBackface+');"></figure> \
+          </div>\
+        </div>\
+        ');
+      ui.removeFromRebound(card.id);
+      model.moveToPack(player, card);
+    }
+  },
+  removeFromRebound: function(cardId) {
+    $(".pack--rebound .card[data-card-id="+cardId+"]").remove();
+  },
+  checkPack: function(pack) {
+    var i = 0, length = rebound.length;
+    if (ui.isPackEmpty(pack)) {
+      for (; i < length; i++) {
+        model.fixId(rebound[i]);
+        ui.addToPacks(rebound[i]);
+      }
+    }
+    shuffle(rebound);
+    model.sparseArray(rebound);
+  },
+  isPackEmpty: function(pack) { // true - empty
+    if (pack == "doors") {
+      if (doorsCards.length == 0) {
+        return true
+      }
+      else return false
+    }
+    else if (pack == "treasures") {
+      if (treasuresCars.length == 0) {
+        return true
+      }
+      else return false
+    }
+  },
   displayExtraOption: function(cardType) {
     var id = [], i = 0;
     id = model.getCardTypeId(player, cardType);
@@ -649,7 +695,7 @@ var ui = {
     }
   },
   rollDice: function(element){
-        var randomValue = 2//getDiceNumber();
+        var randomValue = 6//getDiceNumber();
         element.attr('data-value', randomValue);
         return randomValue
   },
